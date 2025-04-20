@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>formObjetoSuperficie</class>
+ <widget class="QWidget" name="formObjetoSuperficie">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>420</width>
+    <height>36</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QFrame{
+	background-color: transparent
+}
+QLineEdit {
+        font-size: 11px;         /* Tamaño del texto */
+        font-weight: normal;     /* Opcional: puedes usar 'bold' */
+        color: white;            /* Color del texto */
+        background: rgba(255, 255, 255, 0.2); /* Fondo traslúcido */
+        border: 1px solid white;
+        border-radius: 8px;
+        padding: 4px 8px;
+    }
+    
+    QLineEdit:focus {
+        border: 1px solid #00AEEF; /* Borde azul al enfocar */
+        background: rgba(255, 255, 255, 0.3);
+    }
+
+QComboBox {
+    background: rgba(255, 255, 255, 0.2); /* Fondo translúcido */
+    border: 1px solid white; /* Borde blanco */
+    border-radius: 5px; /* Esquinas redondeadas */
+    color: white; /* Texto blanco */
+    padding: 3px; /* Espaciado interno */
+}
+QComboBox QAbstractItemView {
+        background-color: white;
+        color: black;
+        selection-background-color: lightgray;
+    }
+QComboBox QScrollBar:vertical {
+        border: none;
+        background: #f0f0f0;
+        width: 10px;
+        margin: 0px 0px 0px 0px;
+    }
+
+QComboBox QScrollBar::handle:vertical {
+        background: #bfbfbf;
+        min-height: 20px;
+        border-radius: 4px;
+    }
+
+    QComboBox QScrollBar::handle:vertical:hover {
+        background: #a6a6a6;
+    }
+
+    QComboBox QScrollBar::add-line:vertical,
+    QComboBox QScrollBar::sub-line:vertical {
+        height: 0px;
+    }
+
+    QComboBox QScrollBar::add-page:vertical,
+    QComboBox QScrollBar::sub-page:vertical {
+        background: none;
+    }</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout" stretch="6">
+   <property name="spacing">
+    <number>4</number>
+   </property>
+   <property name="leftMargin">
+    <number>0</number>
+   </property>
+   <property name="topMargin">
+    <number>0</number>
+   </property>
+   <property name="rightMargin">
+    <number>9</number>
+   </property>
+   <property name="bottomMargin">
+    <number>0</number>
+   </property>
+   <item>
+    <widget class="QFrame" name="objetoPdFrontal">
+     <property name="enabled">
+      <bool>true</bool>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QFrame{
+	background-color: transparent
+}</string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::StyledPanel</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Raised</enum>
+     </property>
+     <layout class="QHBoxLayout" name="horizontalLayout_12" stretch="0,0,0,0,0">
+      <property name="spacing">
+       <number>4</number>
+      </property>
+      <property name="leftMargin">
+       <number>30</number>
+      </property>
+      <property name="topMargin">
+       <number>2</number>
+      </property>
+      <property name="rightMargin">
+       <number>2</number>
+      </property>
+      <property name="bottomMargin">
+       <number>2</number>
+      </property>
+      <item>
+       <widget class="QLineEdit" name="lineObjFrontal">
+        <property name="minimumSize">
+         <size>
+          <width>90</width>
+          <height>30</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>100</width>
+          <height>30</height>
+         </size>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="placeholderText">
+         <string>Nombre Objeto</string>
+        </property>
+        <property name="clearButtonEnabled">
+         <bool>false</bool>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QComboBox" name="cbObjFrontal">
+        <property name="minimumSize">
+         <size>
+          <width>150</width>
+          <height>30</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>200</width>
+          <height>30</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="lineObjAreaFrontal">
+        <property name="minimumSize">
+         <size>
+          <width>70</width>
+          <height>30</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>70</width>
+          <height>30</height>
+         </size>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background: transparent;
+</string>
+        </property>
+        <property name="placeholderText">
+         <string>Área (m2)</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="botonAgregar">
+        <property name="minimumSize">
+         <size>
+          <width>25</width>
+          <height>25</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>25</width>
+          <height>25</height>
+         </size>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>../../../../.designer/backup/graficas/iconos/agregar.png</normaloff>../../../../.designer/backup/graficas/iconos/agregar.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>25</width>
+          <height>25</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="botonEliminar">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>25</width>
+          <height>25</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>25</width>
+          <height>25</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <kerning>true</kerning>
+         </font>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>../../../../.designer/backup/graficas/iconos/quitar.png</normaloff>../../../../.designer/backup/graficas/iconos/quitar.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>25</width>
+          <height>25</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
