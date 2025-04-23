@@ -1,6 +1,6 @@
 import sys
 from PySide6.QtCore import Slot, QSize, Qt
-from PySide6.QtGui import QMovie
+from PySide6.QtGui import QMovie, QIcon
 from PySide6.QtWidgets import QApplication, QWidget
 from Vista.iniciarAnalisis import  Ui_ventanaIniciarAnalisis # importa tu clase generada
 from Ventanas.ventanaBarraTitulo import VentanaConBarra
@@ -38,38 +38,32 @@ class VentanaPrincipal(VentanaConBarra):
         # Iniciar animación
         self.movie.start()
 
+        # Cargar y añadir la página de "Iniciar análisis" al stackedWidget
+        self.iniciar_analisis_widget = QWidget()
+        self.ui_iniciar = Ui_ventanaIniciarAnalisis()
+        self.ui_iniciar.setupUi(self.iniciar_analisis_widget)
+        self.ui.stackedWidget.addWidget(self.iniciar_analisis_widget)
+
+        self.iniciar_analisis_widget = VentanaIniciarAnalisis(stacked_widget=self.ui.stackedWidget)
+        self.ui.stackedWidget.addWidget(self.iniciar_analisis_widget)
+
+        self.setup_events()
+        self.setup_iniciar_analisis_events()
+
     def setup_events(self):
+        self.ui.botonIniciar.clicked.connect(self.mostrar_iniciar_analisis)
 
-        # Conectar el botón "Iniciar Análisis"
-        self.ui.botonIniciar.clicked.connect(self.abrir_iniciar_analisis)
-
-        # Los otros botones (Opcional: los puedes conectar a otros métodos)
-        #self.ui.btnOpciones.clicked.connect(self.mostrar_opciones)
-        #self.ui.btnAyuda.clicked.connect(self.mostrar_ayuda)
+    def setup_iniciar_analisis_events(self):
+        # Aquí conectamos los botones de iniciar análisis
+        self.ui_iniciar.botonRegresar.clicked.connect(self.volver_a_inicio)
 
     @Slot()
-    def abrir_iniciar_analisis(self):
-        """
-        Abre la ventana de formulario para 'Iniciar Análisis'.
-        """
-        self.ventana_iniciar = VentanaIniciarAnalisis(ventana_anterior=self)
-        self.ventana_iniciar.show()
-        self.hide()
-
+    def mostrar_iniciar_analisis(self):
+        self.ui.stackedWidget.setCurrentWidget(self.iniciar_analisis_widget)
 
     @Slot()
-    def mostrar_opciones(self):
-        """
-        Acción para el botón Opciones (puedes implementarlo después).
-        """
-        print("El botón Opciones fue presionado.")
-
-    @Slot()
-    def mostrar_ayuda(self):
-        """
-        Acción para el botón Ayuda (puedes implementarlo después).
-        """
-        print("El botón Ayuda fue presionado.")
+    def volver_a_inicio(self):
+        self.ui.stackedWidget.setCurrentIndex(0)
 
 
 

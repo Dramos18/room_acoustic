@@ -1,28 +1,27 @@
 #import QBuffer
 from PySide6.QtCore import QBuffer
-from PySide6.QtGui import QPixmap, Qt
+from PySide6.QtGui import QPixmap, Qt, QIcon
 from PySide6.QtWidgets import QWidget, QTableWidgetItem
 import pyqtgraph as pg
-
-
-from Ventanas.ventanaBarraTitulo import VentanaConBarra
+from Modelo.Datos.utils.reportePDF import ReportePDF
 from Vista.vistaGraficaRT import Ui_formGraficoRT
 
-class VentanaGraficaRT(VentanaConBarra):
+class VentanaGraficaRT(QWidget):
     """
     Esta clase representa la ventana de "Tiempo de Reverberacion".
     Es una subclase de QWidget que carga el diseño de iniciarAnalisis.
     """
 
-    def __init__(self, ventana_anterior=None, resultados=None):
-        contenido = QWidget()
+    def __init__(self, stacked_widget, indice_anterior, parent=None, resultados=None):
+        super().__init__(parent)
         self.ui = Ui_formGraficoRT()
-        self.ui.setupUi(contenido)
-        # Llamar al constructor de la clase base y pasarle el contenido
-        super().__init__(contenido)
-        self.ventana_anterior = ventana_anterior
+        self.ui.setupUi(self)
+
+        self.indice_anterior = indice_anterior
         self.resultados = resultados
-        self.resize(800, 600)
+        self.stacked_widget = stacked_widget
+
+        self.ui.botonAtras.setIcon(QIcon("Vista/graficas/iconos/angulo-izquierdo.png"))
 
         self.ui.verticalLayout_11.setAlignment(Qt.AlignCenter)
         self.ui.verticalLayout_11.setContentsMargins(10, 10, 10, 10)
@@ -54,17 +53,37 @@ class VentanaGraficaRT(VentanaConBarra):
         alcons = self.resultados.get("reporte_inteligibilidad")
 
 
-        #print("sabine_rt", sabine)
-        #print("eyring_rt", eyring)
-        #print("grafica", grafica)
-        #print("salon", salon)
-        #print("alcons", alcons)
 
 
+        self.setup_events()
         self.mostrar_grafica(grafica)
         self.llenar_tabla_resultados()
         self.mostrar_alcons()
         self.mostrar_info()
+
+    def setup_events(self):
+        self.ui.botonAtras.clicked.connect(self.regresar_a_ventana_anterior)
+        self.ui.botonGoHome.clicked.connect(self.ir_ventana_home)
+        self.ui.botonGuardarPDF.clicked.connect(self.importar_pdf)
+
+
+
+    def regresar_a_ventana_anterior(self):
+        """
+        Cambia a la ventana anterior usando el QStackedWidget.
+        """
+        if hasattr(self, 'stacked_widget') and self.stacked_widget:
+            self.stacked_widget.setCurrentIndex(self.indice_anterior)
+
+    def ir_ventana_home(self):
+        if hasattr(self, 'stacked_widget') and self.stacked_widget:
+            self.stacked_widget.setCurrentIndex(0)
+    def importar_pdf(self):
+        self.crear_pdf(self.resultados)
+
+    def crear_pdf(self, resultado):
+        ReportePDF.reporte_tiempo_reverberacion(self, resultado)
+
 
     def mostrar_grafica(self, grafica):
         # Convertir el grafico de BytesIO a QPixmap (compatible con PyQt5)
@@ -124,22 +143,6 @@ class VentanaGraficaRT(VentanaConBarra):
         self.ui.tableRT.resizeRowsToContents()
 
 
-        # Ajustar altura total del widget para que quepa todo el contenido
-        #table_height = (
-        #        self.ui.tableRT.verticalHeader().length() +  # Altura de todas las filas
-        #        self.ui.tableRT.horizontalHeader().height() +  # Altura del encabezado de columnas
-        #        2  # Margen extra
-        #)
-
-        #self.ui.tableRT.setFixedHeight(table_height)
-
-        ## Ajustar el ancho de la tabla (opcional)
-        #table_width = (
-        #        self.ui.tableRT.verticalHeader().width() +  # Ancho del índice vertical (si existe)
-        #        sum([self.ui.tableRT.columnWidth(c) for c in range(3)]) +  # Ancho de cada columna
-        #        2  # Margen extra
-        #)
-        #self.ui.tableRT.setFixedWidth(table_width)
 
         # Calcular altura exacta para que quepa todo sin scroll
         total_height = (

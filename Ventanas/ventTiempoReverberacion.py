@@ -15,20 +15,18 @@ from manejadorObjetoAdicional import ManejadorObjetoAdicional
 from Modelo.calculoRT2 import calcular_areas_basicas
 from Modelo.Datos.utils.reportePDF import ReportePDF
 
-class VentanaTiempoReverberacion(VentanaConBarra):
+class VentanaTiempoReverberacion(QWidget):
     """
     Esta clase representa la ventana de "Tiempo de Reverberacion".
     Es una subclase de QWidget que carga el diseño de iniciarAnalisis.
     """
 
-    def __init__(self, ventana_anterior=None):
-        contenido = QWidget()
+    def __init__(self, stacked_widget, indice_anterior, parent=None):
+        super().__init__(parent)
         self.ui = Ui_FormTR()
-        self.ui.setupUi(contenido)
-        # Llamar al constructor de la clase base y pasarle el contenido
-        super().__init__(contenido)
-        self.ventana_anterior = ventana_anterior
-        self.resize(800, 600)
+        self.ui.setupUi(self)
+        self.indice_anterior = indice_anterior
+        self.stacked_widget = stacked_widget
 
 
         #self.cargar_materiales_en_combobox()
@@ -39,6 +37,7 @@ class VentanaTiempoReverberacion(VentanaConBarra):
         self.ui.frBottom3.setStyleSheet(estiloFrameRT)
 
         self.ui.botonAtras.setIcon(QIcon("Vista/graficas/iconos/angulo-izquierdo.png"))
+
 
 
         self.ui.checkInteligibilidadOpcion.stateChanged.connect(self.toggle_grupo_detalles)
@@ -52,7 +51,7 @@ class VentanaTiempoReverberacion(VentanaConBarra):
         self.ui.frTecho.layout().setAlignment(Qt.AlignCenter)
         self.ui.contObjAdicional.layout().setAlignment(Qt.AlignCenter)
 
-
+        self.setup_events() #inicia los eventos de cada boton en la ventana
 
         #INFO diccionarios
 
@@ -79,11 +78,8 @@ class VentanaTiempoReverberacion(VentanaConBarra):
         self.manejadores["ObjAdicional"] = ManejadorObjetoAdicional(self.ui.contObjAdicional.layout(), checkbox=self.ui.checkObjAdicional)
 
 
-        self.ui.botonIniciarAnalisis.clicked.connect(lambda: self.abrir_ventana_grafica())
-        #self.ui.botonIniciarAnalisis.clicked.connect(lambda: self.validar_todas_superficies2())
-        self.ui.botonAtras.clicked.connect(self.regresar_a_ventana_anterior)
-
-
+        #self.ui.botonIniciarAnalisis.clicked.connect(lambda: self.abrir_ventana_grafica())
+        #self.ui.botonAtras.clicked.connect(self.regresar_a_ventana_anterior)
 
         self.check_frame_map = {
             self.ui.checkPdFrontal: self.ui.contObjFrontal,
@@ -99,6 +95,11 @@ class VentanaTiempoReverberacion(VentanaConBarra):
             # Conectamos todos los checkboxes a un mismo metodo
         for checkbox in self.check_frame_map:
             checkbox.stateChanged.connect(self.actualizar_frames)
+
+    def setup_events(self):
+        self.ui.botonIniciarAnalisis.clicked.connect(lambda: self.abrir_ventana_grafica())
+        self.ui.botonAtras.clicked.connect(self.regresar_a_ventana_anterior)
+
 
 
     def actualizar_frames(self):
@@ -158,13 +159,10 @@ class VentanaTiempoReverberacion(VentanaConBarra):
     #boton atras
     def regresar_a_ventana_anterior(self):
         """
-        Oculta la ventana actual y regresa a la ventana anterior.
+        Cambia a la ventana anterior usando el QStackedWidget.
         """
-        if hasattr(self, 'ventana_anterior') and self.ventana_anterior:
-            self.hide()  # Oculta la ventana actual
-            self.ventana_anterior.show()  # Muestra la ventana anterior
-        else:
-            print("Error: No se encontró una ventana anterior a la cual regresar.")
+        if hasattr(self, 'stacked_widget') and self.stacked_widget:
+            self.stacked_widget.setCurrentIndex(self.indice_anterior)
 
     #boton iniciar analisis
     def validar_materiales_superficies(self):
@@ -479,10 +477,13 @@ class VentanaTiempoReverberacion(VentanaConBarra):
         return datos_finales
 
     def abrir_ventana_grafica(self):
+        self.indice_anterior = self.stacked_widget.currentIndex()
         resultado = self.enviar_obtener_datos_controlador()
-        self.ventanaGrafica = VentanaGraficaRT(ventana_anterior=self, resultados=resultado)
-        self.ventanaGrafica.show()
-        self.hide()
+        ventana_grafica = VentanaGraficaRT(stacked_widget= self.stacked_widget, indice_anterior=self.indice_anterior,resultados=resultado)
+        ventana_grafica.indice_anterior = self.stacked_widget.currentIndex()
+
+        self.stacked_widget.addWidget(ventana_grafica)
+        self.stacked_widget.setCurrentWidget(ventana_grafica)
 
     def enviar_obtener_datos_controlador(self):
         """

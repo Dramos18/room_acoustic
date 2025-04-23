@@ -16,7 +16,8 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
 from PySide6.QtWidgets import (QApplication, QFrame, QHBoxLayout, QLabel,
-    QPushButton, QSizePolicy, QVBoxLayout, QWidget)
+    QPushButton, QSizePolicy, QStackedWidget, QVBoxLayout,
+    QWidget)
 
 class Ui_formVentanaPrincipal(object):
     def setupUi(self, formVentanaPrincipal):
@@ -31,9 +32,9 @@ class Ui_formVentanaPrincipal(object):
         self.verticalLayout.setSpacing(0)
         self.verticalLayout.setObjectName(u"verticalLayout")
         self.verticalLayout.setContentsMargins(0, 0, 0, 0)
-        self.frameMain = QFrame(formVentanaPrincipal)
-        self.frameMain.setObjectName(u"frameMain")
-        self.frameMain.setStyleSheet(u"\n"
+        self.stackedWidget = QStackedWidget(formVentanaPrincipal)
+        self.stackedWidget.setObjectName(u"stackedWidget")
+        self.stackedWidget.setStyleSheet(u"\n"
 "\n"
 "QFrame{\n"
 "	background-color: transparent;\n"
@@ -50,11 +51,13 @@ class Ui_formVentanaPrincipal(object):
 "    background-color: white;\n"
 "	border-radius: 20px;\n"
 "}")
-        self.frameMain.setFrameShape(QFrame.NoFrame)
-        self.verticalLayout_2 = QVBoxLayout(self.frameMain)
+        self.stackedWidget.setFrameShape(QFrame.NoFrame)
+        self.stackedWidgetMainPage1 = QWidget()
+        self.stackedWidgetMainPage1.setObjectName(u"stackedWidgetMainPage1")
+        self.verticalLayout_2 = QVBoxLayout(self.stackedWidgetMainPage1)
         self.verticalLayout_2.setObjectName(u"verticalLayout_2")
         self.verticalLayout_2.setContentsMargins(0, 0, 0, 0)
-        self.frameMainMiddle = QFrame(self.frameMain)
+        self.frameMainMiddle = QFrame(self.stackedWidgetMainPage1)
         self.frameMainMiddle.setObjectName(u"frameMainMiddle")
         font = QFont()
         font.setFamilies([u"Arial Rounded MT"])
@@ -68,28 +71,31 @@ class Ui_formVentanaPrincipal(object):
         self.verticalLayout_4.setContentsMargins(0, 0, 0, 0)
         self.labelMainTittle = QLabel(self.frameMainMiddle)
         self.labelMainTittle.setObjectName(u"labelMainTittle")
+        self.labelMainTittle.setMinimumSize(QSize(0, 110))
 
         self.verticalLayout_4.addWidget(self.labelMainTittle)
 
         self.frameMainImage = QFrame(self.frameMainMiddle)
         self.frameMainImage.setObjectName(u"frameMainImage")
+        self.frameMainImage.setMinimumSize(QSize(0, 200))
         self.frameMainImage.setFrameShape(QFrame.NoFrame)
         self.verticalLayout_7 = QVBoxLayout(self.frameMainImage)
         self.verticalLayout_7.setObjectName(u"verticalLayout_7")
         self.label = QLabel(self.frameMainImage)
         self.label.setObjectName(u"label")
+        self.label.setMinimumSize(QSize(0, 200))
 
         self.verticalLayout_7.addWidget(self.label)
 
 
         self.verticalLayout_4.addWidget(self.frameMainImage)
 
-        self.verticalLayout_4.setStretch(0, 1)
+        self.verticalLayout_4.setStretch(0, 2)
         self.verticalLayout_4.setStretch(1, 4)
 
         self.verticalLayout_2.addWidget(self.frameMainMiddle)
 
-        self.frameMainBotton = QFrame(self.frameMain)
+        self.frameMainBotton = QFrame(self.stackedWidgetMainPage1)
         self.frameMainBotton.setObjectName(u"frameMainBotton")
         self.frameMainBotton.setFrameShape(QFrame.NoFrame)
         self.horizontalLayout = QHBoxLayout(self.frameMainBotton)
@@ -192,8 +198,9 @@ class Ui_formVentanaPrincipal(object):
 
         self.verticalLayout_2.setStretch(0, 5)
         self.verticalLayout_2.setStretch(1, 2)
+        self.stackedWidget.addWidget(self.stackedWidgetMainPage1)
 
-        self.verticalLayout.addWidget(self.frameMain)
+        self.verticalLayout.addWidget(self.stackedWidget)
 
 
         self.retranslateUi(formVentanaPrincipal)
