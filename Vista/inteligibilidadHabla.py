@@ -45,13 +45,11 @@ class Ui_Form(object):
         self.verticalLayout_2.setContentsMargins(0, 0, -1, 0)
         self.frTop1 = QFrame(self.frame)
         self.frTop1.setObjectName(u"frTop1")
-        self.frTop1.setMinimumSize(QSize(45, 45))
-        self.frTop1.setMaximumSize(QSize(16777215, 70))
+        self.frTop1.setMinimumSize(QSize(45, 80))
+        self.frTop1.setMaximumSize(QSize(16777215, 80))
         self.frTop1.setFrameShape(QFrame.NoFrame)
         self.horizontalLayout = QHBoxLayout(self.frTop1)
-        self.horizontalLayout.setSpacing(0)
         self.horizontalLayout.setObjectName(u"horizontalLayout")
-        self.horizontalLayout.setContentsMargins(9, 0, 9, 0)
         self.botonAtras = QPushButton(self.frTop1)
         self.botonAtras.setObjectName(u"botonAtras")
         self.botonAtras.setMinimumSize(QSize(45, 45))
@@ -75,7 +73,7 @@ class Ui_Form(object):
 
         self.horizontalLayout.addWidget(self.botonAtras)
 
-        self.horizontalSpacer = QSpacerItem(252, 20, QSizePolicy.Minimum, QSizePolicy.Expanding)
+        self.horizontalSpacer = QSpacerItem(124, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
 
         self.horizontalLayout.addItem(self.horizontalSpacer)
 
@@ -84,7 +82,7 @@ class Ui_Form(object):
 
         self.horizontalLayout.addWidget(self.label)
 
-        self.horizontalSpacer_2 = QSpacerItem(251, 20, QSizePolicy.Minimum, QSizePolicy.Expanding)
+        self.horizontalSpacer_2 = QSpacerItem(190, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
 
         self.horizontalLayout.addItem(self.horizontalSpacer_2)
 
@@ -310,13 +308,19 @@ class Ui_Form(object):
         self.frame_3.setFrameShape(QFrame.NoFrame)
         self.horizontalLayout_8 = QHBoxLayout(self.frame_3)
         self.horizontalLayout_8.setObjectName(u"horizontalLayout_8")
-        self.horizontalLayout_8.setContentsMargins(-1, -1, 30, 10)
-        self.horizontalSpacer_3 = QSpacerItem(584, 20, QSizePolicy.Minimum, QSizePolicy.Expanding)
+        self.horizontalSpacer_3 = QSpacerItem(454, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
 
         self.horizontalLayout_8.addItem(self.horizontalSpacer_3)
 
+        self.botonGoHome = QPushButton(self.frame_3)
+        self.botonGoHome.setObjectName(u"botonGoHome")
+        self.botonGoHome.setMaximumSize(QSize(150, 16777215))
+
+        self.horizontalLayout_8.addWidget(self.botonGoHome)
+
         self.botonIniciarAnalisis = QPushButton(self.frame_3)
         self.botonIniciarAnalisis.setObjectName(u"botonIniciarAnalisis")
+        self.botonIniciarAnalisis.setMaximumSize(QSize(200, 16777215))
 
         self.horizontalLayout_8.addWidget(self.botonIniciarAnalisis)
 
@@ -344,6 +348,7 @@ class Ui_Form(object):
         self.label_4.setText(QCoreApplication.translate("Form", u"\u00bfCu\u00e1nto mide el volumen total de la sala?", None))
         self.label_8.setText(QCoreApplication.translate("Form", u"Ingresa el coeficiente medio de absorcion del aula", None))
         self.label_9.setText(QCoreApplication.translate("Form", u"Ingresa la superficie total del recinto:", None))
+        self.botonGoHome.setText(QCoreApplication.translate("Form", u"Ir al Inicio", None))
         self.botonIniciarAnalisis.setText(QCoreApplication.translate("Form", u"Iniciar An\u00e1lisis", None))
     # retranslateUi
 

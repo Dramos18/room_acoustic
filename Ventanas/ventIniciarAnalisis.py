@@ -5,6 +5,7 @@ from PySide6.QtWidgets import QApplication, QWidget, QStyle
 
 from Ventanas.ventTiempoReverberacion import VentanaTiempoReverberacion
 from Ventanas.ventInteligibilidad import VentanaInteligibiliad
+from Ventanas.ventTransicion import VentanaTransicion
 from Vista.iniciarAnalisis import  Ui_ventanaIniciarAnalisis # importa tu clase generada
 from Ventanas.ventanaBarraTitulo import VentanaConBarra
 
@@ -37,13 +38,20 @@ class VentanaIniciarAnalisis(QWidget):
         self.ui.botonRegresar.clicked.connect(self.regresar_a_ventana_principal)
 
     def abrir_ventana_tiempoReverberacion(self):
+        # Mostrar la transición (bloquea la ejecución hasta cerrarse)
+        transicion = VentanaTransicion("Vista/graficas/iconos/gifmicro.gif", duracion_ms=2000, parent=self)
+
+
         self.indice_anterior = self.stacked_widget.currentIndex()
         ventana_tr = VentanaTiempoReverberacion(stacked_widget= self.stacked_widget, indice_anterior= self.indice_anterior)
+
         self.stacked_widget.addWidget(ventana_tr)
+        transicion.exec()
         self.stacked_widget.setCurrentWidget(ventana_tr)
 
     def abrir_ventana_inteligibilidad(self):
-        ventana_ih = VentanaInteligibiliad(self.stacked_widget)
+        self.indice_anterior = self.stacked_widget.currentIndex()
+        ventana_ih = VentanaInteligibiliad(stacked_widget=self.stacked_widget, indice_anterior=self.indice_anterior )
         self.stacked_widget.addWidget(ventana_ih)
         self.stacked_widget.setCurrentWidget(ventana_ih)
 

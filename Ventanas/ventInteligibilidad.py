@@ -1,48 +1,45 @@
-import sys
-from PySide6.QtCore import Slot
+
 from PySide6.QtGui import QIcon
-from PySide6.QtWidgets import QApplication, QWidget, QMessageBox, QFileDialog
-from fpdf import FPDF
+from PySide6.QtWidgets import QWidget, QMessageBox, QFileDialog
 import os
 from reportlab.pdfgen import canvas
 from Modelo.Datos.utils.reportePDF import ReportePDF
-
 
 from Modelo.alcons2 import AlconsCalculator
 from Vista.inteligibilidadHabla import Ui_Form
 from Ventanas.ventanaBarraTitulo import VentanaConBarra
 from Vista.graficas.estilo import estiloWarning
 
-class VentanaInteligibiliad(VentanaConBarra):
+class VentanaInteligibiliad(QWidget):
     """
     Esta clase representa la ventana de "Tiempo de Reverberacion".
     Es una subclase de QWidget que carga el diseño de iniciarAnalisis.
     """
 
-    def __init__(self, ventana_anterior=None):
-        contenido = QWidget()
+    def __init__(self, stacked_widget, indice_anterior, parent=None):
+        super().__init__(parent)
         self.ui = Ui_Form()
-        self.ui.setupUi(contenido)
-        # Llamar al constructor de la clase base y pasarle el contenido
-        super().__init__(contenido)
-        self.ventana_anterior = ventana_anterior
-        self.resize(800, 600)
+        self.ui.setupUi(self)
+        self.indice_anterior = indice_anterior
+        self.stacked_widget = stacked_widget
 
         self.ui.botonAtras.setIcon(QIcon("Vista/graficas/iconos/angulo-izquierdo.png"))
-        self.ui.botonAtras.clicked.connect(self.regresar_a_ventana_anterior)
 
+        self.setup_events()
+
+
+
+    def setup_events(self):
         self.ui.botonIniciarAnalisis.clicked.connect(lambda: self.enviar_calculos_inteligibilidad())
-
+        self.ui.botonAtras.clicked.connect(self.regresar_a_ventana_anterior)
+        self.ui.botonGoHome.clicked.connect(self.ir_ventana_home)
     # boton atras
     def regresar_a_ventana_anterior(self):
-        """
-        Oculta la ventana actual y regresa a la ventana anterior.
-        """
-        if hasattr(self, 'ventana_anterior') and self.ventana_anterior:
-            self.hide()  # Oculta la ventana actual
-            self.ventana_anterior.show()  # Muestra la ventana anterior
-        else:
-            print("Error: No se encontró una ventana anterior a la cual regresar.")
+        if hasattr(self, 'stacked_widget') and self.stacked_widget:
+            self.stacked_widget.setCurrentIndex(self.indice_anterior)
+    def ir_ventana_home(self):
+        if hasattr(self, 'stacked_widget') and self.stacked_widget:
+            self.stacked_widget.setCurrentIndex(0)
 
     def validar_parametros_inteligibilidad(self):
         """

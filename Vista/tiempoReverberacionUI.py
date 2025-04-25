@@ -90,7 +90,7 @@ class Ui_FormTR(object):
         self.scrollArea.setWidgetResizable(True)
         self.scrollAreaWidgetContents = QWidget()
         self.scrollAreaWidgetContents.setObjectName(u"scrollAreaWidgetContents")
-        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 1034, 617))
+        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 1026, 627))
         self.verticalLayout = QVBoxLayout(self.scrollAreaWidgetContents)
         self.verticalLayout.setObjectName(u"verticalLayout")
         self.frame = QFrame(self.scrollAreaWidgetContents)
@@ -106,13 +106,11 @@ class Ui_FormTR(object):
         self.verticalLayout_3.setContentsMargins(0, 0, 0, 0)
         self.frTop1 = QFrame(self.frame)
         self.frTop1.setObjectName(u"frTop1")
-        self.frTop1.setMinimumSize(QSize(45, 45))
-        self.frTop1.setMaximumSize(QSize(16777215, 45))
+        self.frTop1.setMinimumSize(QSize(45, 60))
+        self.frTop1.setMaximumSize(QSize(16777215, 60))
         self.frTop1.setFrameShape(QFrame.NoFrame)
         self.horizontalLayout = QHBoxLayout(self.frTop1)
-        self.horizontalLayout.setSpacing(0)
         self.horizontalLayout.setObjectName(u"horizontalLayout")
-        self.horizontalLayout.setContentsMargins(9, 0, 9, 0)
         self.botonAtras = QPushButton(self.frTop1)
         self.botonAtras.setObjectName(u"botonAtras")
         self.botonAtras.setMinimumSize(QSize(45, 45))
@@ -136,7 +134,7 @@ class Ui_FormTR(object):
 
         self.horizontalLayout.addWidget(self.botonAtras)
 
-        self.horizontalSpacer = QSpacerItem(252, 20, QSizePolicy.Minimum, QSizePolicy.Expanding)
+        self.horizontalSpacer = QSpacerItem(267, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
 
         self.horizontalLayout.addItem(self.horizontalSpacer)
 
@@ -145,7 +143,7 @@ class Ui_FormTR(object):
 
         self.horizontalLayout.addWidget(self.label)
 
-        self.horizontalSpacer_2 = QSpacerItem(251, 20, QSizePolicy.Minimum, QSizePolicy.Expanding)
+        self.horizontalSpacer_2 = QSpacerItem(267, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
 
         self.horizontalLayout.addItem(self.horizontalSpacer_2)
 
@@ -1158,7 +1156,7 @@ class Ui_FormTR(object):
     def retranslateUi(self, FormTR):
         FormTR.setWindowTitle(QCoreApplication.translate("FormTR", u"Form", None))
         self.botonAtras.setText("")
-        self.label.setText(QCoreApplication.translate("FormTR", u"<html><head/><body><p><span style=\" font-size:20pt; font-weight:700; color:#ffffff;\">Tiempo De Reverberaci\u00f3n</span></p></body></html>", None))
+        self.label.setText(QCoreApplication.translate("FormTR", u"<html><head/><body><p><span style=\" font-size:24pt; font-weight:700; color:#ffffff;\">Tiempo De Reverberaci\u00f3n</span></p></body></html>", None))
         self.boxDimensiones.setTitle(QCoreApplication.translate("FormTR", u"Dimensiones", None))
         self.label_2.setText(QCoreApplication.translate("FormTR", u"Largo", None))
         self.label_3.setText(QCoreApplication.translate("FormTR", u"m", None))

@@ -1,19 +1,16 @@
 
-from PySide6.QtCore import Slot, QPropertyAnimation, QEasingCurve, Qt
+from PySide6.QtCore import QPropertyAnimation, QEasingCurve, Qt
 from PySide6.QtGui import QIcon
-from PySide6.QtWidgets import QApplication, QWidget, QComboBox, QCompleter, QSizePolicy
+from PySide6.QtWidgets import QWidget, QComboBox, QCompleter
 
 from Controlador.controlTR import procesar_datos
 from Vista.tiempoReverberacionUI import  Ui_FormTR # importa tu clase generada
-from Vista.objetoSuperficie import Ui_formObjetoSuperficie
-from Ventanas.ventanaBarraTitulo import VentanaConBarra
 from Ventanas.ventGraficaRT import VentanaGraficaRT
 from Controlador.Controlador import obtener_lista_materiales
 from Vista.graficas.estilo import estiloFrameRT, estiloObjeto
 from manejadorObjetos import ManejadorObjetosSuperficie
 from manejadorObjetoAdicional import ManejadorObjetoAdicional
 from Modelo.calculoRT2 import calcular_areas_basicas
-from Modelo.Datos.utils.reportePDF import ReportePDF
 
 class VentanaTiempoReverberacion(QWidget):
     """
@@ -477,9 +474,9 @@ class VentanaTiempoReverberacion(QWidget):
         return datos_finales
 
     def abrir_ventana_grafica(self):
-        self.indice_anterior = self.stacked_widget.currentIndex()
+        self.indice = self.stacked_widget.currentIndex()
         resultado = self.enviar_obtener_datos_controlador()
-        ventana_grafica = VentanaGraficaRT(stacked_widget= self.stacked_widget, indice_anterior=self.indice_anterior,resultados=resultado)
+        ventana_grafica = VentanaGraficaRT(stacked_widget= self.stacked_widget, indice_anterior=self.indice,resultados=resultado)
         ventana_grafica.indice_anterior = self.stacked_widget.currentIndex()
 
         self.stacked_widget.addWidget(ventana_grafica)
