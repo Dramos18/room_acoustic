@@ -1,0 +1,716 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Form</class>
+ <widget class="QWidget" name="Form">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>886</width>
+    <height>551</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QWidget{
+background-color: qlineargradient(spread:pad, x1:0.488, y1:0, x2:0.495, y2:1, stop:0.306818 rgba(0, 0, 93, 255), stop:0.710227 rgba(0, 0, 45, 255))
+}
+
+QFrame{
+border: none}
+</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <property name="spacing">
+    <number>0</number>
+   </property>
+   <property name="leftMargin">
+    <number>0</number>
+   </property>
+   <property name="topMargin">
+    <number>0</number>
+   </property>
+   <property name="rightMargin">
+    <number>0</number>
+   </property>
+   <property name="bottomMargin">
+    <number>0</number>
+   </property>
+   <item>
+    <widget class="QScrollArea" name="scrollArea">
+     <property name="styleSheet">
+      <string notr="true">    QScrollBar:vertical {
+        background: transparent;
+        width: 8px;
+        margin: 2px 0 2px 0;
+    }
+
+    QScrollBar::handle:vertical {
+        background-color: rgba(100, 100, 100, 120);  /* color gris suave */
+        min-height: 25px;
+        border-radius: 4px;
+    }
+
+    QScrollBar::handle:vertical:hover {
+        background-color: rgba(80, 80, 80, 160);  /* más oscuro al pasar el mouse */
+    }
+
+    QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical {
+        height: 0px;
+        background: none;
+    }
+
+    QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {
+        background: none;
+    }
+
+    QScrollBar:horizontal {
+        background: transparent;
+        height: 8px;
+        margin: 0 2px 0 2px;
+    }
+
+    QScrollBar::handle:horizontal {
+        background-color: rgba(100, 100, 100, 120);
+        min-width: 25px;
+        border-radius: 4px;
+    }
+
+    QScrollBar::handle:horizontal:hover {
+        background-color: rgba(80, 80, 80, 160);
+    }
+
+    QScrollBar::add-line:horizontal, QScrollBar::sub-line:horizontal {
+        width: 0px;
+        background: none;
+    }
+
+    QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal {
+        background: none;
+    }</string>
+     </property>
+     <property name="widgetResizable">
+      <bool>true</bool>
+     </property>
+     <widget class="QWidget" name="scrollAreaWidgetContents">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>886</width>
+        <height>551</height>
+       </rect>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout_2">
+       <property name="spacing">
+        <number>0</number>
+       </property>
+       <property name="leftMargin">
+        <number>0</number>
+       </property>
+       <property name="topMargin">
+        <number>0</number>
+       </property>
+       <property name="rightMargin">
+        <number>0</number>
+       </property>
+       <property name="bottomMargin">
+        <number>0</number>
+       </property>
+       <item>
+        <widget class="QFrame" name="frame">
+         <property name="styleSheet">
+          <string notr="true">QFrame{
+	background-color: transparent
+}
+QLabel {
+    color: white;  /* Letras en blanco */
+    font-size: 14px;
+    font-weight: bold;
+}</string>
+         </property>
+         <property name="frameShape">
+          <enum>QFrame::StyledPanel</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Raised</enum>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout_3">
+          <item>
+           <widget class="QFrame" name="frameTop">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>60</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>60</height>
+             </size>
+            </property>
+            <property name="frameShape">
+             <enum>QFrame::StyledPanel</enum>
+            </property>
+            <property name="frameShadow">
+             <enum>QFrame::Raised</enum>
+            </property>
+            <layout class="QHBoxLayout" name="horizontalLayout_4">
+             <item>
+              <widget class="QPushButton" name="botonAtras">
+               <property name="minimumSize">
+                <size>
+                 <width>45</width>
+                 <height>45</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>45</width>
+                 <height>45</height>
+                </size>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">QPushButton {
+    background-color: #000000ff;
+	border-radius: 20px;
+}
+QPushButton:hover {
+    background-color:  rgba(255, 255, 255, 0.4);
+	border-radius: 20px;
+}
+QPushButton:pressed {
+    background-color: white;
+	border-radius: 20px;
+}</string>
+               </property>
+               <property name="text">
+                <string/>
+               </property>
+               <property name="icon">
+                <iconset>
+                 <normaloff>graficas/iconos/angulo-izquierdo.png</normaloff>graficas/iconos/angulo-izquierdo.png</iconset>
+               </property>
+               <property name="iconSize">
+                <size>
+                 <width>30</width>
+                 <height>30</height>
+                </size>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <spacer name="horizontalSpacer_3">
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>796</width>
+                 <height>20</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item>
+           <widget class="QFrame" name="frameMedium">
+            <property name="styleSheet">
+             <string notr="true">QComboBox {
+    background: rgba(255, 255, 255, 0.2); /* Fondo translúcido */
+    border: 1px solid white; /* Borde blanco */
+    border-radius: 5px; /* Esquinas redondeadas */
+    color: white; /* Texto blanco */
+    padding: 3px; /* Espaciado interno */
+}
+QComboBox QAbstractItemView {
+        background-color: white;
+        color: black;
+        selection-background-color: lightgray;
+    }
+
+    QComboBox QScrollBar:vertical {
+        border: none;
+        background: #f0f0f0;
+        width: 10px;
+        margin: 0px 0px 0px 0px;
+    }
+
+    QComboBox QScrollBar::handle:vertical {
+        background: #bfbfbf;
+        min-height: 20px;
+        border-radius: 4px;
+    }
+
+    QComboBox QScrollBar::handle:vertical:hover {
+        background: #a6a6a6;
+    }
+
+    QComboBox QScrollBar::add-line:vertical,
+    QComboBox QScrollBar::sub-line:vertical {
+        height: 0px;
+    }
+
+    QComboBox QScrollBar::add-page:vertical,
+    QComboBox QScrollBar::sub-page:vertical {
+        background: none;
+    }
+
+</string>
+            </property>
+            <property name="frameShape">
+             <enum>QFrame::StyledPanel</enum>
+            </property>
+            <property name="frameShadow">
+             <enum>QFrame::Raised</enum>
+            </property>
+            <layout class="QHBoxLayout" name="horizontalLayout">
+             <item>
+              <spacer name="horizontalSpacer">
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>16</width>
+                 <height>20</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+             <item>
+              <widget class="QFrame" name="frame_2">
+               <property name="minimumSize">
+                <size>
+                 <width>800</width>
+                 <height>0</height>
+                </size>
+               </property>
+               <property name="frameShape">
+                <enum>QFrame::StyledPanel</enum>
+               </property>
+               <property name="frameShadow">
+                <enum>QFrame::Raised</enum>
+               </property>
+               <layout class="QVBoxLayout" name="verticalLayout_4">
+                <property name="leftMargin">
+                 <number>0</number>
+                </property>
+                <property name="topMargin">
+                 <number>0</number>
+                </property>
+                <property name="rightMargin">
+                 <number>0</number>
+                </property>
+                <property name="bottomMargin">
+                 <number>0</number>
+                </property>
+                <item>
+                 <widget class="QFrame" name="frame_3">
+                  <property name="maximumSize">
+                   <size>
+                    <width>16777215</width>
+                    <height>60</height>
+                   </size>
+                  </property>
+                  <property name="frameShape">
+                   <enum>QFrame::StyledPanel</enum>
+                  </property>
+                  <property name="frameShadow">
+                   <enum>QFrame::Raised</enum>
+                  </property>
+                  <layout class="QHBoxLayout" name="horizontalLayout_2" stretch="1,2">
+                   <item>
+                    <widget class="QLabel" name="label">
+                     <property name="maximumSize">
+                      <size>
+                       <width>16777215</width>
+                       <height>60</height>
+                      </size>
+                     </property>
+                     <property name="text">
+                      <string>Elija un tipo de aula del bloque H:</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QComboBox" name="comboBox"/>
+                   </item>
+                  </layout>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QFrame" name="frame_4">
+                  <property name="maximumSize">
+                   <size>
+                    <width>16777215</width>
+                    <height>90</height>
+                   </size>
+                  </property>
+                  <property name="frameShape">
+                   <enum>QFrame::StyledPanel</enum>
+                  </property>
+                  <property name="frameShadow">
+                   <enum>QFrame::Raised</enum>
+                  </property>
+                  <layout class="QGridLayout" name="gridLayout">
+                   <item row="1" column="0">
+                    <widget class="QLabel" name="label_4">
+                     <property name="text">
+                      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt;Largo:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="0" column="3">
+                    <widget class="QLabel" name="labelNumeroAula">
+                     <property name="minimumSize">
+                      <size>
+                       <width>0</width>
+                       <height>30</height>
+                      </size>
+                     </property>
+                     <property name="maximumSize">
+                      <size>
+                       <width>16777215</width>
+                       <height>30</height>
+                      </size>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">
+  QFrame {
+    background-color: rgba(255, 255, 255, 0.1); /* Transparente con leve fondo */
+    border-radius: 15px;
+    padding: 9px;
+}
+QFrame:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    transform: scale(1.05);
+}    
+</string>
+                     </property>
+                     <property name="text">
+                      <string> </string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="1" column="1">
+                    <widget class="QLabel" name="labelLargo">
+                     <property name="minimumSize">
+                      <size>
+                       <width>0</width>
+                       <height>35</height>
+                      </size>
+                     </property>
+                     <property name="maximumSize">
+                      <size>
+                       <width>16777215</width>
+                       <height>35</height>
+                      </size>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">
+  QFrame {
+    background-color: rgba(255, 255, 255, 0.1); /* Transparente con leve fondo */
+    border: 1px solid white;
+    border-radius: 15px;
+    padding: 9px;
+}
+QFrame:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    transform: scale(1.05);
+}    
+</string>
+                     </property>
+                     <property name="text">
+                      <string> </string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="1" column="5">
+                    <widget class="QLabel" name="labelAlto">
+                     <property name="minimumSize">
+                      <size>
+                       <width>0</width>
+                       <height>35</height>
+                      </size>
+                     </property>
+                     <property name="maximumSize">
+                      <size>
+                       <width>16777215</width>
+                       <height>35</height>
+                      </size>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">
+  QFrame {
+    background-color: rgba(255, 255, 255, 0.1); /* Transparente con leve fondo */
+    border: 1px solid white;
+    border-radius: 15px;
+    padding: 9px;
+}
+QFrame:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    transform: scale(1.05);
+}    
+</string>
+                     </property>
+                     <property name="text">
+                      <string> </string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="1" column="2">
+                    <widget class="QLabel" name="label_6">
+                     <property name="text">
+                      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt;Ancho:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="1" column="3">
+                    <widget class="QLabel" name="labelAncho">
+                     <property name="minimumSize">
+                      <size>
+                       <width>0</width>
+                       <height>35</height>
+                      </size>
+                     </property>
+                     <property name="maximumSize">
+                      <size>
+                       <width>16777215</width>
+                       <height>35</height>
+                      </size>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">
+  QFrame {
+    background-color: rgba(255, 255, 255, 0.1); /* Transparente con leve fondo */
+    border: 1px solid white;
+    border-radius: 15px;
+    padding: 9px;
+}
+QFrame:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    transform: scale(1.05);
+}    
+</string>
+                     </property>
+                     <property name="text">
+                      <string> </string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="1" column="4">
+                    <widget class="QLabel" name="label_8">
+                     <property name="text">
+                      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt;Alto:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="0" column="2">
+                    <widget class="QLabel" name="label_2">
+                     <property name="text">
+                      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt;Aula:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                     </property>
+                    </widget>
+                   </item>
+                  </layout>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QFrame" name="frame_5">
+                  <property name="styleSheet">
+                   <string notr="true"/>
+                  </property>
+                  <property name="frameShape">
+                   <enum>QFrame::StyledPanel</enum>
+                  </property>
+                  <property name="frameShadow">
+                   <enum>QFrame::Raised</enum>
+                  </property>
+                  <layout class="QHBoxLayout" name="horizontalLayout_3">
+                   <item>
+                    <widget class="QTreeWidget" name="treeWidget">
+                     <property name="styleSheet">
+                      <string notr="true">QTreeWidget {
+    background-color: rgba(255, 255, 255, 0.05);  /* Fondo muy suave en tonos grises */
+    color: rgba(255, 255, 255, 0.8);                /* Texto en blanco suave */
+    border: none;                                   /* Sin bordes */
+    border-radius: 12px;                            /* Bordes redondeados */
+    font-size: 12pt;                                /* Tamaño de fuente */
+    padding: 5px;                                   /* Padding interno */
+    transition: background-color 0.3s ease;         /* Transición suave de fondo */
+}
+
+QTreeWidget:hover {
+    background-color: rgba(255, 255, 255, 0.1);    /* Fondo ligeramente más brillante */
+    transform: scale(1.05);                         /* Aumento sutil de tamaño al hacer hover */
+}
+
+QTreeWidget::item {
+    background-color: transparent;                  /* Fondo transparente para los ítems */
+    border: none;                                   /* Sin bordes en los ítems */
+    padding: 5px;                                   /* Espaciado de los ítems */
+    transition: background-color 0.3s ease;         /* Transición suave para el cambio de color */
+}
+
+QTreeWidget::item:selected {
+    background-color: rgba(0, 90, 141, 0.1);       /* Fondo muy sutil para el ítem seleccionado */
+    color: white;                                   /* Texto blanco */
+    font-weight: bold;                              /* Hacer el texto en negrita */
+    border-radius: 5px;                             /* Bordes redondeados en los ítems seleccionados */
+}
+
+QTreeWidget::item:!selected {
+    background-color: rgba(0, 31, 61, 0.05);        /* Fondo sutil para los ítems no seleccionados */
+    color: rgba(255, 255, 255, 0.8);                /* Color blanco suave para los ítems no seleccionados */
+}
+
+QTreeWidget::header {
+    background-color: rgba(0, 31, 61, 0.1);        /* Fondo sutil de los encabezados */
+    color: white;                                   /* Texto blanco */
+    font-size: 14pt;                                /* Tamaño de fuente del encabezado */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);  /* Línea divisoria suave */
+    padding: 10px;
+}
+
+QHeaderView::section {
+    background-color: rgba(0, 31, 61, 0.1);        /* Fondo suave de las secciones del encabezado */
+    color: white;                                   /* Texto blanco */
+    padding: 5px;
+    border: none;                                   /* Sin borde en las secciones */
+    border-radius: 5px;                             /* Bordes redondeados en las secciones */
+    transition: background-color 0.3s ease;         /* Transición suave en las secciones */
+}
+
+QHeaderView::section:hover {
+    background-color: rgba(255, 255, 255, 0.1);    /* Fondo más brillante al hacer hover */
+    color: rgb(0, 31, 61);                          /* Cambio de color en el texto al hacer hover */
+}</string>
+                     </property>
+                    </widget>
+                   </item>
+                  </layout>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </item>
+             <item>
+              <spacer name="horizontalSpacer_2">
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>16</width>
+                 <height>20</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item>
+           <widget class="QFrame" name="frameBottom">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>60</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>60</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QPushButton {
+    background-color: rgba(255, 255, 255, 0.2);
+    border: 2px solid white;
+    color: white;
+    font-weight: bold;
+	font-size: 13px;
+    border-radius: 13px;
+    padding: 10px;
+}
+QPushButton:hover {
+    background-color: rgba(255, 255, 255, 0.4);
+}
+QPushButton:pressed {
+    background-color: white;
+}</string>
+            </property>
+            <property name="frameShape">
+             <enum>QFrame::StyledPanel</enum>
+            </property>
+            <property name="frameShadow">
+             <enum>QFrame::Raised</enum>
+            </property>
+            <layout class="QHBoxLayout" name="horizontalLayout_5">
+             <item>
+              <spacer name="horizontalSpacer_4">
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>316</width>
+                 <height>20</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+             <item>
+              <widget class="QPushButton" name="botonIniciarAnalisis">
+               <property name="minimumSize">
+                <size>
+                 <width>200</width>
+                 <height>0</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>200</width>
+                 <height>16777215</height>
+                </size>
+               </property>
+               <property name="text">
+                <string>Iniciar Análisis</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <spacer name="horizontalSpacer_5">
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>316</width>
+                 <height>20</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+            </layout>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

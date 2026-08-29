@@ -2,8 +2,8 @@ import sys
 from PyQt5.QtWidgets import QApplication, QMainWindow
 #from Vista.interfaz import Ui_MainWindow  # Asegúrate de que el nombre de la clase sea correcto
 from Controlador.Controlador import obtener_lista_materiales
-from Vista.MainWindow import Ui_MainWindow
-from Vista.iniciarAnalisis import Ui_ventanaIniciarAnalisis
+from Recursos.MainWindow import Ui_MainWindow
+from Vista.archivos_pyGenerados.iniciarAnalisis import Ui_ventanaIniciarAnalisis
 
 
 class MainWindow(QMainWindow, Ui_MainWindow):

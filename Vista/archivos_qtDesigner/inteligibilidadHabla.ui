@@ -1,0 +1,1771 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Form</class>
+ <widget class="QWidget" name="Form">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1035</width>
+    <height>0</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QWidget {
+    background-color: qlineargradient(
+        spread:pad, x1:0.488, y1:0, x2:0.495, y2:1,
+        stop:0.306818 rgba(0, 0, 93, 255),
+        stop:0.710227 rgba(0, 0, 45, 255)
+    );
+}
+QFrame {
+    background-color: transparent;
+}
+</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <property name="spacing">
+    <number>0</number>
+   </property>
+   <property name="leftMargin">
+    <number>0</number>
+   </property>
+   <property name="topMargin">
+    <number>0</number>
+   </property>
+   <property name="rightMargin">
+    <number>0</number>
+   </property>
+   <property name="bottomMargin">
+    <number>0</number>
+   </property>
+   <item>
+    <widget class="QFrame" name="frame">
+     <property name="frameShape">
+      <enum>QFrame::NoFrame</enum>
+     </property>
+     <layout class="QVBoxLayout" name="verticalLayout_2" stretch="1,9,1">
+      <property name="spacing">
+       <number>0</number>
+      </property>
+      <property name="leftMargin">
+       <number>0</number>
+      </property>
+      <property name="topMargin">
+       <number>0</number>
+      </property>
+      <property name="rightMargin">
+       <number>0</number>
+      </property>
+      <property name="bottomMargin">
+       <number>0</number>
+      </property>
+      <item>
+       <widget class="QFrame" name="frTop1">
+        <property name="minimumSize">
+         <size>
+          <width>45</width>
+          <height>100</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>80</height>
+         </size>
+        </property>
+        <property name="styleSheet">
+         <string notr="true"/>
+        </property>
+        <property name="frameShape">
+         <enum>QFrame::NoFrame</enum>
+        </property>
+        <layout class="QHBoxLayout" name="horizontalLayout">
+         <property name="leftMargin">
+          <number>12</number>
+         </property>
+         <property name="rightMargin">
+          <number>20</number>
+         </property>
+         <item>
+          <widget class="QPushButton" name="botonAtras">
+           <property name="minimumSize">
+            <size>
+             <width>45</width>
+             <height>45</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>45</width>
+             <height>45</height>
+            </size>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QPushButton {
+    background-color: transparent;
+    border: 1px solid rgba(255,255,255,0.35);
+    border-radius: 22px;
+}
+QPushButton:hover {
+    background-color: rgba(255,255,255,0.2);
+    border: 1px solid white;
+}
+QPushButton:pressed {
+    background-color: rgba(255,255,255,0.4);
+}</string>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="icon">
+            <iconset>
+             <normaloff>estilos/iconos/angulo-izquierdo.png</normaloff>estilos/iconos/angulo-izquierdo.png</iconset>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>22</width>
+             <height>22</height>
+            </size>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="horizontalSpacer">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <widget class="QFrame" name="frameTitulo">
+           <property name="frameShape">
+            <enum>QFrame::NoFrame</enum>
+           </property>
+           <layout class="QVBoxLayout" name="vloTitulo" stretch="0,0">
+            <property name="spacing">
+             <number>2</number>
+            </property>
+            <property name="leftMargin">
+             <number>0</number>
+            </property>
+            <property name="topMargin">
+             <number>6</number>
+            </property>
+            <property name="rightMargin">
+             <number>0</number>
+            </property>
+            <property name="bottomMargin">
+             <number>6</number>
+            </property>
+            <item>
+             <widget class="QLabel" name="label">
+              <property name="minimumSize">
+               <size>
+                <width>0</width>
+                <height>50</height>
+               </size>
+              </property>
+              <property name="text">
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:24pt; font-weight:700; color:#ffffff;&quot;&gt;Inteligibilidad del Habla&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              </property>
+              <property name="wordWrap">
+               <bool>false</bool>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="labelSubtitulo">
+              <property name="minimumSize">
+               <size>
+                <width>0</width>
+                <height>20</height>
+               </size>
+              </property>
+              <property name="text">
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:10pt; color:rgba(255,255,255,0.647059);&quot;&gt;Calculo del porcentaje de perdida de articulacion de consonantes (%ALCons)&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </item>
+         <item>
+          <spacer name="horizontalSpacer_2">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      <item>
+       <widget class="QFrame" name="frame_medio">
+        <property name="styleSheet">
+         <string notr="true"/>
+        </property>
+        <property name="frameShape">
+         <enum>QFrame::NoFrame</enum>
+        </property>
+        <layout class="QHBoxLayout" name="horizontalLayout_2" stretch="2,3,2">
+         <property name="spacing">
+          <number>14</number>
+         </property>
+         <property name="leftMargin">
+          <number>18</number>
+         </property>
+         <property name="topMargin">
+          <number>14</number>
+         </property>
+         <property name="rightMargin">
+          <number>18</number>
+         </property>
+         <property name="bottomMargin">
+          <number>14</number>
+         </property>
+         <item>
+          <widget class="QFrame" name="frame_GuiaValores">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QFrame {
+    background-color: rgba(255, 255, 255, 0.1); /* Transparente con leve fondo */
+    border: 1px solid white;
+    border-radius: 15px;
+}
+QLabel#labelGuiaTitulo {
+    color: #7ec8f7;
+    font-size: 11pt;
+    font-weight: bold;
+    background: transparent;
+    border: none;
+}
+QLabel {
+    color: rgba(255,255,255,0.80);
+    font-size: 9pt;
+    background: transparent;
+    border: none;
+}
+</string>
+           </property>
+           <property name="frameShape">
+            <enum>QFrame::NoFrame</enum>
+           </property>
+           <layout class="QVBoxLayout" name="vloGuia">
+            <property name="spacing">
+             <number>8</number>
+            </property>
+            <property name="leftMargin">
+             <number>16</number>
+            </property>
+            <property name="topMargin">
+             <number>18</number>
+            </property>
+            <property name="rightMargin">
+             <number>16</number>
+            </property>
+            <property name="bottomMargin">
+             <number>18</number>
+            </property>
+            <item>
+             <widget class="QLabel" name="labelGuiaTitulo">
+              <property name="text">
+               <string>Guia de valores</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QFrame" name="lineaSepGuia">
+              <property name="styleSheet">
+               <string notr="true">QFrame { background-color: rgba(126,200,247,0.4); max-height: 1px; border: none; }</string>
+              </property>
+              <property name="frameShape">
+               <enum>QFrame::NoFrame</enum>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="labelG1">
+              <property name="text">
+               <string>&lt;b&gt;Distancia (r)&lt;/b&gt;&lt;br/&gt;Tipico en aulas: 1.5 – 8 m&lt;br/&gt;Se usa la posicion del oyente mas lejano.</string>
+              </property>
+              <property name="textFormat">
+               <enum>Qt::AutoText</enum>
+              </property>
+              <property name="wordWrap">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QFrame" name="div1">
+              <property name="styleSheet">
+               <string notr="true">QFrame { background-color: rgba(255,255,255,0.12); max-height: 1px; border: none; }</string>
+              </property>
+              <property name="frameShape">
+               <enum>QFrame::NoFrame</enum>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="labelG2">
+              <property name="text">
+               <string>&lt;b&gt;Tiempo de Reverberacion (TR)&lt;/b&gt;&lt;br/&gt;Optimo para aulas: 0.4 – 0.8 s&lt;br/&gt;Usar el valor a 2000 Hz.</string>
+              </property>
+              <property name="wordWrap">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QFrame" name="div2">
+              <property name="styleSheet">
+               <string notr="true">QFrame { background-color: rgba(255,255,255,0.12); max-height: 1px; border: none; }</string>
+              </property>
+              <property name="frameShape">
+               <enum>QFrame::NoFrame</enum>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="labelG3">
+              <property name="text">
+               <string>&lt;b&gt;Volumen (V)&lt;/b&gt;&lt;br/&gt;Aulas tipicas: 100 – 400 m3&lt;br/&gt;Largo x Ancho x Altura.</string>
+              </property>
+              <property name="wordWrap">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QFrame" name="div3">
+              <property name="styleSheet">
+               <string notr="true">QFrame { background-color: rgba(255,255,255,0.12); max-height: 1px; border: none; }</string>
+              </property>
+              <property name="frameShape">
+               <enum>QFrame::NoFrame</enum>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="labelG4">
+              <property name="text">
+               <string>&lt;b&gt;Coeficiente de absorcion (a)&lt;/b&gt;&lt;br/&gt;Rango valido: 0.01 – 1.00&lt;br/&gt;Promedio ponderado de todas las superficies.</string>
+              </property>
+              <property name="wordWrap">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QFrame" name="div4">
+              <property name="styleSheet">
+               <string notr="true">QFrame { background-color: rgba(255,255,255,0.12); max-height: 1px; border: none; }</string>
+              </property>
+              <property name="frameShape">
+               <enum>QFrame::NoFrame</enum>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="labelG5">
+              <property name="text">
+               <string>&lt;b&gt;Superficie total (St)&lt;/b&gt;&lt;br/&gt;Tipico: 150 – 500 m2&lt;br/&gt;Suma de todas las caras del recinto.</string>
+              </property>
+              <property name="wordWrap">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </item>
+         <item>
+          <widget class="QFrame" name="frame_form">
+           <property name="enabled">
+            <bool>true</bool>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>16777215</width>
+             <height>600</height>
+            </size>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">
+QFrame#frame_form {
+    background-color: rgba(255, 255, 255, 0.1); /* Transparente con leve fondo */
+    border: 1px solid white;
+    border-radius: 15px;
+}
+QDoubleSpinBox { background: rgba(255,255,255,0.14); border: 1px solid rgba(255,255,255,0.40); border-radius: 8px; padding: 5px 8px; color: white; font-size: 11pt; font-weight: bold; min-width: 100px; max-width: 110px; } 
+
+QDoubleSpinBox:focus { border: 1px solid #7ec8f7; background: rgba(126,200,247,0.18); } 
+</string>
+           </property>
+           <property name="frameShape">
+            <enum>QFrame::NoFrame</enum>
+           </property>
+           <layout class="QVBoxLayout" name="verticalLayout_3">
+            <property name="spacing">
+             <number>6</number>
+            </property>
+            <property name="leftMargin">
+             <number>20</number>
+            </property>
+            <property name="topMargin">
+             <number>18</number>
+            </property>
+            <property name="rightMargin">
+             <number>20</number>
+            </property>
+            <property name="bottomMargin">
+             <number>18</number>
+            </property>
+            <item>
+             <widget class="QFrame" name="frameEncabezado">
+              <property name="frameShape">
+               <enum>QFrame::NoFrame</enum>
+              </property>
+              <layout class="QVBoxLayout" name="vloEnc">
+               <property name="spacing">
+                <number>2</number>
+               </property>
+               <property name="leftMargin">
+                <number>0</number>
+               </property>
+               <property name="topMargin">
+                <number>0</number>
+               </property>
+               <property name="rightMargin">
+                <number>0</number>
+               </property>
+               <property name="bottomMargin">
+                <number>8</number>
+               </property>
+               <item>
+                <widget class="QLabel" name="labelFormTitulo">
+                 <property name="text">
+                  <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:13pt; font-weight:700; color:#ffffff;&quot;&gt;Parametros de entrada&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLabel" name="labelFormDesc">
+                 <property name="text">
+                  <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:8pt; color:rgba(255,255,255,0.54902);&quot;&gt;Completa los 5 campos para calcular el %ALCons&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QFrame" name="lineaEncSep">
+                 <property name="styleSheet">
+                  <string notr="true">QFrame { background-color: rgba(126,200,247,0.45); max-height: 1px; border: none; }</string>
+                 </property>
+                 <property name="frameShape">
+                  <enum>QFrame::NoFrame</enum>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+            <item>
+             <widget class="QFrame" name="frameFilaX_2">
+              <property name="styleSheet">
+               <string notr="true">QFrame#frameFilaX_2 {
+    background-color: rgba(255,255,255,0.06);
+    border: none;
+    border-radius: 10px;
+}
+QFrame#frameFilaX_2:hover {
+    background-color: rgba(255,255,255,0.11);
+}
+QLabel#labelNumero_2 {
+    color: #7ec8f7;
+    font-size: 15pt;
+    font-weight: bold;
+    background: transparent;
+    border: none;
+    min-width: 28px;
+    max-width: 28px;
+}
+QLabel#labelCampoNombre_2 {
+    color: white;
+    font-size: 11pt;
+    font-weight: bold;
+    background: transparent;
+    border: none;
+}
+QLabel#labelCampoDesc_2 {
+    color: rgba(255,255,255,0.60);
+    font-size: 8pt;
+    background: transparent;
+    border: none;
+}
+QLabel#labelUnidad_2 {
+    color: rgba(255,255,255,0.55);
+    font-size: 9pt;
+    background: transparent;
+    border: none;
+    min-width: 30px;
+    max-width: 30px;
+}</string>
+              </property>
+              <property name="frameShape">
+               <enum>QFrame::NoFrame</enum>
+              </property>
+              <layout class="QHBoxLayout" name="horizontalLayout_3">
+               <property name="spacing">
+                <number>10</number>
+               </property>
+               <property name="leftMargin">
+                <number>10</number>
+               </property>
+               <property name="topMargin">
+                <number>6</number>
+               </property>
+               <property name="rightMargin">
+                <number>10</number>
+               </property>
+               <property name="bottomMargin">
+                <number>6</number>
+               </property>
+               <item>
+                <widget class="QLabel" name="labelNumero_2">
+                 <property name="minimumSize">
+                  <size>
+                   <width>28</width>
+                   <height>0</height>
+                  </size>
+                 </property>
+                 <property name="maximumSize">
+                  <size>
+                   <width>28</width>
+                   <height>16777215</height>
+                  </size>
+                 </property>
+                 <property name="text">
+                  <string>1</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QFrame" name="frameTxtD">
+                 <property name="frameShape">
+                  <enum>QFrame::NoFrame</enum>
+                 </property>
+                 <layout class="QVBoxLayout" name="vloTxtD">
+                  <property name="spacing">
+                   <number>1</number>
+                  </property>
+                  <property name="leftMargin">
+                   <number>0</number>
+                  </property>
+                  <property name="topMargin">
+                   <number>0</number>
+                  </property>
+                  <property name="rightMargin">
+                   <number>0</number>
+                  </property>
+                  <property name="bottomMargin">
+                   <number>0</number>
+                  </property>
+                  <item>
+                   <widget class="QLabel" name="labelCampoNombre_2">
+                    <property name="text">
+                     <string>Distancia emisor – receptor</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QLabel" name="labelCampoDesc_2">
+                    <property name="text">
+                     <string>Distancia entre el docente y el oyente mas lejano</string>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </widget>
+               </item>
+               <item>
+                <spacer name="sp1">
+                 <property name="orientation">
+                  <enum>Qt::Vertical</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>10</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
+               <item>
+                <widget class="QLabel" name="labelUnidad_2">
+                 <property name="text">
+                  <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;m&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QDoubleSpinBox" name="distanciaRyE">
+                 <property name="minimumSize">
+                  <size>
+                   <width>118</width>
+                   <height>0</height>
+                  </size>
+                 </property>
+                 <property name="maximumSize">
+                  <size>
+                   <width>128</width>
+                   <height>16777215</height>
+                  </size>
+                 </property>
+                 <property name="toolTip">
+                  <string>Distancia tipica en aulas: 1.5 – 8 m</string>
+                 </property>
+                 <property name="decimals">
+                  <number>2</number>
+                 </property>
+                 <property name="minimum">
+                  <double>0.000000000000000</double>
+                 </property>
+                 <property name="maximum">
+                  <double>30.000000000000000</double>
+                 </property>
+                 <property name="singleStep">
+                  <double>0.500000000000000</double>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+            <item>
+             <widget class="QFrame" name="frameFilaX_3">
+              <property name="styleSheet">
+               <string notr="true">QFrame#frameFilaX_3 {
+    background-color: rgba(255,255,255,0.06);
+    border: none;
+    border-radius: 10px;
+}
+QFrame#frameFilaX_3:hover {
+    background-color: rgba(255,255,255,0.11);
+}
+QLabel#labelNumero_3 {
+    color: #7ec8f7;
+    font-size: 15pt;
+    font-weight: bold;
+    background: transparent;
+    border: none;
+    min-width: 28px;
+    max-width: 28px;
+}
+QLabel#labelCampoNombre_3 {
+    color: white;
+    font-size: 11pt;
+    font-weight: bold;
+    background: transparent;
+    border: none;
+}
+QLabel#labelCampoDesc_3 {
+    color: rgba(255,255,255,0.60);
+    font-size: 8pt;
+    background: transparent;
+    border: none;
+}
+QLabel#labelUnidad_3 {
+    color: rgba(255,255,255,0.55);
+    font-size: 9pt;
+    background: transparent;
+    border: none;
+    min-width: 30px;
+    max-width: 30px;
+}</string>
+              </property>
+              <property name="frameShape">
+               <enum>QFrame::NoFrame</enum>
+              </property>
+              <layout class="QHBoxLayout" name="horizontalLayout_4">
+               <property name="spacing">
+                <number>10</number>
+               </property>
+               <property name="leftMargin">
+                <number>10</number>
+               </property>
+               <property name="topMargin">
+                <number>6</number>
+               </property>
+               <property name="rightMargin">
+                <number>10</number>
+               </property>
+               <property name="bottomMargin">
+                <number>6</number>
+               </property>
+               <item>
+                <widget class="QLabel" name="labelNumero_3">
+                 <property name="minimumSize">
+                  <size>
+                   <width>28</width>
+                   <height>0</height>
+                  </size>
+                 </property>
+                 <property name="maximumSize">
+                  <size>
+                   <width>28</width>
+                   <height>16777215</height>
+                  </size>
+                 </property>
+                 <property name="text">
+                  <string>2</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QFrame" name="frameTxtTR">
+                 <property name="frameShape">
+                  <enum>QFrame::NoFrame</enum>
+                 </property>
+                 <layout class="QVBoxLayout" name="vloTxtTR">
+                  <property name="spacing">
+                   <number>1</number>
+                  </property>
+                  <property name="leftMargin">
+                   <number>0</number>
+                  </property>
+                  <property name="topMargin">
+                   <number>0</number>
+                  </property>
+                  <property name="rightMargin">
+                   <number>0</number>
+                  </property>
+                  <property name="bottomMargin">
+                   <number>0</number>
+                  </property>
+                  <item>
+                   <widget class="QLabel" name="labelCampoNombre_3">
+                    <property name="text">
+                     <string>Tiempo de reverberacion (TR)</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QLabel" name="labelCampoDesc_3">
+                    <property name="text">
+                     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Valor a 2000 Hz&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </widget>
+               </item>
+               <item>
+                <spacer name="sp2">
+                 <property name="orientation">
+                  <enum>Qt::Vertical</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>10</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
+               <item>
+                <widget class="QLabel" name="labelUnidad_3">
+                 <property name="text">
+                  <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;s&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QDoubleSpinBox" name="recintoTR">
+                 <property name="minimumSize">
+                  <size>
+                   <width>118</width>
+                   <height>0</height>
+                  </size>
+                 </property>
+                 <property name="maximumSize">
+                  <size>
+                   <width>128</width>
+                   <height>16777215</height>
+                  </size>
+                 </property>
+                 <property name="toolTip">
+                  <string>TR a 2000 Hz. Optimo en aulas: 0.4 – 0.8 s</string>
+                 </property>
+                 <property name="decimals">
+                  <number>2</number>
+                 </property>
+                 <property name="minimum">
+                  <double>0.000000000000000</double>
+                 </property>
+                 <property name="maximum">
+                  <double>10.000000000000000</double>
+                 </property>
+                 <property name="singleStep">
+                  <double>0.100000000000000</double>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+            <item>
+             <widget class="QFrame" name="frameFilaX">
+              <property name="styleSheet">
+               <string notr="true">QFrame#frameFilaX {
+    background-color: rgba(255,255,255,0.06);
+    border: none;
+    border-radius: 10px;
+}
+QFrame#frameFilaX_2:hover {
+    background-color: rgba(255,255,255,0.11);
+}
+QLabel#labelNumero {
+    color: #7ec8f7;
+    font-size: 15pt;
+    font-weight: bold;
+    background: transparent;
+    border: none;
+    min-width: 28px;
+    max-width: 28px;
+}
+QLabel#labelCampoNombre {
+    color: white;
+    font-size: 11pt;
+    font-weight: bold;
+    background: transparent;
+    border: none;
+}
+QLabel#labelCampoDesc {
+    color: rgba(255,255,255,0.60);
+    font-size: 8pt;
+    background: transparent;
+    border: none;
+}
+QLabel#labelUnidad {
+    color: rgba(255,255,255,0.55);
+    font-size: 9pt;
+    background: transparent;
+    border: none;
+    min-width: 30px;
+    max-width: 30px;
+}</string>
+              </property>
+              <property name="frameShape">
+               <enum>QFrame::NoFrame</enum>
+              </property>
+              <layout class="QHBoxLayout" name="horizontalLayout_5">
+               <property name="spacing">
+                <number>10</number>
+               </property>
+               <property name="leftMargin">
+                <number>10</number>
+               </property>
+               <property name="topMargin">
+                <number>6</number>
+               </property>
+               <property name="rightMargin">
+                <number>10</number>
+               </property>
+               <property name="bottomMargin">
+                <number>6</number>
+               </property>
+               <item>
+                <widget class="QLabel" name="labelNumero">
+                 <property name="minimumSize">
+                  <size>
+                   <width>28</width>
+                   <height>0</height>
+                  </size>
+                 </property>
+                 <property name="maximumSize">
+                  <size>
+                   <width>28</width>
+                   <height>16777215</height>
+                  </size>
+                 </property>
+                 <property name="text">
+                  <string>3</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QFrame" name="frameTxtV">
+                 <property name="frameShape">
+                  <enum>QFrame::NoFrame</enum>
+                 </property>
+                 <layout class="QVBoxLayout" name="vloTxtV">
+                  <property name="spacing">
+                   <number>1</number>
+                  </property>
+                  <property name="leftMargin">
+                   <number>0</number>
+                  </property>
+                  <property name="topMargin">
+                   <number>0</number>
+                  </property>
+                  <property name="rightMargin">
+                   <number>0</number>
+                  </property>
+                  <property name="bottomMargin">
+                   <number>0</number>
+                  </property>
+                  <item>
+                   <widget class="QLabel" name="labelCampoNombre">
+                    <property name="text">
+                     <string>Volumen de la sala</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QLabel" name="labelCampoDesc">
+                    <property name="text">
+                     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Largo x Ancho x Altura&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </widget>
+               </item>
+               <item>
+                <spacer name="sp3">
+                 <property name="orientation">
+                  <enum>Qt::Vertical</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>10</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
+               <item>
+                <widget class="QLabel" name="labelUnidad">
+                 <property name="text">
+                  <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;m3&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QDoubleSpinBox" name="volumenSala">
+                 <property name="minimumSize">
+                  <size>
+                   <width>118</width>
+                   <height>0</height>
+                  </size>
+                 </property>
+                 <property name="maximumSize">
+                  <size>
+                   <width>128</width>
+                   <height>16777215</height>
+                  </size>
+                 </property>
+                 <property name="toolTip">
+                  <string>Volumen total del recinto en metros cubicos</string>
+                 </property>
+                 <property name="decimals">
+                  <number>2</number>
+                 </property>
+                 <property name="minimum">
+                  <double>0.000000000000000</double>
+                 </property>
+                 <property name="maximum">
+                  <double>2000.000000000000000</double>
+                 </property>
+                 <property name="singleStep">
+                  <double>10.000000000000000</double>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+            <item>
+             <widget class="QFrame" name="frameFilaX_4">
+              <property name="styleSheet">
+               <string notr="true">QFrame#frameFilaX_4 {
+    background-color: rgba(255,255,255,0.06);
+    border: none;
+    border-radius: 10px;
+}
+QFrame#frameFilaX_4:hover {
+    background-color: rgba(255,255,255,0.11);
+}
+QLabel#labelNumero_4 {
+    color: #7ec8f7;
+    font-size: 15pt;
+    font-weight: bold;
+    background: transparent;
+    border: none;
+    min-width: 28px;
+    max-width: 28px;
+}
+QLabel#labelCampoNombre_4 {
+    color: white;
+    font-size: 11pt;
+    font-weight: bold;
+    background: transparent;
+    border: none;
+}
+QLabel#labelCampoDesc_4 {
+    color: rgba(255,255,255,0.60);
+    font-size: 8pt;
+    background: transparent;
+    border: none;
+}
+QLabel#labelUnidad_4 {
+    color: rgba(255,255,255,0.55);
+    font-size: 9pt;
+    background: transparent;
+    border: none;
+    min-width: 30px;
+    max-width: 30px;
+}</string>
+              </property>
+              <property name="frameShape">
+               <enum>QFrame::NoFrame</enum>
+              </property>
+              <layout class="QHBoxLayout" name="horizontalLayout_6">
+               <property name="spacing">
+                <number>10</number>
+               </property>
+               <property name="leftMargin">
+                <number>10</number>
+               </property>
+               <property name="topMargin">
+                <number>6</number>
+               </property>
+               <property name="rightMargin">
+                <number>10</number>
+               </property>
+               <property name="bottomMargin">
+                <number>6</number>
+               </property>
+               <item>
+                <widget class="QLabel" name="labelNumero_4">
+                 <property name="minimumSize">
+                  <size>
+                   <width>28</width>
+                   <height>0</height>
+                  </size>
+                 </property>
+                 <property name="maximumSize">
+                  <size>
+                   <width>28</width>
+                   <height>16777215</height>
+                  </size>
+                 </property>
+                 <property name="text">
+                  <string>4</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QFrame" name="frameTxtC">
+                 <property name="frameShape">
+                  <enum>QFrame::NoFrame</enum>
+                 </property>
+                 <layout class="QVBoxLayout" name="vloTxtC">
+                  <property name="spacing">
+                   <number>1</number>
+                  </property>
+                  <property name="leftMargin">
+                   <number>0</number>
+                  </property>
+                  <property name="topMargin">
+                   <number>0</number>
+                  </property>
+                  <property name="rightMargin">
+                   <number>0</number>
+                  </property>
+                  <property name="bottomMargin">
+                   <number>0</number>
+                  </property>
+                  <item>
+                   <widget class="QLabel" name="labelCampoNombre_4">
+                    <property name="text">
+                     <string>Coeficiente medio de absorcion</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QLabel" name="labelCampoDesc_4">
+                    <property name="text">
+                     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Promedio ponderado de todas las superficies&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </widget>
+               </item>
+               <item>
+                <spacer name="sp4">
+                 <property name="orientation">
+                  <enum>Qt::Vertical</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>10</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
+               <item>
+                <widget class="QLabel" name="labelUnidad_4">
+                 <property name="text">
+                  <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;  —&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QDoubleSpinBox" name="coeficienteMedio">
+                 <property name="minimumSize">
+                  <size>
+                   <width>118</width>
+                   <height>0</height>
+                  </size>
+                 </property>
+                 <property name="maximumSize">
+                  <size>
+                   <width>128</width>
+                   <height>16777215</height>
+                  </size>
+                 </property>
+                 <property name="toolTip">
+                  <string>Coeficiente promedio de absorcion entre 0.01 y 1.00</string>
+                 </property>
+                 <property name="decimals">
+                  <number>3</number>
+                 </property>
+                 <property name="minimum">
+                  <double>0.000000000000000</double>
+                 </property>
+                 <property name="maximum">
+                  <double>1.000000000000000</double>
+                 </property>
+                 <property name="singleStep">
+                  <double>0.010000000000000</double>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+            <item>
+             <widget class="QFrame" name="frameFilaX_5">
+              <property name="styleSheet">
+               <string notr="true">QFrame#frameFilaX_5 {
+    background-color: rgba(255,255,255,0.06);
+    border: none;
+    border-radius: 10px;
+}
+QFrame#frameFilaX_5:hover {
+    background-color: rgba(255,255,255,0.11);
+}
+QLabel#labelNumero_5 {
+    color: #7ec8f7;
+    font-size: 15pt;
+    font-weight: bold;
+    background: transparent;
+    border: none;
+    min-width: 28px;
+    max-width: 28px;
+}
+QLabel#labelCampoNombre_5 {
+    color: white;
+    font-size: 11pt;
+    font-weight: bold;
+    background: transparent;
+    border: none;
+}
+QLabel#labelCampoDesc_5 {
+    color: rgba(255,255,255,0.60);
+    font-size: 8pt;
+    background: transparent;
+    border: none;
+}
+QLabel#labelUnidad_5 {
+    color: rgba(255,255,255,0.55);
+    font-size: 9pt;
+    background: transparent;
+    border: none;
+    min-width: 30px;
+    max-width: 30px;
+}</string>
+              </property>
+              <property name="frameShape">
+               <enum>QFrame::NoFrame</enum>
+              </property>
+              <layout class="QHBoxLayout" name="horizontalLayout_7">
+               <property name="spacing">
+                <number>10</number>
+               </property>
+               <property name="leftMargin">
+                <number>10</number>
+               </property>
+               <property name="topMargin">
+                <number>6</number>
+               </property>
+               <property name="rightMargin">
+                <number>10</number>
+               </property>
+               <property name="bottomMargin">
+                <number>6</number>
+               </property>
+               <item>
+                <widget class="QLabel" name="labelNumero_5">
+                 <property name="minimumSize">
+                  <size>
+                   <width>28</width>
+                   <height>0</height>
+                  </size>
+                 </property>
+                 <property name="maximumSize">
+                  <size>
+                   <width>28</width>
+                   <height>16777215</height>
+                  </size>
+                 </property>
+                 <property name="text">
+                  <string>5</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QFrame" name="frameTxtS">
+                 <property name="frameShape">
+                  <enum>QFrame::NoFrame</enum>
+                 </property>
+                 <layout class="QVBoxLayout" name="vloTxtS">
+                  <property name="spacing">
+                   <number>1</number>
+                  </property>
+                  <property name="leftMargin">
+                   <number>0</number>
+                  </property>
+                  <property name="topMargin">
+                   <number>0</number>
+                  </property>
+                  <property name="rightMargin">
+                   <number>0</number>
+                  </property>
+                  <property name="bottomMargin">
+                   <number>0</number>
+                  </property>
+                  <item>
+                   <widget class="QLabel" name="labelCampoNombre_5">
+                    <property name="text">
+                     <string>Superficie total del recinto</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QLabel" name="labelCampoDesc_5">
+                    <property name="text">
+                     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Suma de todas las caras (paredes, piso, techo)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </widget>
+               </item>
+               <item>
+                <spacer name="sp5">
+                 <property name="orientation">
+                  <enum>Qt::Vertical</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>10</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
+               <item>
+                <widget class="QLabel" name="labelUnidad_5">
+                 <property name="text">
+                  <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;m2&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QDoubleSpinBox" name="superficieTotal">
+                 <property name="minimumSize">
+                  <size>
+                   <width>118</width>
+                   <height>0</height>
+                  </size>
+                 </property>
+                 <property name="maximumSize">
+                  <size>
+                   <width>128</width>
+                   <height>16777215</height>
+                  </size>
+                 </property>
+                 <property name="toolTip">
+                  <string>Superficie total del recinto en metros cuadrados</string>
+                 </property>
+                 <property name="decimals">
+                  <number>2</number>
+                 </property>
+                 <property name="minimum">
+                  <double>0.000000000000000</double>
+                 </property>
+                 <property name="maximum">
+                  <double>2000.000000000000000</double>
+                 </property>
+                 <property name="singleStep">
+                  <double>10.000000000000000</double>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </item>
+         <item>
+          <widget class="QFrame" name="frame_escala">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">
+QFrame#frame_escala  {
+    background-color: rgba(255, 255, 255, 0.1); /* Transparente con leve fondo */
+    border: 1px solid white;
+    border-radius: 15px;
+}
+QLabel#labelEscalaTitulo {
+    color: #7ec8f7;
+    font-size: 11pt;
+    font-weight: bold;
+    background: transparent;
+    border: none;
+}
+QLabel {
+    color: rgba(255,255,255,0.85);
+    font-size: 9pt;
+    background: transparent;
+    border: none;
+}
+QLabel#labelNivelExcelente { color: #22c55e; font-weight: bold; }
+QLabel#labelNivelBuena     { color: #86efac; font-weight: bold; }
+QLabel#labelNivelRegular   { color: #fde047; font-weight: bold; }
+QLabel#labelNivelPobre     { color: #fb923c; font-weight: bold; }
+QLabel#labelNivelMala      { color: #f87171; font-weight: bold; }
+</string>
+           </property>
+           <property name="frameShape">
+            <enum>QFrame::NoFrame</enum>
+           </property>
+           <layout class="QVBoxLayout" name="vloEscala">
+            <property name="spacing">
+             <number>8</number>
+            </property>
+            <property name="leftMargin">
+             <number>16</number>
+            </property>
+            <property name="topMargin">
+             <number>18</number>
+            </property>
+            <property name="rightMargin">
+             <number>16</number>
+            </property>
+            <property name="bottomMargin">
+             <number>18</number>
+            </property>
+            <item>
+             <widget class="QLabel" name="labelEscalaTitulo">
+              <property name="text">
+               <string>Escala %ALCons</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QFrame" name="lineaSepEscala">
+              <property name="styleSheet">
+               <string notr="true">QFrame { background-color: rgba(126,200,247,0.4); max-height: 1px; border: none; }</string>
+              </property>
+              <property name="frameShape">
+               <enum>QFrame::NoFrame</enum>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="labelEscalaIntro">
+              <property name="text">
+               <string>El %ALCons indica que porcion de las consonantes se pierde. Cuanto menor, mejor.</string>
+              </property>
+              <property name="wordWrap">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QFrame" name="fNiv1">
+              <property name="styleSheet">
+               <string notr="true">QFrame { background-color: rgba(34,197,94,0.14); border-radius: 8px; border: 1px solid rgba(34,197,94,0.35); }</string>
+              </property>
+              <property name="frameShape">
+               <enum>QFrame::NoFrame</enum>
+              </property>
+              <layout class="QVBoxLayout" name="vN1">
+               <property name="spacing">
+                <number>1</number>
+               </property>
+               <property name="leftMargin">
+                <number>8</number>
+               </property>
+               <property name="topMargin">
+                <number>5</number>
+               </property>
+               <property name="rightMargin">
+                <number>8</number>
+               </property>
+               <property name="bottomMargin">
+                <number>5</number>
+               </property>
+               <item>
+                <widget class="QLabel" name="labelNivelExcelente">
+                 <property name="text">
+                  <string>Excelente  — 0 % a 2 %</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLabel" name="labelDescExcelente">
+                 <property name="text">
+                  <string>Comprension casi perfecta del habla.</string>
+                 </property>
+                 <property name="wordWrap">
+                  <bool>true</bool>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+            <item>
+             <widget class="QFrame" name="fNiv2">
+              <property name="styleSheet">
+               <string notr="true">QFrame { background-color: rgba(134,239,172,0.10); border-radius: 8px; border: 1px solid rgba(134,239,172,0.30); }</string>
+              </property>
+              <property name="frameShape">
+               <enum>QFrame::NoFrame</enum>
+              </property>
+              <layout class="QVBoxLayout" name="vN2">
+               <property name="spacing">
+                <number>1</number>
+               </property>
+               <property name="leftMargin">
+                <number>8</number>
+               </property>
+               <property name="topMargin">
+                <number>5</number>
+               </property>
+               <property name="rightMargin">
+                <number>8</number>
+               </property>
+               <property name="bottomMargin">
+                <number>5</number>
+               </property>
+               <item>
+                <widget class="QLabel" name="labelNivelBuena">
+                 <property name="text">
+                  <string>Buena  — 2 % a 5 %</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLabel" name="labelDescBuena">
+                 <property name="text">
+                  <string>Ligeras perdidas, aceptable para aulas.</string>
+                 </property>
+                 <property name="wordWrap">
+                  <bool>true</bool>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+            <item>
+             <widget class="QFrame" name="fNiv3">
+              <property name="styleSheet">
+               <string notr="true">QFrame { background-color: rgba(253,224,71,0.10); border-radius: 8px; border: 1px solid rgba(253,224,71,0.28); }</string>
+              </property>
+              <property name="frameShape">
+               <enum>QFrame::NoFrame</enum>
+              </property>
+              <layout class="QVBoxLayout" name="vN3">
+               <property name="spacing">
+                <number>1</number>
+               </property>
+               <property name="leftMargin">
+                <number>8</number>
+               </property>
+               <property name="topMargin">
+                <number>5</number>
+               </property>
+               <property name="rightMargin">
+                <number>8</number>
+               </property>
+               <property name="bottomMargin">
+                <number>5</number>
+               </property>
+               <item>
+                <widget class="QLabel" name="labelNivelRegular">
+                 <property name="text">
+                  <string>Regular  — 5 % a 10 %</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLabel" name="labelDescRegular">
+                 <property name="text">
+                  <string>Dificultades notorias de comprension.</string>
+                 </property>
+                 <property name="wordWrap">
+                  <bool>true</bool>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+            <item>
+             <widget class="QFrame" name="fNiv4">
+              <property name="styleSheet">
+               <string notr="true">QFrame { background-color: rgba(251,146,60,0.10); border-radius: 8px; border: 1px solid rgba(251,146,60,0.28); }</string>
+              </property>
+              <property name="frameShape">
+               <enum>QFrame::NoFrame</enum>
+              </property>
+              <layout class="QVBoxLayout" name="vN4">
+               <property name="spacing">
+                <number>1</number>
+               </property>
+               <property name="leftMargin">
+                <number>8</number>
+               </property>
+               <property name="topMargin">
+                <number>5</number>
+               </property>
+               <property name="rightMargin">
+                <number>8</number>
+               </property>
+               <property name="bottomMargin">
+                <number>5</number>
+               </property>
+               <item>
+                <widget class="QLabel" name="labelNivelPobre">
+                 <property name="text">
+                  <string>Pobre  — 10 % a 15 %</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLabel" name="labelDescPobre">
+                 <property name="text">
+                  <string>Comunicacion claramente afectada.</string>
+                 </property>
+                 <property name="wordWrap">
+                  <bool>true</bool>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+            <item>
+             <widget class="QFrame" name="fNiv5">
+              <property name="styleSheet">
+               <string notr="true">QFrame { background-color: rgba(248,113,113,0.12); border-radius: 8px; border: 1px solid rgba(248,113,113,0.30); }</string>
+              </property>
+              <property name="frameShape">
+               <enum>QFrame::NoFrame</enum>
+              </property>
+              <layout class="QVBoxLayout" name="vN5">
+               <property name="spacing">
+                <number>1</number>
+               </property>
+               <property name="leftMargin">
+                <number>8</number>
+               </property>
+               <property name="topMargin">
+                <number>5</number>
+               </property>
+               <property name="rightMargin">
+                <number>8</number>
+               </property>
+               <property name="bottomMargin">
+                <number>5</number>
+               </property>
+               <item>
+                <widget class="QLabel" name="labelNivelMala">
+                 <property name="text">
+                  <string>Mala  — mayor a 15 %</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLabel" name="labelDescMala">
+                 <property name="text">
+                  <string>Comunicacion muy deficiente. Se requieren mejoras urgentes.</string>
+                 </property>
+                 <property name="wordWrap">
+                  <bool>true</bool>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      <item>
+       <widget class="QFrame" name="frame_bottom">
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>64</height>
+         </size>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QFrame#frame_3 {
+    background-color: rgba(0,0,0,0.20);
+    border-top: 1px solid rgba(255,255,255,0.12);
+}
+QPushButton {
+    background-color: rgba(255,255,255,0.12);
+    border: 1.5px solid rgba(255,255,255,0.45);
+    color: white;
+    font-weight: bold;
+    font-size: 12px;
+    border-radius: 12px;
+    padding: 8px 22px;
+    letter-spacing: 0.5px;
+}
+QPushButton:hover {
+    background-color: rgba(255,255,255,0.25);
+    border: 1.5px solid white;
+}
+QPushButton:pressed {
+    background-color: rgba(255,255,255,0.45);
+    color: #00005d;
+}
+QPushButton#botonIniciarAnalisis {
+    background-color: rgba(126,200,247,0.22);
+    border: 1.5px solid #7ec8f7;
+    color: #7ec8f7;
+}
+QPushButton#botonIniciarAnalisis:hover {
+    background-color: rgba(126,200,247,0.40);
+    color: white;
+    border-color: white;
+}
+</string>
+        </property>
+        <property name="frameShape">
+         <enum>QFrame::NoFrame</enum>
+        </property>
+        <layout class="QHBoxLayout" name="horizontalLayout_8" stretch="4,0,0">
+         <property name="leftMargin">
+          <number>20</number>
+         </property>
+         <property name="rightMargin">
+          <number>20</number>
+         </property>
+         <item>
+          <spacer name="horizontalSpacer_3">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>200</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <widget class="QPushButton" name="botonGoHome">
+           <property name="maximumSize">
+            <size>
+             <width>150</width>
+             <height>16777215</height>
+            </size>
+           </property>
+           <property name="toolTip">
+            <string>Regresar a la pantalla principal</string>
+           </property>
+           <property name="text">
+            <string>Ir al Inicio</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="botonIniciarAnalisis">
+           <property name="maximumSize">
+            <size>
+             <width>200</width>
+             <height>16777215</height>
+            </size>
+           </property>
+           <property name="toolTip">
+            <string>Calcular %ALCons con los valores ingresados</string>
+           </property>
+           <property name="text">
+            <string>Iniciar Analisis</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

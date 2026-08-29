@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Form</class>
+ <widget class="QWidget" name="Form">
+  <property name="geometry">
+   <rect><x>0</x><y>0</y><width>900</width><height>580</height></rect>
+  </property>
+  <property name="windowTitle"><string>Form</string></property>
+  <property name="styleSheet">
+   <string notr="true">QWidget {
+    background-color: qlineargradient(
+        spread:pad, x1:0.488, y1:0, x2:0.495, y2:1,
+        stop:0.306818 rgba(0,0,93,255),
+        stop:0.710227 rgba(0,0,45,255)
+    );
+}
+QFrame { border: none; background-color: transparent; }
+QScrollBar:vertical { background: transparent; width: 8px; margin: 2px 0 2px 0; }
+QScrollBar::handle:vertical { background-color: rgba(255,255,255,0.25); min-height: 25px; border-radius: 4px; }
+QScrollBar::handle:vertical:hover { background-color: rgba(255,255,255,0.45); }
+QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical { height: 0px; background: none; }
+QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical { background: none; }
+</string>
+  </property>
+
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <property name="spacing"><number>0</number></property>
+   <property name="leftMargin"><number>0</number></property>
+   <property name="topMargin"><number>0</number></property>
+   <property name="rightMargin"><number>0</number></property>
+   <property name="bottomMargin"><number>0</number></property>
+
+   <item>
+    <widget class="QScrollArea" name="scrollArea">
+     <property name="widgetResizable"><bool>true</bool></property>
+     <property name="styleSheet"><string notr="true">QScrollArea { border: none; background: transparent; }</string></property>
+     <widget class="QWidget" name="scrollAreaWidgetContents">
+      <property name="geometry"><rect><x>0</x><y>0</y><width>900</width><height>580</height></rect></property>
+      <layout class="QVBoxLayout" name="verticalLayout_2">
+       <property name="spacing"><number>0</number></property>
+       <property name="leftMargin"><number>0</number></property>
+       <property name="topMargin"><number>0</number></property>
+       <property name="rightMargin"><number>0</number></property>
+       <property name="bottomMargin"><number>0</number></property>
+
+       <item>
+        <widget class="QFrame" name="frame">
+         <property name="frameShape"><enum>QFrame::NoFrame</enum></property>
+         <layout class="QVBoxLayout" name="verticalLayout_3" stretch="1,8,1">
+          <property name="spacing"><number>0</number></property>
+          <property name="leftMargin"><number>0</number></property>
+          <property name="topMargin"><number>0</number></property>
+          <property name="rightMargin"><number>0</number></property>
+          <property name="bottomMargin"><number>0</number></property>
+
+          <!-- BARRA SUPERIOR -->
+          <item>
+           <widget class="QFrame" name="frameTop">
+            <property name="minimumSize"><size><width>0</width><height>72</height></size></property>
+            <property name="maximumSize"><size><width>16777215</width><height>72</height></size></property>
+            <property name="frameShape"><enum>QFrame::NoFrame</enum></property>
+            <property name="styleSheet"><string notr="true">QFrame#frameTop { background-color: rgba(0,0,0,0.25); border-bottom: 1px solid rgba(255,255,255,0.14); }</string></property>
+            <layout class="QHBoxLayout" name="horizontalLayout_4">
+             <property name="leftMargin"><number>12</number></property>
+             <property name="rightMargin"><number>20</number></property>
+             <property name="topMargin"><number>0</number></property>
+             <property name="bottomMargin"><number>0</number></property>
+             <property name="spacing"><number>14</number></property>
+             <item>
+              <widget class="QPushButton" name="botonAtras">
+               <property name="minimumSize"><size><width>42</width><height>42</height></size></property>
+               <property name="maximumSize"><size><width>42</width><height>42</height></size></property>
+               <property name="styleSheet"><string notr="true">QPushButton { background-color: transparent; border: 1px solid rgba(255,255,255,0.35); border-radius: 21px; } QPushButton:hover { background-color: rgba(255,255,255,0.18); border: 1px solid white; } QPushButton:pressed { background-color: rgba(255,255,255,0.38); }</string></property>
+               <property name="text"><string/></property>
+               <property name="icon"><iconset><normaloff>graficas/iconos/angulo-izquierdo.png</normaloff>graficas/iconos/angulo-izquierdo.png</iconset></property>
+               <property name="iconSize"><size><width>22</width><height>22</height></size></property>
+               <property name="toolTip"><string>Regresar a la pantalla anterior</string></property>
+              </widget>
+             </item>
+             <item><spacer name="spacerTopL"><property name="orientation"><enum>Qt::Horizontal</enum></property><property name="sizeHint" stdset="0"><size><width>30</width><height>20</height></size></property></spacer></item>
+             <item>
+              <widget class="QFrame" name="frameTitulo">
+               <property name="frameShape"><enum>QFrame::NoFrame</enum></property>
+               <layout class="QVBoxLayout" name="vloTitulo">
+                <property name="spacing"><number>2</number></property>
+                <property name="leftMargin"><number>0</number></property><property name="topMargin"><number>8</number></property>
+                <property name="rightMargin"><number>0</number></property><property name="bottomMargin"><number>8</number></property>
+                <item><widget class="QLabel" name="labelTituloPrincipal"><property name="text"><string>&lt;html&gt;&lt;body&gt;&lt;p&gt;&lt;span style="font-size:20pt; font-weight:700; color:#ffffff;"&gt;Base de Datos — Bloque H&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string></property><property name="alignment"><set>Qt::AlignCenter</set></property></widget></item>
+                <item><widget class="QLabel" name="labelSubtitulo"><property name="text"><string>&lt;html&gt;&lt;body&gt;&lt;p&gt;&lt;span style="font-size:9pt; color:rgba(255,255,255,0.60);"&gt;23 tipos de aula registrados — Universidad del Atlantico&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string></property><property name="alignment"><set>Qt::AlignCenter</set></property></widget></item>
+               </layout>
+              </widget>
+             </item>
+             <item><spacer name="spacerTopR"><property name="orientation"><enum>Qt::Horizontal</enum></property><property name="sizeHint" stdset="0"><size><width>30</width><height>20</height></size></property></spacer></item>
+            </layout>
+           </widget>
+          </item>
+
+          <!-- CUERPO CENTRAL -->
+          <item>
+           <widget class="QFrame" name="frameMedium">
+            <property name="frameShape"><enum>QFrame::NoFrame</enum></property>
+            <layout class="QHBoxLayout" name="horizontalLayout">
+             <property name="spacing"><number>16</number></property>
+             <property name="leftMargin"><number>20</number></property>
+             <property name="topMargin"><number>16</number></property>
+             <property name="rightMargin"><number>20</number></property>
+             <property name="bottomMargin"><number>16</number></property>
+             <item>
+              <widget class="QFrame" name="frame_2">
+               <property name="frameShape"><enum>QFrame::NoFrame</enum></property>
+               <layout class="QVBoxLayout" name="verticalLayout_4">
+                <property name="spacing"><number>12</number></property>
+                <property name="leftMargin"><number>0</number></property>
+                <property name="topMargin"><number>0</number></property>
+                <property name="rightMargin"><number>0</number></property>
+                <property name="bottomMargin"><number>0</number></property>
+
+                <!-- Selector -->
+                <item>
+                 <widget class="QFrame" name="frame_3">
+                  <property name="frameShape"><enum>QFrame::NoFrame</enum></property>
+                  <property name="maximumSize"><size><width>16777215</width><height>64</height></size></property>
+                  <property name="styleSheet"><string notr="true">QFrame#frame_3 { background-color: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.22); border-radius: 12px; } QLabel { color: rgba(255,255,255,0.70); font-size: 10pt; font-weight: bold; background: transparent; border: none; } QComboBox { background: rgba(255,255,255,0.14); border: 1px solid rgba(255,255,255,0.45); border-radius: 8px; color: white; font-size: 11pt; font-weight: bold; padding: 5px 10px; min-height: 32px; } QComboBox:hover { border: 1px solid #7ec8f7; background: rgba(126,200,247,0.15); } QComboBox::drop-down { border: none; width: 24px; } QComboBox QAbstractItemView { background-color: #001a4d; color: white; selection-background-color: rgba(126,200,247,0.30); border: 1px solid rgba(255,255,255,0.25); border-radius: 6px; } QComboBox QScrollBar:vertical { border: none; background: #f0f0f0; width: 10px; } QComboBox QScrollBar::handle:vertical { background: #bfbfbf; min-height: 20px; border-radius: 4px; }</string></property>
+                  <layout class="QHBoxLayout" name="horizontalLayout_2">
+                   <property name="spacing"><number>14</number></property>
+                   <property name="leftMargin"><number>16</number></property><property name="topMargin"><number>8</number></property>
+                   <property name="rightMargin"><number>16</number></property><property name="bottomMargin"><number>8</number></property>
+                   <item><widget class="QLabel" name="label"><property name="text"><string>Tipo de aula — Bloque H:</string></property><property name="alignment"><set>Qt::AlignVCenter|Qt::AlignLeft</set></property></widget></item>
+                   <item><widget class="QComboBox" name="comboBox"><property name="toolTip"><string>Selecciona un tipo de aula para ver su informacion</string></property></widget></item>
+                  </layout>
+                 </widget>
+                </item>
+
+                <!-- Cards dimensiones -->
+                <item>
+                 <widget class="QFrame" name="frame_4">
+                  <property name="frameShape"><enum>QFrame::NoFrame</enum></property>
+                  <property name="maximumSize"><size><width>16777215</width><height>80</height></size></property>
+                  <property name="styleSheet"><string notr="true">QFrame#cardDim { background-color: rgba(255,255,255,0.09); border: 1px solid rgba(255,255,255,0.22); border-radius: 10px; } QLabel#labelDimEtiq { color: rgba(255,255,255,0.55); font-size: 8pt; background: transparent; border: none; } QLabel#labelDimVal { color: white; font-size: 14pt; font-weight: bold; background: transparent; border: none; }</string></property>
+                  <layout class="QHBoxLayout" name="gridLayout">
+                   <property name="spacing"><number>10</number></property>
+                   <property name="leftMargin"><number>0</number></property><property name="topMargin"><number>0</number></property>
+                   <property name="rightMargin"><number>0</number></property><property name="bottomMargin"><number>0</number></property>
+                   <item><widget class="QFrame" name="cardAula"><property name="objectName"><string>cardDim</string></property><property name="frameShape"><enum>QFrame::NoFrame</enum></property><layout class="QVBoxLayout" name="vloCA"><property name="spacing"><number>2</number></property><property name="leftMargin"><number>10</number></property><property name="topMargin"><number>6</number></property><property name="rightMargin"><number>10</number></property><property name="bottomMargin"><number>6</number></property><item><widget class="QLabel" name="labelEtiqAula"><property name="objectName"><string>labelDimEtiq</string></property><property name="text"><string>AULAS</string></property><property name="alignment"><set>Qt::AlignCenter</set></property></widget></item><item><widget class="QLabel" name="labelNumeroAula"><property name="objectName"><string>labelDimVal</string></property><property name="text"><string>—</string></property><property name="alignment"><set>Qt::AlignCenter</set></property></widget></item></layout></widget></item>
+                   <item><widget class="QFrame" name="cardLargo"><property name="objectName"><string>cardDim</string></property><property name="frameShape"><enum>QFrame::NoFrame</enum></property><layout class="QVBoxLayout" name="vloCL"><property name="spacing"><number>2</number></property><property name="leftMargin"><number>10</number></property><property name="topMargin"><number>6</number></property><property name="rightMargin"><number>10</number></property><property name="bottomMargin"><number>6</number></property><item><widget class="QLabel" name="labelEtiqLargo"><property name="objectName"><string>labelDimEtiq</string></property><property name="text"><string>LARGO</string></property><property name="alignment"><set>Qt::AlignCenter</set></property></widget></item><item><widget class="QLabel" name="labelLargo"><property name="objectName"><string>labelDimVal</string></property><property name="text"><string>—</string></property><property name="alignment"><set>Qt::AlignCenter</set></property></widget></item></layout></widget></item>
+                   <item><widget class="QFrame" name="cardAncho"><property name="objectName"><string>cardDim</string></property><property name="frameShape"><enum>QFrame::NoFrame</enum></property><layout class="QVBoxLayout" name="vloCAncho"><property name="spacing"><number>2</number></property><property name="leftMargin"><number>10</number></property><property name="topMargin"><number>6</number></property><property name="rightMargin"><number>10</number></property><property name="bottomMargin"><number>6</number></property><item><widget class="QLabel" name="labelEtiqAncho"><property name="objectName"><string>labelDimEtiq</string></property><property name="text"><string>ANCHO</string></property><property name="alignment"><set>Qt::AlignCenter</set></property></widget></item><item><widget class="QLabel" name="labelAncho"><property name="objectName"><string>labelDimVal</string></property><property name="text"><string>—</string></property><property name="alignment"><set>Qt::AlignCenter</set></property></widget></item></layout></widget></item>
+                   <item><widget class="QFrame" name="cardAlto"><property name="objectName"><string>cardDim</string></property><property name="frameShape"><enum>QFrame::NoFrame</enum></property><layout class="QVBoxLayout" name="vloCAlto"><property name="spacing"><number>2</number></property><property name="leftMargin"><number>10</number></property><property name="topMargin"><number>6</number></property><property name="rightMargin"><number>10</number></property><property name="bottomMargin"><number>6</number></property><item><widget class="QLabel" name="labelEtiqAlto"><property name="objectName"><string>labelDimEtiq</string></property><property name="text"><string>ALTO</string></property><property name="alignment"><set>Qt::AlignCenter</set></property></widget></item><item><widget class="QLabel" name="labelAlto"><property name="objectName"><string>labelDimVal</string></property><property name="text"><string>—</string></property><property name="alignment"><set>Qt::AlignCenter</set></property></widget></item></layout></widget></item>
+                  </layout>
+                 </widget>
+                </item>
+
+                <!-- Encabezado sección materiales -->
+                <item>
+                 <widget class="QFrame" name="frameTreeHeader">
+                  <property name="frameShape"><enum>QFrame::NoFrame</enum></property>
+                  <property name="maximumSize"><size><width>16777215</width><height>28</height></size></property>
+                  <layout class="QHBoxLayout" name="hloTreeHeader">
+                   <property name="spacing"><number>8</number></property>
+                   <property name="leftMargin"><number>2</number></property><property name="topMargin"><number>0</number></property>
+                   <property name="rightMargin"><number>2</number></property><property name="bottomMargin"><number>0</number></property>
+                   <item><widget class="QFrame" name="accentBar"><property name="frameShape"><enum>QFrame::NoFrame</enum></property><property name="minimumSize"><size><width>4</width><height>18</height></size></property><property name="maximumSize"><size><width>4</width><height>18</height></size></property><property name="styleSheet"><string notr="true">QFrame { background-color: rgba(222,112,25,0.9); border-radius: 2px; }</string></property></widget></item>
+                   <item><widget class="QLabel" name="labelTreeTitulo"><property name="text"><string>&lt;html&gt;&lt;body&gt;&lt;span style="font-size:10pt; font-weight:bold; color:white;"&gt;Materiales y elementos del salon&lt;/span&gt;&lt;/body&gt;&lt;/html&gt;</string></property></widget></item>
+                   <item><widget class="QLabel" name="labelTreeDesc"><property name="text"><string>&lt;html&gt;&lt;body&gt;&lt;span style="font-size:8pt; color:rgba(255,255,255,0.50);"&gt;6 superficies + objetos adicionales&lt;/span&gt;&lt;/body&gt;&lt;/html&gt;</string></property></widget></item>
+                   <item><spacer name="spacerTreeH"><property name="orientation"><enum>Qt::Horizontal</enum></property><property name="sizeHint" stdset="0"><size><width>10</width><height>20</height></size></property></spacer></item>
+                  </layout>
+                 </widget>
+                </item>
+
+                <!-- NUEVO: QScrollArea para cards dinámicas de materiales -->
+                <item>
+                 <widget class="QScrollArea" name="scrollMateriales">
+                  <property name="widgetResizable"><bool>true</bool></property>
+                  <property name="horizontalScrollBarPolicy"><enum>Qt::ScrollBarAlwaysOff</enum></property>
+                  <property name="styleSheet">
+                   <string notr="true">QScrollArea#scrollMateriales {
+    background-color: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.13);
+    border-radius: 12px;
+}
+QScrollArea#scrollMateriales > QWidget > QWidget { background: transparent; }
+QScrollArea#scrollMateriales QScrollBar:vertical {
+    background: transparent; width: 6px; margin: 4px 0 4px 0;
+}
+QScrollArea#scrollMateriales QScrollBar::handle:vertical {
+    background-color: rgba(255,255,255,0.22); min-height: 20px; border-radius: 3px;
+}
+QScrollArea#scrollMateriales QScrollBar::handle:vertical:hover { background-color: rgba(255,255,255,0.40); }
+QScrollArea#scrollMateriales QScrollBar::add-line:vertical,
+QScrollArea#scrollMateriales QScrollBar::sub-line:vertical { height: 0px; background: none; }
+QScrollArea#scrollMateriales QScrollBar::add-page:vertical,
+QScrollArea#scrollMateriales QScrollBar::sub-page:vertical { background: none; }
+</string>
+                  </property>
+                  <widget class="QWidget" name="contenedorCards">
+                   <property name="styleSheet"><string notr="true">QWidget#contenedorCards { background: transparent; }</string></property>
+                  </widget>
+                 </widget>
+                </item>
+
+               </layout>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+
+          <!-- BARRA INFERIOR -->
+          <item>
+           <widget class="QFrame" name="frameBottom">
+            <property name="minimumSize"><size><width>0</width><height>64</height></size></property>
+            <property name="maximumSize"><size><width>16777215</width><height>64</height></size></property>
+            <property name="frameShape"><enum>QFrame::NoFrame</enum></property>
+            <property name="styleSheet"><string notr="true">QFrame#frameBottom { background-color: rgba(0,0,0,0.22); border-top: 1px solid rgba(255,255,255,0.12); } QPushButton { background-color: rgba(255,255,255,0.12); border: 1.5px solid rgba(255,255,255,0.45); color: white; font-weight: bold; font-size: 12px; border-radius: 12px; padding: 8px 22px; letter-spacing: 0.5px; } QPushButton:hover { background-color: rgba(255,255,255,0.25); border: 1.5px solid white; } QPushButton:pressed { background-color: rgba(255,255,255,0.45); color: #00005d; } QPushButton#botonIniciarAnalisis { background-color: rgba(126,200,247,0.20); border: 1.5px solid #7ec8f7; color: #7ec8f7; min-width: 180px; } QPushButton#botonIniciarAnalisis:hover { background-color: rgba(126,200,247,0.38); color: white; border-color: white; } QPushButton#botonIniciarAnalisis:disabled { background-color: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.18); color: rgba(255,255,255,0.30); }</string></property>
+            <layout class="QHBoxLayout" name="horizontalLayout_5">
+             <property name="leftMargin"><number>20</number></property>
+             <property name="rightMargin"><number>20</number></property>
+             <property name="spacing"><number>12</number></property>
+             <item><spacer name="horizontalSpacer_4"><property name="orientation"><enum>Qt::Horizontal</enum></property><property name="sizeHint" stdset="0"><size><width>200</width><height>20</height></size></property></spacer></item>
+             <item>
+              <widget class="QPushButton" name="botonIniciarAnalisis">
+               <property name="minimumSize"><size><width>180</width><height>0</height></size></property>
+               <property name="maximumSize"><size><width>220</width><height>16777215</height></size></property>
+               <property name="text"><string>Iniciar Analisis</string></property>
+               <property name="toolTip"><string>Calcular RT60 y %ALCons usando los datos del aula seleccionada</string></property>
+              </widget>
+             </item>
+             <item><spacer name="horizontalSpacer_5"><property name="orientation"><enum>Qt::Horizontal</enum></property><property name="sizeHint" stdset="0"><size><width>200</width><height>20</height></size></property></spacer></item>
+            </layout>
+           </widget>
+          </item>
+
+         </layout>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

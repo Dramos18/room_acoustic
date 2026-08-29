@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>formObjetoAdicional</class>
+ <widget class="QWidget" name="formObjetoAdicional">
+  <property name="geometry">
+   <rect><x>0</x><y>0</y><width>320</width><height>56</height></rect>
+  </property>
+  <property name="windowTitle"><string>Form</string></property>
+  <property name="styleSheet">
+   <string notr="true">QWidget#formObjetoAdicional { background: transparent; }
+QFrame { background-color: transparent; border: none; }
+
+/* Card del objeto adicional — acento naranja para diferenciarlo de superficies */
+QFrame#frameObjAdicCard {
+    background-color: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.16);
+    border-left: 2px solid rgba(251,146,60,0.65);
+    border-radius: 8px;
+}
+QFrame#frameObjAdicCard:hover {
+    background-color: rgba(255,255,255,0.11);
+    border-left: 2px solid rgba(251,146,60,0.90);
+}
+
+QLineEdit {
+    font-size: 10px;
+    color: white;
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.28);
+    border-radius: 6px;
+    padding: 3px 7px;
+}
+QLineEdit:focus {
+    border: 1px solid rgba(251,146,60,0.80);
+    background: rgba(251,146,60,0.12);
+}
+QLineEdit::placeholder { color: rgba(255,255,255,0.35); }
+
+QComboBox {
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.28);
+    border-radius: 6px;
+    color: white;
+    font-size: 10px;
+    padding: 3px 6px;
+}
+QComboBox:focus { border: 1px solid rgba(251,146,60,0.80); }
+QComboBox::drop-down { border: none; width: 18px; }
+QComboBox QAbstractItemView {
+    background-color: #001a4d;
+    color: white;
+    selection-background-color: rgba(251,146,60,0.30);
+    border: 1px solid rgba(255,255,255,0.20);
+}
+QComboBox QScrollBar:vertical { border: none; background: #f0f0f0; width: 8px; }
+QComboBox QScrollBar::handle:vertical { background: #bfbfbf; min-height: 16px; border-radius: 3px; }
+
+QSpinBox {
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.28);
+    border-radius: 6px;
+    color: white;
+    font-size: 10px;
+    padding: 3px 6px;
+}
+QSpinBox:focus { border: 1px solid rgba(251,146,60,0.80); }
+QSpinBox::up-button, QSpinBox::down-button {
+    width: 14px;
+    background: rgba(255,255,255,0.10);
+    border-radius: 3px;
+}
+
+QPushButton {
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.22);
+    border-radius: 5px;
+    min-width: 22px; max-width: 22px;
+    min-height: 22px; max-height: 22px;
+}
+QPushButton:hover {
+    background: rgba(255,255,255,0.16);
+    border: 1px solid rgba(255,255,255,0.50);
+}
+QPushButton:pressed { background: rgba(255,255,255,0.32); }
+
+/* Label de error inline */
+QLabel#labelErrorObjAdicional {
+    color: rgba(248,113,113,0.90);
+    font-size: 9px;
+    background: transparent;
+    border: none;
+    padding-left: 4px;
+}
+</string>
+  </property>
+
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <property name="spacing"><number>2</number></property>
+   <property name="leftMargin"><number>0</number></property>
+   <property name="topMargin"><number>2</number></property>
+   <property name="rightMargin"><number>0</number></property>
+   <property name="bottomMargin"><number>2</number></property>
+
+   <!-- Card del objeto adicional -->
+   <item>
+    <widget class="QFrame" name="frameObjAdicCard">
+     <property name="frameShape"><enum>QFrame::NoFrame</enum></property>
+     <layout class="QHBoxLayout" name="horizontalLayout">
+      <property name="spacing"><number>8</number></property>
+      <property name="leftMargin"><number>10</number></property>
+      <property name="topMargin"><number>5</number></property>
+      <property name="rightMargin"><number>8</number></property>
+      <property name="bottomMargin"><number>5</number></property>
+
+      <!-- Nombre del objeto -->
+      <item>
+       <widget class="QLineEdit" name="lineObjAdicional">
+        <property name="minimumSize"><size><width>80</width><height>26</height></size></property>
+        <property name="maximumSize"><size><width>100</width><height>26</height></size></property>
+        <property name="placeholderText"><string>Ej: Sillas</string></property>
+        <property name="toolTip"><string>Nombre del objeto dentro del aula (ej: Sillas, Escritorios, Armario)</string></property>
+        <property name="clearButtonEnabled"><bool>true</bool></property>
+       </widget>
+      </item>
+
+      <!-- Material -->
+      <item>
+       <widget class="QComboBox" name="cbObjAdicional">
+        <property name="minimumSize"><size><width>120</width><height>26</height></size></property>
+        <property name="maximumSize"><size><width>170</width><height>26</height></size></property>
+        <property name="toolTip"><string>Material del objeto</string></property>
+       </widget>
+      </item>
+
+      <!-- Cantidad -->
+      <item>
+       <widget class="QSpinBox" name="spinBoxCantidad">
+        <property name="minimumSize"><size><width>52</width><height>26</height></size></property>
+        <property name="maximumSize"><size><width>60</width><height>26</height></size></property>
+        <property name="minimum"><number>1</number></property>
+        <property name="maximum"><number>200</number></property>
+        <property name="toolTip"><string>Cantidad de este tipo de objeto en el aula</string></property>
+       </widget>
+      </item>
+
+      <!-- Botón agregar -->
+      <item>
+       <widget class="QPushButton" name="botonAgregar_2">
+        <property name="text"><string/></property>
+        <property name="icon">
+         <iconset>
+          <normaloff>graficas/iconos/agregar.png</normaloff>graficas/iconos/agregar.png
+         </iconset>
+        </property>
+        <property name="iconSize"><size><width>18</width><height>18</height></size></property>
+        <property name="toolTip"><string>Agregar otro objeto adicional</string></property>
+       </widget>
+      </item>
+
+      <!-- Botón eliminar -->
+      <item>
+       <widget class="QPushButton" name="botonEliminar_2">
+        <property name="text"><string/></property>
+        <property name="icon">
+         <iconset>
+          <normaloff>graficas/iconos/quitar.png</normaloff>graficas/iconos/quitar.png
+         </iconset>
+        </property>
+        <property name="iconSize"><size><width>18</width><height>18</height></size></property>
+        <property name="toolTip"><string>Eliminar este objeto adicional</string></property>
+       </widget>
+      </item>
+
+     </layout>
+    </widget>
+   </item>
+
+   <!-- Label de error inline — solo visible cuando hay error -->
+   <item>
+    <widget class="QLabel" name="labelErrorObjAdicional">
+     <property name="text"><string/></property>
+     <property name="wordWrap"><bool>true</bool></property>
+    </widget>
+   </item>
+
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

@@ -1,4 +1,6 @@
 import io
+from collections import defaultdict
+from pprint import pprint
 
 from Controlador.Controlador import obtener_lista_materiales, obtener_coeficientes_materiales
 import math
@@ -77,6 +79,99 @@ def agregar_areas_materiales(datos):
     # Devolver el diccionario actualizado (opcional si quieres modificar `datos` directamente)
     return datos
 
+def calcular_absorcion(salon, coeficientes, frecuencias=None):
+    """
+    Calcula la absorción acústica total por frecuencia en un salón, considerando:
+    - Superficies con materiales base.
+    - Objetos adheridos a las superficies.
+    - Objetos adicionales con cantidad definida.
+
+    :param salon: Diccionario con la estructura del salón (materiales y objetos).
+    :param coeficientes: Diccionario con coeficientes de absorción por material y frecuencia.
+    :param frecuencias: Lista de frecuencias a evaluar (si es None, se usan las estándar).
+    :return:
+        - absorcion_total (dict): Absorción total por frecuencia (valor A).
+        - detalles (list): Detalles de cálculo por componente.
+    """
+    if frecuencias is None:
+        frecuencias = [125, 250, 500, 1000, 2000, 4000]
+
+    absorcion_total = {f: 0.0 for f in frecuencias}
+    detalles = []
+
+    materiales = salon.get("materiales", {})
+
+    # --- Procesar materiales base y objetos adheridos ---
+    for zona, propiedades in materiales.items():
+        area_superficie = propiedades.get("area", 0)
+        material_base = propiedades.get("material", None)
+
+        if material_base and material_base in coeficientes:
+            for f in frecuencias:
+                coef = coeficientes[material_base].get(f)
+                if coef is not None:
+                    absorcion = round(area_superficie * coef, 6)
+                    absorcion_total[f] += absorcion
+                    detalles.append({
+                        "zona": zona,
+                        "tipo": "Superficie",
+                        "material": material_base,
+                        "frecuencia": f,
+                        "area_aplicada": area_superficie,
+                        "coeficiente": coef,
+                        "absorcion": absorcion
+                    })
+        # Procesar objetos adheridos a la superficie
+        for obj in propiedades.get("objetos_adheridos", []):
+            nombre = obj.get("nombre", "Sin nombre")
+            material_obj = obj.get("material")
+            area_obj = obj.get("area", 0)
+            if material_obj and material_obj in coeficientes:
+                for f in frecuencias:
+                    coef = coeficientes[material_obj].get(f)
+                    if coef is not None:
+                        absorcion = round(area_obj * coef, 6)
+                        absorcion_total[f] += absorcion
+                        detalles.append({
+                            "zona": zona,
+                            "tipo": "Objeto Adherido",
+                            "nombre": nombre,
+                            "material": material_obj,
+                            "frecuencia": f,
+                            "area_aplicada": area_obj,
+                            "coeficiente": coef,
+                            "absorcion": absorcion
+                        })
+    # --- Procesar objetos adicionales sueltos ---
+    for obj in salon.get("objetos_adicionales") or []:
+        nombre = obj.get("nombre", "Sin nombre")
+        material = obj.get("material")
+        cantidad = obj.get("cantidad", 0)
+
+        if not isinstance(cantidad, (int, float)):
+            cantidad = 0
+
+        if material and material in coeficientes:
+            for f in frecuencias:
+                coef = coeficientes[material].get(f)
+                if coef is not None:
+                    absorcion = round(cantidad * coef, 6)
+                    absorcion_total[f] += absorcion
+                    detalles.append({
+                        "zona": "Objeto Adicional",
+                        "tipo": "Objeto Suelto",
+                        "nombre": nombre,
+                        "material": material,
+                        "frecuencia": f,
+                        "cantidad": cantidad,
+                        "coeficiente": coef,
+                        "absorcion": absorcion
+                    })
+
+
+    return absorcion_total, detalles
+
+
 def calcular_absorcion_total(material, coeficientes, frecuencias=None):
     """
     Calcula el coeficiente de absorción total (A) para cada frecuencia considerando:
@@ -124,6 +219,7 @@ def calcular_absorcion_total(material, coeficientes, frecuencias=None):
                     "coeficiente": coef,
                     "absorcion": area_superficie * coef
                 })
+            print("detalles base:", detalles)
 
         # Absorción de objetos adheridos
         objetos_adheridos = propiedades.get("objetos_adheridos", [])
@@ -143,30 +239,32 @@ def calcular_absorcion_total(material, coeficientes, frecuencias=None):
                         "coeficiente": coef,
                         "absorcion": area_adherida * coef
                     })
+        print("detalles adheridos:", detalles)
 
     # ===================
     # Cálculo para Objetos Adicionales
     # ===================
-    objetos_adicionales = materiales.get("objetos_adicionales", [])  # Buscar objetos adicionales como clave en materiales
+    objetos_adicionales = material.get("objetos_adicionales", [])  # Buscar objetos adicionales como clave en materiales
     if objetos_adicionales:  # Si hay objetos adicionales presentes
         for objeto in objetos_adicionales:
-            material = objeto.get("material")
+            materialObjeto = objeto.get("material")
             cantidad = objeto.get("cantidad", 1)  # Si la cantidad no está definida, se toma como 1 por defecto
             area_efectiva = objeto.get("area_efectiva", 0) * cantidad  # Se calcula el área total del objeto
 
-            if material in coeficientes:  # Verificar si hay coeficientes para este material
+            if materialObjeto in coeficientes:  # Verificar si hay coeficientes para este material
                 for f in frecuencias:
-                    coef = coeficientes[material].get(f, 0)
-                    absorcion_total[f] += area_efectiva * coef
+                    coef = coeficientes[materialObjeto].get(f, 0)
+                    absorcion_total[f] += cantidad * coef
                     # Guardar detalle del cálculo
                     detalles.append({
                         "zona": "Objeto Adicional",
-                        "material": material,
+                        "material": materialObjeto,
                         "frecuencia": f,
-                        "area_aplicada": area_efectiva,
+                        "Cantidad": cantidad,
                         "coeficiente": coef,
-                        "absorcion": area_efectiva * coef
+                        "absorcion": cantidad * coef
                     })
+    print("detalles completo:", detalles)
 
     return absorcion_total, detalles
 
@@ -273,6 +371,7 @@ def graficar_rt602(rt60, rt60_eyring):
     plt.ylabel("Tiempo de Reverberación (RT60, s)", fontsize=14)
     plt.ylim(0, max(max(valores_rt60, default=0), max(valores_rt60_eyring, default=0)) + 1)
 
+
     # Configurar el eje X (frecuencia en Hz) con rotación de etiquetas
     plt.xticks(
         frecuencias,
@@ -298,10 +397,11 @@ def graficar_rt602(rt60, rt60_eyring):
 
     # Línea base y ajustes finales
     plt.axhline(y=0, color="black", linewidth=0.8, linestyle="--", alpha=0.8)  # Línea base (0)
+    plt.axhline(y=0.8, color="red", linestyle="--")
     plt.tight_layout()  # Ajuste automático de los márgenes
     plt.show()
 
-def graficar_rt60(rt60, rt60_eyring):
+def graficar_rt60(rt60, rt60_eyring, nombre=None):
     """
     Genera un gráfico comparativo del RT60 por frecuencia calculado con Sabine y Eyring.
     Retorna el gráfico como un objeto BytesIO.
@@ -337,7 +437,11 @@ def graficar_rt60(rt60, rt60_eyring):
     )
 
     # Estilo del gráfico
-    plt.title("Comparación de RT60 por Frecuencia\nSabine vs Eyring", fontsize=18, fontweight="bold", pad=20)
+    if nombre is None:
+        plt.title("Comparación de RT60 por Frecuencia\nSabine vs Eyring", fontsize=18, fontweight="bold", pad=20)
+    else:
+        plt.title(f"Comparación de RT60 por Frecuencia en Aulas: {nombre}\nSabine vs Eyring", fontsize=18, fontweight="bold", pad=20)
+
     plt.xlabel("Frecuencia (Hz)", fontsize=14)
     plt.ylabel("Tiempo de Reverberación (RT60, s)", fontsize=14)
     plt.ylim(0, max(max(valores_rt60, default=0), max(valores_rt60_eyring, default=0)) + 1)
@@ -366,7 +470,8 @@ def graficar_rt60(rt60, rt60_eyring):
                          xytext=(10, 5), color="#58B3FF", fontsize=12, fontweight="bold")
 
     # Línea base y ajustes finales
-    plt.axhline(y=0, color="black", linewidth=0.8, linestyle="--", alpha=0.8)  # Línea base (0)
+    plt.axhline(y=0, color="black", linewidth=0.8, linestyle="--", alpha=0.8)
+    plt.axhline(y=0.8, color="red", linewidth=0.8, linestyle="--", alpha=0.8)# Línea base (0)
     plt.tight_layout()  # Ajuste automático de los márgenes
 
     # Guardar el gráfico en un objeto BytesIO
@@ -401,6 +506,10 @@ def calcular_resultados(datos):
     materiales = datos.get("materiales", {})
     objetos_adicionales = datos.get("objetos_adicionales", [])
     inteligibilidad = datos.get("inteligibilidad", {})
+    aulas = None
+
+    if datos.get("aulas", 0):
+        aulas = datos.get("aulas", 0)
 
     # Calcular dimensiones
     largo = dimensiones.get("largo", 0)
@@ -418,16 +527,20 @@ def calcular_resultados(datos):
 
     # Obtener el salón completo con materiales y objetos adheridos
     salon = agregar_areas_materiales(datos)
+    print("este es el salon: ", salon)
 
     # Calcular absorción total y sus detalles
-    absorcion, detalles = calcular_absorcion_total(salon, coeficientes)
+    absorcion, detalles = calcular_absorcion(salon, coeficientes)
+
+    print("esta es la absorsion:", absorcion)
+
 
     # Calcular los tiempos de reverberación con los modelos Sabine y Eyring
     sabine_rt = calcular_rt60_sabine(volumen, absorcion)
     eyring_rt = calcular_rt60_eyring(volumen, area_total, absorcion)
 
     # Generar la gráfica comparativa de RT60 y guardar en BytesIO
-    grafico_buffer = graficar_rt60(sabine_rt, eyring_rt)  # Modificaremos `graficar_rt60`.
+    grafico_buffer = graficar_rt60(sabine_rt, eyring_rt, aulas)  # Modificaremos `graficar_rt60`.
 
     # Inicializar el diccionario de resultados
     resultados = {

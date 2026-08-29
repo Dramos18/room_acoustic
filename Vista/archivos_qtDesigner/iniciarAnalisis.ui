@@ -1,0 +1,1190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>ventanaIniciarAnalisis</class>
+ <widget class="QWidget" name="ventanaIniciarAnalisis">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>880</width>
+    <height>580</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QWidget {
+    background-color: qlineargradient(
+        spread:pad, x1:0.488, y1:0, x2:0.495, y2:1,
+        stop:0.306818 rgba(0,0,93,255),
+        stop:0.710227 rgba(0,0,45,255)
+    );
+}
+QFrame { background-color: transparent; border: none; }
+</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <property name="spacing">
+    <number>0</number>
+   </property>
+   <property name="leftMargin">
+    <number>0</number>
+   </property>
+   <property name="topMargin">
+    <number>0</number>
+   </property>
+   <property name="rightMargin">
+    <number>0</number>
+   </property>
+   <property name="bottomMargin">
+    <number>0</number>
+   </property>
+   <item>
+    <widget class="QFrame" name="frameVentana">
+     <property name="frameShape">
+      <enum>QFrame::NoFrame</enum>
+     </property>
+     <layout class="QVBoxLayout" name="verticalLayout_2" stretch="1,5,1">
+      <property name="spacing">
+       <number>0</number>
+      </property>
+      <property name="leftMargin">
+       <number>0</number>
+      </property>
+      <property name="topMargin">
+       <number>0</number>
+      </property>
+      <property name="rightMargin">
+       <number>0</number>
+      </property>
+      <property name="bottomMargin">
+       <number>0</number>
+      </property>
+      <item>
+       <widget class="QFrame" name="frame_2">
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>64</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>64</height>
+         </size>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QFrame#frame_2 {
+    background-color: rgba(0,0,0,0.22);
+    border-bottom: 1px solid rgba(255,255,255,0.12);
+}</string>
+        </property>
+        <property name="frameShape">
+         <enum>QFrame::NoFrame</enum>
+        </property>
+        <layout class="QHBoxLayout" name="horizontalLayout_14">
+         <property name="spacing">
+          <number>14</number>
+         </property>
+         <property name="leftMargin">
+          <number>14</number>
+         </property>
+         <property name="topMargin">
+          <number>0</number>
+         </property>
+         <property name="rightMargin">
+          <number>20</number>
+         </property>
+         <property name="bottomMargin">
+          <number>0</number>
+         </property>
+         <item>
+          <widget class="QPushButton" name="botonRegresar">
+           <property name="minimumSize">
+            <size>
+             <width>42</width>
+             <height>42</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>42</width>
+             <height>42</height>
+            </size>
+           </property>
+           <property name="cursor">
+            <cursorShape>PointingHandCursor</cursorShape>
+           </property>
+           <property name="toolTip">
+            <string>Regresar a la pantalla de inicio</string>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QPushButton {
+    background-color: transparent;
+    border: 1px solid rgba(255,255,255,0.35);
+    border-radius: 21px;
+}
+QPushButton:hover {
+    background-color: rgba(255,255,255,0.18);
+    border: 1px solid white;
+}
+QPushButton:pressed { background-color: rgba(255,255,255,0.38); }</string>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="icon">
+            <iconset>
+             <normaloff>graficas/iconos/angulo-izquierdo.png</normaloff>graficas/iconos/angulo-izquierdo.png</iconset>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>22</width>
+             <height>22</height>
+            </size>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="horizontalSpacer_3">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <widget class="QFrame" name="frameTituloTop">
+           <property name="frameShape">
+            <enum>QFrame::NoFrame</enum>
+           </property>
+           <layout class="QVBoxLayout" name="vloTituloTop">
+            <property name="spacing">
+             <number>2</number>
+            </property>
+            <property name="leftMargin">
+             <number>0</number>
+            </property>
+            <property name="topMargin">
+             <number>8</number>
+            </property>
+            <property name="rightMargin">
+             <number>0</number>
+            </property>
+            <property name="bottomMargin">
+             <number>8</number>
+            </property>
+            <item>
+             <widget class="QLabel" name="labelTituloTop">
+              <property name="text">
+               <string>&lt;html&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot;font-size:16pt; font-weight:700; color:#ffffff;&quot;&gt;Selecciona un modulo de analisis&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="labelSubtituloTop">
+              <property name="text">
+               <string>&lt;html&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot;font-size:9pt; color:rgba(255,255,255,0.55);&quot;&gt;Tiempo de Reverberacion · Inteligibilidad del Habla · Base de Datos Bloque H&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </item>
+         <item>
+          <spacer name="horizontalSpacerTopR">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      <item>
+       <widget class="QFrame" name="frameCards">
+        <property name="frameShape">
+         <enum>QFrame::NoFrame</enum>
+        </property>
+        <layout class="QHBoxLayout" name="horizontalLayout" stretch="1,1,1">
+         <property name="spacing">
+          <number>22</number>
+         </property>
+         <property name="leftMargin">
+          <number>28</number>
+         </property>
+         <property name="topMargin">
+          <number>100</number>
+         </property>
+         <property name="rightMargin">
+          <number>28</number>
+         </property>
+         <property name="bottomMargin">
+          <number>100</number>
+         </property>
+         <item>
+          <widget class="QFrame" name="frContainer1">
+           <property name="styleSheet">
+            <string notr="true">/* Card externa */
+QFrame#frContainer1 {
+    background-color: rgba(255,255,255,0.09);
+    border: 1.5px solid rgba(126,200,247,0.55);
+    border-radius: 16px;
+}
+QFrame#frContainer1:hover {
+    background-color: rgba(126,200,247,0.13);
+    border: 1.5px solid rgba(126,200,247,0.90);
+}
+/* Subelementos internos */
+QFrame#frContainer1 QFrame { background: transparent; border: none; }
+QFrame#frContainer1 QLabel { background: transparent; border: none; }
+/* Línea separadora */
+QFrame#linea1 {
+    background-color: rgba(126,200,247,0.35);
+    max-height: 1px;
+    border: none;
+}
+/* Badge de número */
+QLabel#labelBadge1 {
+    background-color: rgba(126,200,247,0.20);
+    border: 1px solid rgba(126,200,247,0.55);
+    border-radius: 12px;
+    color: #7ec8f7;
+    font-size: 9pt;
+    font-weight: bold;
+    padding: 1px 8px;
+}
+/* Botón de acción */
+QPushButton#botonIniciarTR {
+    background-color: rgba(126,200,247,0.18);
+    border: 1.5px solid rgba(126,200,247,0.70);
+    border-radius: 10px;
+    color: #7ec8f7;
+    font-size: 11pt;
+    font-weight: bold;
+    padding: 8px 16px;
+    min-width: 140px;
+    max-width: 200px;
+    max-height: 38px;
+}
+QPushButton#botonIniciarTR:hover {
+    background-color: rgba(126,200,247,0.35);
+    color: white;
+    border-color: white;
+}
+QPushButton#botonIniciarTR:pressed {
+    background-color: rgba(126,200,247,0.55);
+    color: white;
+}
+</string>
+           </property>
+           <property name="frameShape">
+            <enum>QFrame::NoFrame</enum>
+           </property>
+           <layout class="QHBoxLayout" name="horizontalLayout_3">
+            <property name="spacing">
+             <number>0</number>
+            </property>
+            <property name="leftMargin">
+             <number>0</number>
+            </property>
+            <property name="topMargin">
+             <number>0</number>
+            </property>
+            <property name="rightMargin">
+             <number>0</number>
+            </property>
+            <property name="bottomMargin">
+             <number>0</number>
+            </property>
+            <item>
+             <widget class="QFrame" name="frame_11">
+              <property name="frameShape">
+               <enum>QFrame::NoFrame</enum>
+              </property>
+              <layout class="QVBoxLayout" name="verticalLayout_3" stretch="2,1,4,2">
+               <property name="spacing">
+                <number>10</number>
+               </property>
+               <property name="leftMargin">
+                <number>20</number>
+               </property>
+               <property name="topMargin">
+                <number>20</number>
+               </property>
+               <property name="rightMargin">
+                <number>20</number>
+               </property>
+               <property name="bottomMargin">
+                <number>20</number>
+               </property>
+               <item>
+                <widget class="QFrame" name="frame_12">
+                 <property name="frameShape">
+                  <enum>QFrame::NoFrame</enum>
+                 </property>
+                 <layout class="QVBoxLayout" name="vloHeader1">
+                  <property name="spacing">
+                   <number>6</number>
+                  </property>
+                  <property name="leftMargin">
+                   <number>0</number>
+                  </property>
+                  <property name="topMargin">
+                   <number>0</number>
+                  </property>
+                  <property name="rightMargin">
+                   <number>0</number>
+                  </property>
+                  <property name="bottomMargin">
+                   <number>0</number>
+                  </property>
+                  <item>
+                   <widget class="QFrame" name="frameBadgeIcon1">
+                    <property name="frameShape">
+                     <enum>QFrame::NoFrame</enum>
+                    </property>
+                    <layout class="QHBoxLayout" name="hloBadgeIcon1">
+                     <property name="spacing">
+                      <number>8</number>
+                     </property>
+                     <property name="leftMargin">
+                      <number>0</number>
+                     </property>
+                     <property name="topMargin">
+                      <number>0</number>
+                     </property>
+                     <property name="rightMargin">
+                      <number>0</number>
+                     </property>
+                     <property name="bottomMargin">
+                      <number>0</number>
+                     </property>
+                     <item>
+                      <widget class="QLabel" name="labelBadge1">
+                       <property name="font">
+                        <font>
+                         <pointsize>9</pointsize>
+                         <bold>true</bold>
+                        </font>
+                       </property>
+                       <property name="text">
+                        <string>01</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <spacer name="spacerBadge1">
+                       <property name="orientation">
+                        <enum>Qt::Horizontal</enum>
+                       </property>
+                       <property name="sizeHint" stdset="0">
+                        <size>
+                         <width>10</width>
+                         <height>10</height>
+                        </size>
+                       </property>
+                      </spacer>
+                     </item>
+                     <item>
+                      <widget class="QLabel" name="label_2">
+                       <property name="minimumSize">
+                        <size>
+                         <width>48</width>
+                         <height>48</height>
+                        </size>
+                       </property>
+                       <property name="maximumSize">
+                        <size>
+                         <width>48</width>
+                         <height>48</height>
+                        </size>
+                       </property>
+                       <property name="text">
+                        <string/>
+                       </property>
+                       <property name="pixmap">
+                        <pixmap>graficas/iconos/ondas-de-audio.png</pixmap>
+                       </property>
+                       <property name="scaledContents">
+                        <bool>true</bool>
+                       </property>
+                      </widget>
+                     </item>
+                    </layout>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QLabel" name="label">
+                    <property name="text">
+                     <string>&lt;html&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot;font-size:16pt; font-weight:700; color:#ffffff;&quot;&gt;Tiempo de Reverberacion&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                    </property>
+                    <property name="wordWrap">
+                     <bool>true</bool>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </widget>
+               </item>
+               <item>
+                <widget class="QFrame" name="linea1">
+                 <property name="styleSheet">
+                  <string notr="true">QFrame { background-color: rgba(126,200,247,0.30); max-height:1px; border:none; }</string>
+                 </property>
+                 <property name="frameShape">
+                  <enum>QFrame::HLine</enum>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLabel" name="label_8">
+                 <property name="text">
+                  <string>&lt;html&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot;font-size:10pt; color:rgba(255,255,255,0.80);&quot;&gt;Calcula el &lt;b&gt;RT60&lt;/b&gt;: el tiempo que tarda el sonido en disminuir 60 dB dentro del aula.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-size:9pt; color:rgba(255,255,255,0.55);&quot;&gt;Ingresa dimensiones y materiales. Opcionalmente incluye el analisis de inteligibilidad del habla.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                 </property>
+                 <property name="alignment">
+                  <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+                 </property>
+                 <property name="wordWrap">
+                  <bool>true</bool>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QFrame" name="frameBoton">
+                 <property name="frameShape">
+                  <enum>QFrame::NoFrame</enum>
+                 </property>
+                 <layout class="QHBoxLayout" name="horizontalLayout_5">
+                  <property name="spacing">
+                   <number>0</number>
+                  </property>
+                  <property name="leftMargin">
+                   <number>0</number>
+                  </property>
+                  <property name="topMargin">
+                   <number>0</number>
+                  </property>
+                  <property name="rightMargin">
+                   <number>0</number>
+                  </property>
+                  <property name="bottomMargin">
+                   <number>0</number>
+                  </property>
+                  <item>
+                   <widget class="QPushButton" name="botonIniciarTR">
+                    <property name="cursor">
+                     <cursorShape>PointingHandCursor</cursorShape>
+                    </property>
+                    <property name="toolTip">
+                     <string>Abrir el modulo de Tiempo de Reverberacion</string>
+                    </property>
+                    <property name="layoutDirection">
+                     <enum>Qt::RightToLeft</enum>
+                    </property>
+                    <property name="text">
+                     <string>Iniciar analisis</string>
+                    </property>
+                    <property name="icon">
+                     <iconset>
+                      <normaloff>graficas/iconos/angulo-derecho.png</normaloff>graficas/iconos/angulo-derecho.png</iconset>
+                    </property>
+                    <property name="iconSize">
+                     <size>
+                      <width>18</width>
+                      <height>18</height>
+                     </size>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <spacer name="horizontalSpacer">
+                    <property name="orientation">
+                     <enum>Qt::Horizontal</enum>
+                    </property>
+                    <property name="sizeHint" stdset="0">
+                     <size>
+                      <width>40</width>
+                      <height>20</height>
+                     </size>
+                    </property>
+                   </spacer>
+                  </item>
+                 </layout>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </item>
+         <item>
+          <widget class="QFrame" name="frContainer2">
+           <property name="styleSheet">
+            <string notr="true">QFrame#frContainer2 {
+    background-color: rgba(255,255,255,0.09);
+    border: 1.5px solid rgba(52,211,153,0.55);
+    border-radius: 16px;
+}
+QFrame#frContainer2:hover {
+    background-color: rgba(52,211,153,0.11);
+    border: 1.5px solid rgba(52,211,153,0.90);
+}
+QFrame#frContainer2 QFrame { background: transparent; border: none; }
+QFrame#frContainer2 QLabel { background: transparent; border: none; }
+QFrame#linea2 {
+    background-color: rgba(52,211,153,0.30);
+    max-height: 1px; border: none;
+}
+QLabel#labelBadge2 {
+    background-color: rgba(52,211,153,0.18);
+    border: 1px solid rgba(52,211,153,0.55);
+    border-radius: 12px;
+    color: #34d399;
+    font-size: 9pt; font-weight: bold;
+    padding: 1px 8px;
+}
+QPushButton#botonIniciarIH {
+    background-color: rgba(52,211,153,0.16);
+    border: 1.5px solid rgba(52,211,153,0.65);
+    border-radius: 10px;
+    color: #34d399;
+    font-size: 11pt; font-weight: bold;
+    padding: 8px 16px;
+    min-width: 140px; max-width: 200px; max-height: 38px;
+}
+QPushButton#botonIniciarIH:hover {
+    background-color: rgba(52,211,153,0.32);
+    color: white; border-color: white;
+}
+QPushButton#botonIniciarIH:pressed {
+    background-color: rgba(52,211,153,0.52); color: white;
+}
+</string>
+           </property>
+           <property name="frameShape">
+            <enum>QFrame::NoFrame</enum>
+           </property>
+           <layout class="QHBoxLayout" name="horizontalLayout_6">
+            <property name="spacing">
+             <number>0</number>
+            </property>
+            <property name="leftMargin">
+             <number>0</number>
+            </property>
+            <property name="topMargin">
+             <number>0</number>
+            </property>
+            <property name="rightMargin">
+             <number>0</number>
+            </property>
+            <property name="bottomMargin">
+             <number>0</number>
+            </property>
+            <item>
+             <widget class="QFrame" name="frame_15">
+              <property name="frameShape">
+               <enum>QFrame::NoFrame</enum>
+              </property>
+              <layout class="QVBoxLayout" name="verticalLayout_4" stretch="2,1,4,2">
+               <property name="spacing">
+                <number>10</number>
+               </property>
+               <property name="leftMargin">
+                <number>20</number>
+               </property>
+               <property name="topMargin">
+                <number>20</number>
+               </property>
+               <property name="rightMargin">
+                <number>20</number>
+               </property>
+               <property name="bottomMargin">
+                <number>20</number>
+               </property>
+               <item>
+                <widget class="QFrame" name="frame_16">
+                 <property name="frameShape">
+                  <enum>QFrame::NoFrame</enum>
+                 </property>
+                 <layout class="QVBoxLayout" name="vloHeader2">
+                  <property name="spacing">
+                   <number>6</number>
+                  </property>
+                  <property name="leftMargin">
+                   <number>0</number>
+                  </property>
+                  <property name="topMargin">
+                   <number>0</number>
+                  </property>
+                  <property name="rightMargin">
+                   <number>0</number>
+                  </property>
+                  <property name="bottomMargin">
+                   <number>0</number>
+                  </property>
+                  <item>
+                   <widget class="QFrame" name="frameBadgeIcon2">
+                    <property name="frameShape">
+                     <enum>QFrame::NoFrame</enum>
+                    </property>
+                    <layout class="QHBoxLayout" name="hloBadgeIcon2">
+                     <property name="spacing">
+                      <number>8</number>
+                     </property>
+                     <property name="leftMargin">
+                      <number>0</number>
+                     </property>
+                     <property name="topMargin">
+                      <number>0</number>
+                     </property>
+                     <property name="rightMargin">
+                      <number>0</number>
+                     </property>
+                     <property name="bottomMargin">
+                      <number>0</number>
+                     </property>
+                     <item>
+                      <widget class="QLabel" name="labelBadge2">
+                       <property name="text">
+                        <string>02</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <spacer name="spacerBadge2">
+                       <property name="orientation">
+                        <enum>Qt::Horizontal</enum>
+                       </property>
+                       <property name="sizeHint" stdset="0">
+                        <size>
+                         <width>10</width>
+                         <height>10</height>
+                        </size>
+                       </property>
+                      </spacer>
+                     </item>
+                     <item>
+                      <widget class="QLabel" name="label_4">
+                       <property name="minimumSize">
+                        <size>
+                         <width>48</width>
+                         <height>48</height>
+                        </size>
+                       </property>
+                       <property name="maximumSize">
+                        <size>
+                         <width>48</width>
+                         <height>48</height>
+                        </size>
+                       </property>
+                       <property name="text">
+                        <string/>
+                       </property>
+                       <property name="pixmap">
+                        <pixmap>graficas/iconos/terapia-musical.png</pixmap>
+                       </property>
+                       <property name="scaledContents">
+                        <bool>true</bool>
+                       </property>
+                      </widget>
+                     </item>
+                    </layout>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QLabel" name="label_3">
+                    <property name="text">
+                     <string>&lt;html&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot;font-size:16pt; font-weight:700; color:#ffffff;&quot;&gt;Inteligibilidad del Habla&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                    </property>
+                    <property name="wordWrap">
+                     <bool>true</bool>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </widget>
+               </item>
+               <item>
+                <widget class="QFrame" name="linea2">
+                 <property name="styleSheet">
+                  <string notr="true">QFrame { background-color: rgba(52,211,153,0.28); max-height:1px; border:none; }</string>
+                 </property>
+                 <property name="frameShape">
+                  <enum>QFrame::HLine</enum>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLabel" name="label_7">
+                 <property name="text">
+                  <string>&lt;html&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot;font-size:10pt; color:rgba(255,255,255,0.80);&quot;&gt;Analiza que tan comprensible es la voz dentro del salon mediante el indice &lt;b&gt;%ALCONS&lt;/b&gt;.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-size:9pt; color:rgba(255,255,255,0.55);&quot;&gt;Influenciado por el tiempo de reverberacion y parametros acousticos del recinto.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                 </property>
+                 <property name="alignment">
+                  <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+                 </property>
+                 <property name="wordWrap">
+                  <bool>true</bool>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QFrame" name="frameBoton_2">
+                 <property name="frameShape">
+                  <enum>QFrame::NoFrame</enum>
+                 </property>
+                 <layout class="QHBoxLayout" name="horizontalLayout_8">
+                  <property name="spacing">
+                   <number>0</number>
+                  </property>
+                  <property name="leftMargin">
+                   <number>0</number>
+                  </property>
+                  <property name="topMargin">
+                   <number>0</number>
+                  </property>
+                  <property name="rightMargin">
+                   <number>0</number>
+                  </property>
+                  <property name="bottomMargin">
+                   <number>0</number>
+                  </property>
+                  <item>
+                   <widget class="QPushButton" name="botonIniciarIH">
+                    <property name="cursor">
+                     <cursorShape>PointingHandCursor</cursorShape>
+                    </property>
+                    <property name="toolTip">
+                     <string>Abrir el modulo de Inteligibilidad del Habla</string>
+                    </property>
+                    <property name="layoutDirection">
+                     <enum>Qt::RightToLeft</enum>
+                    </property>
+                    <property name="text">
+                     <string>Iniciar analisis</string>
+                    </property>
+                    <property name="icon">
+                     <iconset>
+                      <normaloff>graficas/iconos/angulo-derecho.png</normaloff>graficas/iconos/angulo-derecho.png</iconset>
+                    </property>
+                    <property name="iconSize">
+                     <size>
+                      <width>18</width>
+                      <height>18</height>
+                     </size>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <spacer name="horizontalSpacer_2">
+                    <property name="orientation">
+                     <enum>Qt::Horizontal</enum>
+                    </property>
+                    <property name="sizeHint" stdset="0">
+                     <size>
+                      <width>40</width>
+                      <height>20</height>
+                     </size>
+                    </property>
+                   </spacer>
+                  </item>
+                 </layout>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </item>
+         <item>
+          <widget class="QFrame" name="frContainer3">
+           <property name="styleSheet">
+            <string notr="true">QFrame#frContainer3 {
+    background-color: rgba(255,255,255,0.09);
+    border: 1.5px solid rgba(251,146,60,0.55);
+    border-radius: 16px;
+}
+QFrame#frContainer3:hover {
+    background-color: rgba(251,146,60,0.11);
+    border: 1.5px solid rgba(251,146,60,0.90);
+}
+QFrame#frContainer3 QFrame { background: transparent; border: none; }
+QFrame#frContainer3 QLabel { background: transparent; border: none; }
+QFrame#linea3 {
+    background-color: rgba(251,146,60,0.28);
+    max-height: 1px; border: none;
+}
+QLabel#labelBadge3 {
+    background-color: rgba(251,146,60,0.18);
+    border: 1px solid rgba(251,146,60,0.55);
+    border-radius: 12px;
+    color: #fb923c;
+    font-size: 9pt; font-weight: bold;
+    padding: 1px 8px;
+}
+QPushButton#botonIniciarBD {
+    background-color: rgba(251,146,60,0.16);
+    border: 1.5px solid rgba(251,146,60,0.65);
+    border-radius: 10px;
+    color: #fb923c;
+    font-size: 11pt; font-weight: bold;
+    padding: 8px 16px;
+    min-width: 140px; max-width: 200px; max-height: 38px;
+}
+QPushButton#botonIniciarBD:hover {
+    background-color: rgba(251,146,60,0.32);
+    color: white; border-color: white;
+}
+QPushButton#botonIniciarBD:pressed {
+    background-color: rgba(251,146,60,0.52); color: white;
+}
+</string>
+           </property>
+           <property name="frameShape">
+            <enum>QFrame::NoFrame</enum>
+           </property>
+           <layout class="QHBoxLayout" name="horizontalLayout_9">
+            <property name="spacing">
+             <number>0</number>
+            </property>
+            <property name="leftMargin">
+             <number>0</number>
+            </property>
+            <property name="topMargin">
+             <number>0</number>
+            </property>
+            <property name="rightMargin">
+             <number>0</number>
+            </property>
+            <property name="bottomMargin">
+             <number>0</number>
+            </property>
+            <item>
+             <widget class="QFrame" name="subFrame3">
+              <property name="frameShape">
+               <enum>QFrame::NoFrame</enum>
+              </property>
+              <layout class="QVBoxLayout" name="verticalLayout_5" stretch="2,1,4,2">
+               <property name="spacing">
+                <number>10</number>
+               </property>
+               <property name="leftMargin">
+                <number>20</number>
+               </property>
+               <property name="topMargin">
+                <number>20</number>
+               </property>
+               <property name="rightMargin">
+                <number>20</number>
+               </property>
+               <property name="bottomMargin">
+                <number>20</number>
+               </property>
+               <item>
+                <widget class="QFrame" name="containerTittle3">
+                 <property name="frameShape">
+                  <enum>QFrame::NoFrame</enum>
+                 </property>
+                 <layout class="QVBoxLayout" name="vloHeader3">
+                  <property name="spacing">
+                   <number>6</number>
+                  </property>
+                  <property name="leftMargin">
+                   <number>0</number>
+                  </property>
+                  <property name="topMargin">
+                   <number>0</number>
+                  </property>
+                  <property name="rightMargin">
+                   <number>0</number>
+                  </property>
+                  <property name="bottomMargin">
+                   <number>0</number>
+                  </property>
+                  <item>
+                   <widget class="QFrame" name="frameBadgeIcon3">
+                    <property name="frameShape">
+                     <enum>QFrame::NoFrame</enum>
+                    </property>
+                    <layout class="QHBoxLayout" name="hloBadgeIcon3">
+                     <property name="spacing">
+                      <number>8</number>
+                     </property>
+                     <property name="leftMargin">
+                      <number>0</number>
+                     </property>
+                     <property name="topMargin">
+                      <number>0</number>
+                     </property>
+                     <property name="rightMargin">
+                      <number>0</number>
+                     </property>
+                     <property name="bottomMargin">
+                      <number>0</number>
+                     </property>
+                     <item>
+                      <widget class="QLabel" name="labelBadge3">
+                       <property name="text">
+                        <string>03</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <spacer name="spacerBadge3">
+                       <property name="orientation">
+                        <enum>Qt::Horizontal</enum>
+                       </property>
+                       <property name="sizeHint" stdset="0">
+                        <size>
+                         <width>10</width>
+                         <height>10</height>
+                        </size>
+                       </property>
+                      </spacer>
+                     </item>
+                     <item>
+                      <widget class="QLabel" name="labelIcon3">
+                       <property name="minimumSize">
+                        <size>
+                         <width>48</width>
+                         <height>48</height>
+                        </size>
+                       </property>
+                       <property name="maximumSize">
+                        <size>
+                         <width>48</width>
+                         <height>48</height>
+                        </size>
+                       </property>
+                       <property name="text">
+                        <string/>
+                       </property>
+                       <property name="pixmap">
+                        <pixmap>graficas/iconos/logoBN.png</pixmap>
+                       </property>
+                       <property name="scaledContents">
+                        <bool>true</bool>
+                       </property>
+                      </widget>
+                     </item>
+                    </layout>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QLabel" name="labelTitle3">
+                    <property name="text">
+                     <string>&lt;html&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot;font-size:16pt; font-weight:700; color:#ffffff;&quot;&gt;Base de Datos: Bloque H&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                    </property>
+                    <property name="wordWrap">
+                     <bool>true</bool>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </widget>
+               </item>
+               <item>
+                <widget class="QFrame" name="linea3">
+                 <property name="styleSheet">
+                  <string notr="true">QFrame { background-color: rgba(251,146,60,0.28); max-height:1px; border:none; }</string>
+                 </property>
+                 <property name="frameShape">
+                  <enum>QFrame::HLine</enum>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLabel" name="lbDescripcion3">
+                 <property name="text">
+                  <string>&lt;html&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot;font-size:10pt; color:rgba(255,255,255,0.80);&quot;&gt;Explora &lt;b&gt;23 tipos de aulas reales&lt;/b&gt; del Bloque H de la Universidad del Atlantico.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-size:9pt; color:rgba(255,255,255,0.55);&quot;&gt;Conoce sus caracteristicas acusticas y realiza analisis sin ingresar datos manualmente.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                 </property>
+                 <property name="alignment">
+                  <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+                 </property>
+                 <property name="wordWrap">
+                  <bool>true</bool>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QFrame" name="frameBoton_3">
+                 <property name="frameShape">
+                  <enum>QFrame::NoFrame</enum>
+                 </property>
+                 <layout class="QHBoxLayout" name="horizontalLayout_11">
+                  <property name="spacing">
+                   <number>0</number>
+                  </property>
+                  <property name="leftMargin">
+                   <number>0</number>
+                  </property>
+                  <property name="topMargin">
+                   <number>0</number>
+                  </property>
+                  <property name="rightMargin">
+                   <number>0</number>
+                  </property>
+                  <property name="bottomMargin">
+                   <number>0</number>
+                  </property>
+                  <item>
+                   <widget class="QPushButton" name="botonIniciarBD">
+                    <property name="cursor">
+                     <cursorShape>PointingHandCursor</cursorShape>
+                    </property>
+                    <property name="toolTip">
+                     <string>Abrir la base de datos de aulas del Bloque H</string>
+                    </property>
+                    <property name="layoutDirection">
+                     <enum>Qt::RightToLeft</enum>
+                    </property>
+                    <property name="text">
+                     <string>Explorar aulas</string>
+                    </property>
+                    <property name="icon">
+                     <iconset>
+                      <normaloff>graficas/iconos/angulo-derecho.png</normaloff>graficas/iconos/angulo-derecho.png</iconset>
+                    </property>
+                    <property name="iconSize">
+                     <size>
+                      <width>18</width>
+                      <height>18</height>
+                     </size>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <spacer name="horizontalSpacer3">
+                    <property name="orientation">
+                     <enum>Qt::Horizontal</enum>
+                    </property>
+                    <property name="sizeHint" stdset="0">
+                     <size>
+                      <width>40</width>
+                      <height>20</height>
+                     </size>
+                    </property>
+                   </spacer>
+                  </item>
+                 </layout>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      <item>
+       <widget class="QFrame" name="frame_4">
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>36</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>36</height>
+         </size>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QFrame#frame_4 {
+    background-color: rgba(0,0,0,0.18);
+    border-top: 1px solid rgba(255,255,255,0.09);
+}</string>
+        </property>
+        <property name="frameShape">
+         <enum>QFrame::NoFrame</enum>
+        </property>
+        <layout class="QHBoxLayout" name="horizontalLayout_2">
+         <property name="leftMargin">
+          <number>20</number>
+         </property>
+         <property name="topMargin">
+          <number>0</number>
+         </property>
+         <property name="rightMargin">
+          <number>20</number>
+         </property>
+         <property name="bottomMargin">
+          <number>0</number>
+         </property>
+         <item>
+          <widget class="QFrame" name="frameBotonRegresar">
+           <property name="frameShape">
+            <enum>QFrame::NoFrame</enum>
+           </property>
+           <layout class="QHBoxLayout" name="horizontalLayout_12">
+            <property name="spacing">
+             <number>0</number>
+            </property>
+            <property name="leftMargin">
+             <number>0</number>
+            </property>
+            <property name="topMargin">
+             <number>0</number>
+            </property>
+            <property name="rightMargin">
+             <number>0</number>
+            </property>
+            <property name="bottomMargin">
+             <number>0</number>
+            </property>
+           </layout>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="labelFooterInfo">
+           <property name="text">
+            <string>&lt;html&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot;font-size:8pt; color:rgba(255,255,255,0.38);&quot;&gt;Software de Evaluacion Acustica — Universidad del Atlantico · Bloque H · Barranquilla, Colombia&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QFrame" name="frameBotonBD">
+           <property name="frameShape">
+            <enum>QFrame::NoFrame</enum>
+           </property>
+           <layout class="QHBoxLayout" name="horizontalLayout_13"/>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

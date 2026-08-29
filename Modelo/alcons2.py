@@ -53,17 +53,17 @@ class AlconsCalculator:
             return "Error: El valor de ALcons no puede ser negativo. Verifique los datos ingresados."
 
         if 0 <= alcons <= 1.4:
-            return "🌟 Excelente: Condiciones acústicas ideales. Máxima inteligibilidad."
-        elif 1.5 <= alcons <= 5:
-            return "😊 Buena: Rendimiento acústico adecuado con ligeras pérdidas."
-        elif 5.1 <= alcons <= 11.4:
-            return "😐 Regular: Deficiencias acústicas notables. La inteligibilidad puede verse afectada."
-        elif 11.5 <= alcons <= 24.4:
-            return "😟 Pobre: Dificultades para interpretar palabras con claridad."
-        elif 24.5 <= alcons <= 47:
-            return "🛑 Mala: Inteligibilidad insuficiente. Necesita mejoras significativas."
+            return " Excelente: Condiciones acústicas ideales. Máxima inteligibilidad."
+        elif alcons <= 5:
+            return " Buena: Rendimiento acústico adecuado con ligeras pérdidas."
+        elif alcons <= 11.4:
+            return " Regular: Deficiencias acústicas notables. La inteligibilidad puede verse afectada."
+        elif alcons <= 24.4:
+            return " Pobre: Dificultades para interpretar palabras con claridad."
+        elif alcons <= 47:
+            return " Mala: Inteligibilidad insuficiente. Necesita mejoras significativas."
         else:
-            return "🔴 Crítico: Acústica extremadamente deficiente. Requiere atención urgente."
+            return " Crítico: Acústica extremadamente deficiente. Requiere atención urgente."
 
     @staticmethod
     def generar_reporte(distancia, tr_2000Hz, volumen_sala, factor_directividad, superficie_total, coef_medio_absor):
