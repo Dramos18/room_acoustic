@@ -51,4 +51,4 @@ Python, PySide6, Qt Designer, PyCharm, Matplotlib, NumPy y ReportLab. La lista d
 4. Personalización del análisis y salida.
 
 ## Visión futura
-La lógica acústica debe poder reutilizarse posteriormente en otros clientes, incluida una posible aplicación móvil. Esto no significa que la app móvil forme parte del alcance actual.
+La lógica acústica debe poder reutilizarse posteriormente en otros clientes, incluida una aplicación móvil. Primero la concluyamos este software y luego se analiza la posibilidad. 
