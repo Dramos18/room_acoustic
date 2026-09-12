@@ -2,7 +2,7 @@
 
 ## Confirmado por el equipo
 
-- Repositorio actual: `Run Acoustic`.
+- Repositorio actual: `Room Acoustic`.
 - La rama principal histórica indicada es `master`.
 - El equipo configuró GitHub para trabajar también con `main`; el estado
   efectivo debe verificarse con GitHub/Git.
