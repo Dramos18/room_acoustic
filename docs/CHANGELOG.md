@@ -4,7 +4,7 @@
 
 ### Confirmado
 
-- Repositorio actual: Run Acoustic.
+- Repositorio actual: Room Acoustic.
 - Bloque H: 23 tipos de salón.
 - Datos de salones: diccionarios Python.
 - Coeficientes: Excel.
