@@ -1,4 +1,4 @@
-# Run Acoustic
+# Room Acoustic
 
 Software para evaluación acústica de aulas, desarrollado como proyecto
 de grado de Ingeniería Industrial de la Universidad del Atlántico.
