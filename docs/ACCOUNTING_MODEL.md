@@ -8,7 +8,7 @@ este nombre durante la configuración inicial de documentación.
 ## Aplicabilidad
 
 El concepto de “Accounting Model” no corresponde actualmente al dominio
-principal de Run Acoustic.
+principal de Room Acoustic.
 
 El modelo relevante del proyecto es el **Acoustic Model**, documentado
 en:
