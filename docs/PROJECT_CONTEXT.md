@@ -2,7 +2,7 @@
 
 ## Identificación
 
-**Proyecto:** Run Acoustic  
+**Proyecto:** Room Acoustic  
 **Tipo:** Proyecto de grado — Ingeniería Industrial, Universidad del
 Atlántico  
 **Propósito:** Software para evaluar condiciones acústicas de aulas
