@@ -1,0 +1,34 @@
+{
+  "project": "Run Acoustic",
+  "baseline_date": "2026-09-12",
+  "files": [
+    "AI_RULES.md",
+    "CLAUDE.md",
+    "README.md",
+    "docs/ACCOUNTING_MODEL.md",
+    "docs/ACOUSTIC_MODEL.md",
+    "docs/AI_ROLES.md",
+    "docs/ARCHITECTURE.md",
+    "docs/CHANGELOG.md",
+    "docs/CLAUDE_FIRST_SESSION.md",
+    "docs/CLAUDE_TASK_TEMPLATE.md",
+    "docs/CODEBASE_AUDIT.md",
+    "docs/CURRENT_STATE.md",
+    "docs/DECISIONS.md",
+    "docs/DEPENDENCIES.md",
+    "docs/DEVELOPMENT_WORKFLOW.md",
+    "docs/HANDOFF.md",
+    "docs/INTEGRATION.md",
+    "docs/NAMING_AND_TRACEABILITY.md",
+    "docs/PROJECT_CONTEXT.md",
+    "docs/REQUIREMENTS.md",
+    "docs/TESTING.md",
+    "docs/UI_INVENTORY.md"
+  ],
+  "source_basis": [
+    "current repository snapshot room_acoustic-master.zip",
+    "current Word proyectoGradoSoftware.docx",
+    "user-confirmed project facts in conversation"
+  ],
+  "note": "Baseline configuration for Claude Code. Validate branch/default-branch state in GitHub before applying branch policies."
+}
