@@ -1,50 +1,60 @@
-# AI RULES — ROOM ACOUSTIC
+# AI_RULES.md
 
-## 1. Propósito
-Reglas rectoras para cualquier asistente de IA que trabaje sobre el proyecto **Software para evaluar la acústica en aulas: tiempo de reverberación e inteligibilidad de la palabra**.
+## Fuente de verdad
 
-## 2. Fuente de verdad
-1. Código del repositorio: implementación realmente existente.
-2. Documentación técnica de GitHub: estado, arquitectura, requisitos y decisiones.
-3. Documento académico vigente: contexto y contenido académico.
-4. Fuentes bibliográficas/normativas: respaldo teórico.
-5. Conversaciones con IA: no son fuente permanente.
+1.  Código actual del repositorio = verdad de implementación.
+2.  `docs/ACOUSTIC_MODEL.md` = verdad técnica del modelo matemático
+    aprobado.
+3.  Word vigente de la tesis = verdad académica.
+4.  `docs/` = memoria técnica y coordinación.
+5.  Conversaciones con IA = no son fuente de verdad.
 
-Ante contradicciones, la IA debe señalarlas y pedir validación.
+## Prioridades de Claude
 
-## 3. No inventar
-No inventar resultados, mediciones, referencias, requisitos, funcionalidades, archivos, fórmulas, criterios normativos o decisiones. Usar `POR VALIDAR` cuando algo no esté confirmado.
+1.  Preservar funcionalidad existente.
+2.  Preservar trazabilidad de identificadores.
+3.  Mejorar corrección y robustez.
+4.  Mejorar UX/UI cuando sea parte de la tarea.
+5.  Reducir duplicación y complejidad cuando exista evidencia.
+6.  Documentar cambios.
 
-## 4. Antes de modificar software
-Leer `AI_RULES.md`, `docs/PROJECT_CONTEXT.md`, `docs/CURRENT_STATE.md`, `docs/ARCHITECTURE.md`, `docs/REQUIREMENTS.md`, `docs/ACOUSTIC_MODEL.md`, `docs/DECISIONS.md`, `docs/CHANGELOG.md` y `docs/HANDOFF.md`. Leer `docs/INTEGRATION.md` si existe impacto académico.
+## Identificadores
 
-## 5. Antes de modificar documentación
-Leer `AI_RULES.md`, `docs/PROJECT_CONTEXT.md`, `docs/CURRENT_STATE.md`, `docs/INTEGRATION.md`, `docs/HANDOFF.md` y la documentación de `research/` y `thesis/`.
+Conservar nombres existentes por defecto. Un renombramiento requiere
+búsqueda global de referencias y actualización completa.
 
-## 6. Modelo acústico protegido
-No modificar Sabine, Eyring, %ALCons, variables, unidades, rangos o supuestos sin validación. Todo cambio debe quedar registrado en `DECISIONS.md`, `ACOUSTIC_MODEL.md` y `CHANGELOG.md`, con casos de prueba.
+No cambiar simultáneamente nombres, arquitectura y lógica matemática sin
+necesidad.
 
-## 7. No refactorizar masivamente sin aprobación
-Proceso obligatorio: **analizar → proponer → aprobar → implementar → probar → documentar → commit**.
+## Acústica
 
-## 8. Qt Designer
-Los `.ui` son fuente de diseño. Los `.py` generados deben tratarse como artefactos derivados y no modificarse manualmente sin justificación.
+No alterar Sabine, Eyring o Peutz/%ALCons sin comparación contra la
+fuente académica y validación de resultados.
 
-## 9. Datos
-Excel, diccionarios y archivos actualmente utilizados son datos activos hasta demostrar lo contrario. No eliminarlos ni migrarlos sin análisis de dependencias.
+## UI
 
-## 10. Interfaz
-Un cambio de ventana debe actualizar `UI_INVENTORY.md`, `CURRENT_STATE.md` y `CHANGELOG.md`, y las capturas académicas cuando corresponda.
+Los `.ui` y los `.py` generados deben mantenerse sincronizados. No
+modificar a mano código generado si la fuente real del cambio es Qt
+Designer.
 
-## 11. Coordinación
-GitHub es el espacio central de sincronización. La información que deba sobrevivir entre sesiones debe quedar documentada.
+## Datos
 
-## 12. Trazabilidad
-Todo cambio significativo debe poder responder: qué cambió, por qué, qué archivos afecta, qué requisito satisface, cómo se verificó y si afecta el documento académico.
+Actualmente: - 23 tipos de salones del Bloque H; - diccionarios Python
+para datos de salones; - Excel para coeficientes de absorción.
 
-## 13. Roles
-**Desarrollador:** software, arquitectura, PySide6, Qt Designer, modelo acústico, pruebas y evolución técnica.
+Una migración de almacenamiento debe ser una decisión explícita.
 
-**Documentación:** teoría, bibliografía, metodología, resultados, redacción y trazabilidad académica.
+## Cambios
 
-Ningún asistente debe asumir automáticamente decisiones del otro.
+Cada tarea importante debe terminar con: - resumen de cambios; -
+archivos afectados; - pruebas realizadas; - riesgos o pendientes; -
+documentación actualizada; - estado de Git.
+
+## Seguridad de Git
+
+No force-push, reset destructivo, borrado de ramas ni eliminación masiva
+de archivos sin autorización.
+
+## Estilo de desarrollo
+
+Preferir cambios pequeños, reversibles, verificables y trazables.
