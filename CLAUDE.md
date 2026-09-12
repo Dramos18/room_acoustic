@@ -6,7 +6,7 @@ Este repositorio es el proyecto de grado de Ingeniería Industrial de la
 Universidad del Atlántico para el desarrollo de un software de
 evaluación acústica de aulas.
 
-El repositorio actual es `Run Acoustic` y su rama principal histórica
+El repositorio actual es `room_acoustic` y su rama principal histórica
 indicada por el equipo es `master`. Antes de asumir el nombre de la rama
 por defecto, verificar siempre con `git branch --show-current`,
 `git remote -v` y, si aplica, la configuración de GitHub.
