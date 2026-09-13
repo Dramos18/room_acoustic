@@ -1,0 +1,7 @@
+# Dependencias directas de room_acoustic, verificadas en Python 3.13 (Linux/SteamOS).
+# Instalar con: pip install -r requirements.txt
+PySide6==6.11.2
+pandas==3.0.5
+openpyxl==3.1.5
+matplotlib==3.11.2
+reportlab==5.0.1

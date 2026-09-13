@@ -1,6 +1,6 @@
 # Dependencies
 
-## Dependencias observadas
+## Dependencias confirmadas (auditoría completa de imports, 2026-09-12)
 
 El código importa directamente:
 
@@ -9,27 +9,40 @@ El código importa directamente:
 - matplotlib
 - reportlab
 
-Pandas requiere un motor apropiado para leer los Excel del proyecto;
-`openpyxl` debe verificarse según el entorno instalado.
+`pandas.read_excel` requiere `openpyxl` como motor para leer los `.xlsx`
+del proyecto (`Datos/coeficientes.xlsx`, `Datos/coefs_absorcion.xlsx`).
+No se importa explícitamente pero es una dependencia de ejecución real
+de `Modelo/excel.py`.
+
+No se encontró ninguna otra dependencia de terceros en el código de la
+aplicación (fuera de `prueba.py`, ver Legacy).
+
+## Entorno probado (Linux/SteamOS)
+
+Instalación limpia verificada en `.venv` con Python 3.13.15:
+
+- PySide6 6.11.2
+- pandas 3.0.5
+- openpyxl 3.1.5
+- matplotlib 3.11.2
+- reportlab 5.0.1
+
+Ver `requirements.txt` en la raíz del repositorio para instalación
+reproducible (`pip install -r requirements.txt`).
+
+Compatibilidad con Windows: POR VALIDAR (no se ha repetido esta
+instalación limpia en una máquina Windows en esta sesión).
 
 ## Legacy
 
-`prueba.py` importa PyQt5.
-
-No asumir que PyQt5 forma parte de la aplicación final. Primero
-determinar si `prueba.py` se conserva.
-
-## No crear requirements a ciegas
-
-La lista definitiva debe generarse después de: 1. revisar todos los
-imports; 2. identificar código realmente ejecutado; 3. identificar el
-motor Excel; 4. probar instalación limpia; 5. registrar versiones
-compatibles.
+`prueba.py` importa PyQt5 y `Recursos.MainWindow` (inexistente en el
+repositorio). No forma parte de la aplicación principal (que usa
+PySide6). No se agregó PyQt5 a `requirements.txt`.
 
 ## Objetivo
 
 Llegar a una instalación reproducible para: - Windows; - entorno de
-desarrollo del equipo; - futuro entorno Linux/SteamOS si se decide
-migrar.
+desarrollo del equipo; - Linux/SteamOS.
 
-La compatibilidad multiplataforma debe verificarse, no asumirse.
+La compatibilidad con Windows debe seguir verificándose; la
+compatibilidad con Linux/SteamOS quedó verificada en esta sesión.

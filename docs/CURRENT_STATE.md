@@ -71,3 +71,15 @@ debe auditarse antes de eliminarla.
 
 Estas observaciones son hallazgos de auditoría, no instrucciones para
 modificar inmediatamente el código.
+
+## Actualización 2026-09-12 — Entorno reproducible
+
+- Ya existe `requirements.txt` en la raíz (PySide6, pandas, openpyxl,
+  matplotlib, reportlab, versiones fijadas y probadas en Linux).
+- Se corrigió `Modelo/excel.py` (separadores de ruta `\\` → `os.path.join`
+  con segmentos) para que la carga de Excel funcione en Linux; ver
+  `docs/CHANGELOG.md`.
+- Sigue sin existir carpeta `tests/`. Sigue sin existir `pyproject.toml`
+  (no se ha decidido adoptarlo).
+- El punto 3 de esta sección (`prueba.py` legacy) sigue vigente y sin
+  cambios.

@@ -1,8 +1,8 @@
 import pandas as pd
 import os
 
-RUTA_COEFICIENTES = os.path.join(os.path.dirname(__file__), '..\\Datos\\coeficientes.xlsx')
-RUTA_COEFICIENTES_COMUN = os.path.join(os.path.dirname(__file__), '..\\Datos\\coefs_absorcion.xlsx')
+RUTA_COEFICIENTES = os.path.join(os.path.dirname(__file__), '..', 'Datos', 'coeficientes.xlsx')
+RUTA_COEFICIENTES_COMUN = os.path.join(os.path.dirname(__file__), '..', 'Datos', 'coefs_absorcion.xlsx')
 
 def cargar_coeficientes():
     """Carga la tabla de coeficientes de absorción desde Excel."""
