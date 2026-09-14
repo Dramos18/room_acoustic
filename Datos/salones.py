@@ -1,10 +1,10 @@
-def obtener_salones(salonTipo1, salonTipo2, salonTipo4, salonTipo5, salonTipo6, salonTipo7,
+def obtener_salones(salonTipo1, salonTipo2, salonTipo3, salonTipo4, salonTipo5, salonTipo6, salonTipo7,
                     salonTipo8, salonTipo9, salonTipo10, salonTipo11, salonTipo12, salonTipo13,
-                    salonTipo14, salonTipo15, salonTipo16, salonTipo17, salonTipo18, salonTipo20,
+                    salonTipo14, salonTipo15, salonTipo16, salonTipo17, salonTipo18, salonTipo19, salonTipo20,
                     salonTipo21, salonTipo22, salonTipo23):
-    salones=[salonTipo1, salonTipo2, salonTipo4, salonTipo5, salonTipo6, salonTipo7,
+    salones=[salonTipo1, salonTipo2, salonTipo3, salonTipo4, salonTipo5, salonTipo6, salonTipo7,
              salonTipo8, salonTipo9, salonTipo10, salonTipo11, salonTipo12, salonTipo13,
-             salonTipo14, salonTipo15, salonTipo16, salonTipo17, salonTipo18, salonTipo20,
+             salonTipo14, salonTipo15, salonTipo16, salonTipo17, salonTipo18, salonTipo19, salonTipo20,
              salonTipo21, salonTipo22, salonTipo23]
     return salones
 
@@ -800,7 +800,7 @@ salonTipo23 = {
     'inteligibilidad': {'distancia': 1.5, 'coeficiente_medio': 0.25}
 }
 
-salones = obtener_salones(salonTipo1, salonTipo2, salonTipo4, salonTipo5, salonTipo6, salonTipo7,
+salones = obtener_salones(salonTipo1, salonTipo2, salonTipo3, salonTipo4, salonTipo5, salonTipo6, salonTipo7,
                     salonTipo8, salonTipo9, salonTipo10, salonTipo11, salonTipo12, salonTipo13,
-                    salonTipo14, salonTipo15, salonTipo16, salonTipo17, salonTipo18, salonTipo20,
+                    salonTipo14, salonTipo15, salonTipo16, salonTipo17, salonTipo18, salonTipo19, salonTipo20,
                     salonTipo21, salonTipo22, salonTipo23)

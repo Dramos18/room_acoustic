@@ -64,7 +64,7 @@ def agregar_areas_materiales(datos):
 
         # Validar si el área adherida supera el área total de la superficie
         if area_adheridos > area_superficie:
-             ValueError(f"El área total de los objetos adheridos en '{zona}' ({area_adheridos:.2f}) "
+             raise ValueError(f"El área total de los objetos adheridos en '{zona}' ({area_adheridos:.2f}) "
                              f"excede el área de la superficie ({area_superficie:.2f}).")
 
         # Calcular el área restante después de restar los objetos adheridos

@@ -14,6 +14,8 @@ def obtener_lista_materiales():
 def obtener_coeficientes_materiales():
     df = materiales_dos
     coeficientes = {}
+    if df is None:
+        return coeficientes
     for _, row in df.iterrows():
         coeficientes[row['Material']] = {  # Frecuencias por material
             125: row['125 Hz'], 250: row['250 Hz'], 500: row['500 Hz'],

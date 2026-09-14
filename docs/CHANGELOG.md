@@ -1,5 +1,39 @@
 # Changelog
 
+## 2026-09-13 — Correcciones puntuales (mejoras #1-#3 del ranking de auditoría)
+
+### Corregido
+
+- `Datos/salones.py`: `obtener_salones()` no recibía `salonTipo3` ni
+  `salonTipo19` (ya definidos en el archivo, con sus datos intactos).
+  La lista `salones` pasaba de 21 a 23 elementos. Verificado:
+  `len(salones) == 23` y tipos 1-23 sin huecos. No se modificaron los
+  datos internos de ningún salón.
+- `Modelo/calculoRT2.py` (`agregar_areas_materiales`): se agregó el
+  `raise` faltante antes del `ValueError` que validaba que el área de
+  objetos adheridos no supere el área de la superficie. Verificado:
+  (a) un caso inválido ahora lanza `ValueError` correctamente; (b) el
+  caso válido de referencia (`DiccionarioRecibido`) produce
+  `sabine_rt`, `eyring_rt` y `reporte_inteligibilidad` idénticos byte
+  a byte a los obtenidos con el código anterior al cambio (comparado
+  contra el commit previo). Ninguna fórmula fue modificada.
+- `Controlador/Controlador.py` (`obtener_coeficientes_materiales`): se
+  agregó una verificación de `None` para `materiales_dos` (mismo
+  patrón ya usado en `obtener_lista_materiales`), evitando un
+  `AttributeError` no controlado si la carga del Excel de coeficientes
+  falla. Verificado: el camino feliz (Excel cargado) produce
+  exactamente los mismos resultados que antes; el camino de fallo
+  simulado (`materiales_dos = None`) ahora degrada a `{}` en vez de
+  lanzar una excepción sin manejar. No se cambiaron coeficientes ni la
+  fuente de datos (Excel).
+
+### Verificación
+
+- Smoke test de imports de todos los módulos de `Vista`, `Controlador`,
+  `Modelo`, `Datos`: sin errores.
+- Arranque de `Vista/main.py`: sin excepciones, ventana creada
+  correctamente.
+
 ## 2026-09-12 — Entorno reproducible en Linux/SteamOS
 
 ### Confirmado

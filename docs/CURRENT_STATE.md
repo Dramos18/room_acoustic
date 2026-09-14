@@ -59,9 +59,9 @@ debe auditarse antes de eliminarla.
 3.  `prueba.py` usa PyQt5 y referencia `Recursos.MainWindow`, mientras
     la aplicación principal utiliza PySide6; debe tratarse como archivo
     legacy/de prueba hasta validarlo.
-4.  `Modelo/calculoRT2.py` contiene una construcción `ValueError(...)`
+4.  ~~`Modelo/calculoRT2.py` contiene una construcción `ValueError(...)`
     sin `raise` en la validación del área de objetos adheridos; requiere
-    revisión.
+    revisión.~~ **Corregido 2026-09-13** (ver `docs/CHANGELOG.md`).
 5.  Existen varios `print()` de diagnóstico en lógica de aplicación;
     deben limpiarse gradualmente sin ocultar errores.
 6.  Debe verificarse la gestión de rutas de recursos para ejecución
