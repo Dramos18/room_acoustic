@@ -144,15 +144,24 @@ QComboBox:focus {
     border: 1px solid #00AEEF;
     background: rgba(255, 255, 255, 0.4);
 }
+QComboBox::drop-down {
+    border: none;
+    width: 20px;
+}
+QComboBox::down-arrow {
+    image: url(../Recursos/iconos/angulo-abajo.png);
+    width: 10px;
+    height: 10px;
+}
 
 /* Lista desplegable */
 QComboBox QAbstractItemView {
-    background-color: rgba(255, 255, 255);
-    background: withe;
-    color: rgba(255, 255, 255);
-    selection-background-color: #f0f0f0;
-    selection-color: black;
-    border: 1px solid #ccc;
+    background-color: #001a4d;
+    color: white;
+    selection-background-color: rgba(126,200,247,0.30);
+    selection-color: white;
+    border: 1px solid rgba(255,255,255,0.25);
+    border-radius: 5px;
 }
 
 /* Scroll */

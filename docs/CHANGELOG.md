@@ -1,5 +1,96 @@
 # Changelog
 
+## 2026-09-14 — UI/UX: responsividad + auditoría profunda de checkbox/ComboBox/navegación
+
+Dos fases de trabajo sobre `Vista/`, aprobadas por bloques pequeños y
+verificadas tras cada uno (ver `docs/UI_INVENTORY.md` para el inventario
+de `.ui` activos/huérfanos que sirvió de base). No se tocó ninguna
+fórmula, cálculo, dato de las 23 aulas, ni la arquitectura MVC+S. No se
+modificó ningún `.ui` directamente: todos los ajustes se aplicaron por
+código en el controlador correspondiente (`setStyleSheet`/`setIconSize`/
+`sizePolicy`/`setAlignment` tras `setupUi`), porque regenerar los `.ui`
+con el `pyside6-uic` de este entorno (6.11.2) frente a la versión con la
+que fueron generados originalmente (6.5.2) introduce ~28 líneas de ruido
+de versión por archivo no relacionado con el cambio real. Queda
+`POR VALIDAR` si en el futuro se prefiere absorber ese ruido y editar
+los `.ui` directamente en una máquina con Qt Designer funcional.
+
+### Fase 1 — Responsividad (T-UI-01 a T-UI-08)
+
+- Creado `Recursos/estilos/paleta.py`: centraliza colores que estaban
+  repetidos como literales (acento `#7ec8f7`, institucionales
+  `AZUL_UA`/`NARANJA_UA`, paleta categórica de superficies de Base de
+  Datos). `Vista/ventInfoBD.py` pasa a usar estas constantes;
+  verificado que los valores resultantes son idénticos a los
+  anteriores.
+- `Vista/ventGraficaRT.py`: el gráfico de RT ya no se escala a una
+  altura fija de 450px; ahora crece con la ventana conservando su
+  relación de aspecto (`QSizePolicy.Expanding` + `eventFilter` sobre el
+  `QLabel` + stretch factors). La tabla de resultados conserva su
+  tamaño fijo a propósito. Se agregó icono a "Ir al Inicio".
+- `Vista/ventInfoBD.py`: el contenedor de cards con scroll reclama el
+  espacio vertical disponible (stretch factors); se corrigió la ruta
+  rota del GIF de transición (`Recursos/gifs/ondas.gif`); icono
+  agregado a "Ir al Inicio".
+- `Vista/ventInteligibilidad.py`: icono agregado a "Ir al Inicio".
+
+### Fase 2 — Auditoría profunda de UX (bloques UX-B1 a UX-B5)
+
+- **Checkbox** (`Vista/ventTiempoReverberacion.py`): los 6 checkboxes de
+  superficie + "Incluir inteligibilidad" solo cambiaban de tinte al
+  marcarse (sin glifo de check), a diferencia de "Objetos adicionales"
+  que sí mostraba un ✓. Unificados con el mismo icono
+  (`Recursos/iconos/controlar.png`) para los 7.
+- **ComboBox — flecha** (nuevo): ningún ComboBox de la app mostraba una
+  flecha de despliegue propia (solo la nativa de plataforma). Se creó
+  `Recursos/iconos/angulo-abajo.png` (y `angulo-arriba.png` para los
+  `QSpinBox`/`QDoubleSpinBox`), derivados rotando el `angulo-derecho.png`
+  ya existente — mismo trazo, sin recurso arbitrario. Aplicado en
+  `tiempoReverberacionUI` (ComboBox principal + `QDoubleSpinBox` de
+  inteligibilidad, a pedido explícito), `infoBD` (ComboBox de aula) y
+  `estiloObjeto` (ComboBox de cada fila de objeto).
+- **ComboBox — popup ilegible** (`Recursos/estilos/estilo.py`,
+  `estiloObjeto`): el desplegable de materiales por objeto tenía CSS
+  inválido (`rgba(255,255,255)` sin alfa, typo `background: withe`), que
+  Qt no podía interpretar (confirmado por el warning
+  `QCssParser::parseColorValue` reproducido en ejecución). Corregido al
+  mismo esquema oscuro (`#001a4d` + texto blanco) que ya usa el resto de
+  la app.
+- **Alineación de Inicio** (`Vista/main.py`): el texto "Selecciona una
+  opción para comenzar" y los botones "Iniciar Análisis"/"Ayuda" no
+  compartían el mismo eje de centrado (120px de diferencia medidos en
+  1920×1080). Corregido alineando los tres al centro de la columna;
+  verificado en 1920×1080, 1366×768, 800×600 y 500×400 (diferencia final
+  ≤17px en todos los casos).
+- **Botón "Atrás"** (`Vista/ventInteligibilidad.py`,
+  `Vista/ventGraficaRT.py`): tamaño unificado a 42×42 / icono 22×22 en
+  toda la app (antes 45×45 con icono 22×22 o 30×30 según pantalla); se
+  corrigió además que Gráfica RT tenía un `border-radius` que lo hacía
+  ver menos circular que el resto.
+- **Botón "Iniciar Análisis"** (`Vista/ventInfoBD.py`,
+  `Vista/ventInteligibilidad.py`, `Vista/ventTiempoReverberacion.py`):
+  ancho renderizado unificado a 224×34px exacto en las tres pantallas
+  (fijar solo `min-width`/`max-width` no bastaba porque el `padding`
+  propio de cada pantalla se sumaba de forma distinta; se fijó `padding`
+  junto con el ancho). Se agregó un estado `:pressed` con el acento azul
+  propio del botón (antes caía al `:pressed` genérico blanco/oscuro de
+  la barra inferior) y `:disabled` donde faltaba.
+- **Tipografía**: creado `Recursos/estilos/tipografia.py` (tamaños con
+  nombre `TITULO`/`SUBTITULO`/`CUERPO`/`AUXILIAR`, sin aplicación
+  masiva). Aplicado solo en dos puntos concretos: el texto introductorio
+  de Inicio (9pt → 11pt) y las etiquetas "Objetos adheridos" de Base de
+  Datos (8pt → 9pt, para igualarlas con el resto de etiquetas
+  secundarias de esa misma pantalla).
+
+### Verificación (ambas fases)
+
+Tras cada bloque: imports completos de todos los módulos sin error,
+arranque real de la aplicación maximizada sin excepciones, comprobación
+en múltiples tamaños de ventana (1920×1080, 1366×768, 800×600, 500×400
+según el caso), y verificación de que `sabine_rt`, `eyring_rt`,
+`%ALCONS` y el total de 23 salones no cambiaron respecto a los valores
+de referencia de sesiones anteriores.
+
 ## 2026-09-13 — Correcciones puntuales (mejoras #1-#3 del ranking de auditoría)
 
 ### Corregido

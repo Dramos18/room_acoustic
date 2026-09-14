@@ -7,6 +7,7 @@ from Vista.archivos_pyGenerados.iniciarAnalisis import Ui_ventanaIniciarAnalisis
 from Vista.ventanaBarraTitulo import VentanaConBarra
 from Vista.archivos_pyGenerados.ventanaPrincipal import Ui_formVentanaPrincipal
 from Vista.ventIniciarAnalisis import VentanaIniciarAnalisis
+from Recursos.estilos import tipografia
 
 
 class VentanaPrincipal(VentanaConBarra):
@@ -20,6 +21,25 @@ class VentanaPrincipal(VentanaConBarra):
         super().__init__(contenido)
 
         self.resize(900, 600)
+
+        # ── Alineación de la columna de acciones ────────────────────────────────
+        # "Selecciona una opción para comenzar" es un QLabel que antes se
+        # estiraba para llenar todo el ancho de la columna (con su texto
+        # centrado dentro de ese ancho completo), mientras que
+        # botonIniciar/botonAyuda, al tener un ancho máximo fijo, quedaban
+        # pegados al borde izquierdo de esa misma columna. Alineando los
+        # tres al centro de la columna quedan sobre el mismo eje vertical.
+        self.ui.verticalLayout_botones.setAlignment(self.ui.labelAcciones, Qt.AlignHCenter)
+        self.ui.verticalLayout_botones.setAlignment(self.ui.botonIniciar, Qt.AlignHCenter)
+        self.ui.verticalLayout_botones.setAlignment(self.ui.botonAyuda, Qt.AlignHCenter)
+
+        # "Selecciona una opción para comenzar" estaba en 9pt, competía
+        # mal contra el título de arriba (28pt) para ser texto de
+        # orientación, no decorativo. Se sube a CUERPO (11pt) sin tocar
+        # el texto, el color ni la alineación.
+        self.ui.labelAcciones.setText(
+            self.ui.labelAcciones.text().replace("font-size:9pt", f"font-size:{tipografia.CUERPO}pt")
+        )
 
         # ── GIF principal ──────────────────────────────────────────────────────
         self.movie = QMovie("../Recursos/gifs/logoMainGIF.gif")

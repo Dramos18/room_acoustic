@@ -10,21 +10,23 @@ from Vista.ventGraficaRT import VentanaGraficaRT
 from Vista.ventTransicion import VentanaTransicion
 from Vista.archivos_pyGenerados.infoBD import Ui_Form
 from Recursos.estilos.estilo import estiloWarning
+from Recursos.estilos import paleta, tipografia
 from Datos.salones import salones
 
 
 # ─────────────────────────────────────────────────────────────
 #  PALETA DE COLORES — consistente con el resto del proyecto
+#  (valores centralizados en Recursos/estilos/paleta.py)
 # ─────────────────────────────────────────────────────────────
 _COLORES_SUPERFICIE = {
-    "frontal":    ("rgba(126,200,247,0.18)", "rgba(126,200,247,0.55)"),   # azul claro
-    "trasera":    ("rgba(167,139,250,0.18)", "rgba(167,139,250,0.55)"),   # violeta
-    "izquierda":  ("rgba(52,211,153,0.18)",  "rgba(52,211,153,0.55)"),    # verde menta
-    "derecha":    ("rgba(251,191,36,0.15)",  "rgba(251,191,36,0.55)"),    # amarillo
-    "piso":       ("rgba(251,146,60,0.15)",  "rgba(251,146,60,0.55)"),    # naranja
-    "techo":      ("rgba(248,113,113,0.15)", "rgba(248,113,113,0.55)"),   # rojo suave
+    "frontal":    paleta.COLOR_SUPERFICIE_FRONTAL,     # azul claro (= ACENTO)
+    "trasera":    paleta.COLOR_SUPERFICIE_TRASERA,     # violeta
+    "izquierda":  paleta.COLOR_SUPERFICIE_IZQUIERDA,   # verde menta
+    "derecha":    paleta.COLOR_SUPERFICIE_DERECHA,     # amarillo
+    "piso":       paleta.COLOR_SUPERFICIE_PISO,        # naranja
+    "techo":      paleta.COLOR_SUPERFICIE_TECHO,       # rojo suave
 }
-_COLOR_ADICIONALES = ("rgba(255,255,255,0.09)", "rgba(255,255,255,0.40)")
+_COLOR_ADICIONALES = paleta.COLOR_OBJETOS_ADICIONALES
 
 _ICONOS_SUPERFICIE = {
     "frontal":   "▣",
@@ -167,11 +169,14 @@ def _card_superficie(nombre_superficie: str, datos: dict) -> QFrame:
         hlo_enc = QHBoxLayout(encab_obj)
         hlo_enc.setContentsMargins(2, 0, 2, 0)
         hlo_enc.setSpacing(6)
+        # Antes en 8pt, un punto por debajo del resto de etiquetas
+        # secundarias de esta misma pantalla (9pt) sin una razón
+        # funcional — se unifica al mismo nivel "auxiliar".
         hlo_enc.addWidget(
-            _label("Objetos adheridos", size_pt=8, color="rgba(255,255,255,0.45)")
+            _label("Objetos adheridos", size_pt=tipografia.AUXILIAR, color="rgba(255,255,255,0.45)")
         )
         hlo_enc.addWidget(
-            _label(f"{len(objetos)}", size_pt=8, bold=True, color=acento)
+            _label(f"{len(objetos)}", size_pt=tipografia.AUXILIAR, bold=True, color=acento)
         )
         hlo_enc.addStretch()
         layout.addWidget(encab_obj)
@@ -259,9 +264,52 @@ class VentanaInfoBaseDatos(QWidget):
 
         self.ui.botonAtras.setIcon(QIcon("../Recursos/iconos/angulo-izquierdo.png"))
 
+        # Flecha del ComboBox de selección de aula: antes usaba la flecha
+        # nativa sin estilizar. Se agrega sobre el stylesheet ya cargado
+        # en frame_3 (que es quien define el estilo del ComboBox aquí),
+        # sin reemplazarlo.
+        self.ui.frame_3.setStyleSheet(self.ui.frame_3.styleSheet() + """
+            QComboBox::down-arrow {
+                image: url(../Recursos/iconos/angulo-abajo.png);
+                width: 10px;
+                height: 10px;
+            }
+        """)
+
+        # ── Distribución responsiva: el scroll de cards aprovecha el
+        # espacio vertical disponible; el combo/mini-cards/encabezado
+        # se mantienen a su tamaño natural. QScrollArea sigue siendo
+        # quien resuelve el caso de ventana pequeña (con scroll).
+        self.ui.frameMedium.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
+        self.ui.frame_2.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
+        self.ui.scrollMateriales.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
+        self.ui.verticalLayout_3.setStretchFactor(self.ui.frameMedium, 1)
+        self.ui.verticalLayout_4.setStretchFactor(self.ui.scrollMateriales, 1)
 
         # Preparar el layout interno del QScrollArea de cards
         self._init_scroll_materiales()
+
+        # Botón principal "Iniciar Análisis": mismo ancho renderizado que
+        # en Tiempo de Reverberación (el padding propio de cada pantalla
+        # se suma al min-width, así que hay que fijar ambos juntos para
+        # que el resultado final coincida — con setMinimumWidth/
+        # setMaximumWidth por Python no alcanzaba, el padding heredado
+        # de QPushButton en esta pantalla lo desbordaba), y un :pressed
+        # con el mismo acento azul del propio botón (antes caía al
+        # :pressed genérico blanco/oscuro de frameBottom).
+        self.ui.frameBottom.setStyleSheet(
+            self.ui.frameBottom.styleSheet() + """
+            QPushButton#botonIniciarAnalisis {
+                padding: 8px 20px;
+                min-width: 180px;
+                max-width: 210px;
+            }
+            QPushButton#botonIniciarAnalisis:pressed {
+                background-color: rgba(126,200,247,0.55);
+                color: white;
+            }
+            """
+        )
 
         # Conectar ComboBox
         self.cargar_salones(self.ui.comboBox, self.salones)
@@ -389,7 +437,7 @@ class VentanaInfoBaseDatos(QWidget):
         selected_index = self.ui.comboBox.currentIndex()
         if selected_index != 0:
             transicion = VentanaTransicion(
-                "Recursos/estilos/iconos/ondas.gif",
+                "../Recursos/gifs/ondas.gif",
                 duracion_ms=2000,
                 parent=self,
             )

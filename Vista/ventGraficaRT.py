@@ -1,7 +1,7 @@
 #import QBuffer
-from PySide6.QtCore import QBuffer
+from PySide6.QtCore import QBuffer, QSize, QEvent
 from PySide6.QtGui import QPixmap, Qt, QIcon
-from PySide6.QtWidgets import QWidget, QTableWidgetItem
+from PySide6.QtWidgets import QWidget, QTableWidgetItem, QSizePolicy
 from Datos.utils.reportePDF import ReportePDF
 from Vista.archivos_pyGenerados.vistaGraficaRT import Ui_formGraficoRT
 
@@ -15,12 +15,51 @@ class VentanaGraficaRT(QWidget):
         super().__init__(parent)
         self.ui = Ui_formGraficoRT()
         self.ui.setupUi(self)
+        self._pixmap_grafica_original = None
 
         self.indice_anterior = indice_anterior
         self.resultados = resultados
         self.stacked_widget = stacked_widget
 
+        # ── Distribución responsiva: gráfico | tabla+resumen ──────────
+        # El gráfico es el panel protagonista de esta pantalla: se le da
+        # sizePolicy Expanding y más peso de stretch para que aproveche
+        # el espacio disponible al maximizar. La tabla conserva su
+        # tamaño fijo actual (ver llenar_tabla_resultados) para no
+        # convertirse en un bloque gigante.
+        self.ui.frameGrafica.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
+        self.ui.grafica.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
+        self.ui.grafica.setMinimumSize(200, 150)
+        self.ui.frame_2.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
+        self.ui.horizontalLayout.setStretchFactor(self.ui.frameGrafica, 3)
+        self.ui.horizontalLayout.setStretchFactor(self.ui.frame_2, 2)
+
+        self.ui.frameMedium.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
+        self.ui.verticalLayout_2.setStretchFactor(self.ui.frameMedium, 1)
+
+        # El tamaño real de self.ui.grafica solo queda definitivo después
+        # de que el layout (anidado dentro del QScrollArea) termina de
+        # recalcularse; escuchamos el resizeEvent del propio QLabel en
+        # vez del de la ventana para reescalar siempre con el tamaño final.
+        self.ui.grafica.installEventFilter(self)
+
         self.ui.botonAtras.setIcon(QIcon("../Recursos/iconos/angulo-izquierdo.png"))
+
+        # Tamaño estándar de "Atrás" en toda la app: 42×42 / icono 22×22
+        # (esta pantalla usaba 45×45 con icono 30×30, y su border-radius
+        # de 20px la hacía ver menos circular que el resto). Se unifica
+        # con Base de Datos, Iniciar Análisis y Tiempo de Reverberación.
+        self.ui.botonAtras.setMinimumSize(QSize(42, 42))
+        self.ui.botonAtras.setMaximumSize(QSize(42, 42))
+        self.ui.botonAtras.setIconSize(QSize(22, 22))
+        self.ui.botonAtras.setStyleSheet(
+            self.ui.botonAtras.styleSheet() + "QPushButton { border-radius: 21px; }"
+        )
+
+        # Mismo lenguaje visual que "Atrás" (icono + tamaño), para que
+        # "Ir al Inicio" no sea el único botón de navegación sin icono.
+        self.ui.botonGoHome.setIcon(QIcon("../Recursos/iconos/angulo-izquierdo.png"))
+        self.ui.botonGoHome.setIconSize(QSize(22, 22))
 
         self.ui.verticalLayout_11.setAlignment(Qt.AlignCenter)
         self.ui.verticalLayout_11.setContentsMargins(10, 10, 10, 10)
@@ -93,18 +132,38 @@ class VentanaGraficaRT(QWidget):
         pixmap = QPixmap()
         pixmap.loadFromData(buffer_qt.data())
 
-        # Definir tamaño deseado (puedes cambiar el alto o el ancho según prefieras)
-        alto_deseado = 450
-        ancho_escala = int(pixmap.width() * (alto_deseado / pixmap.height()))
-
-        # Escalar manteniendo proporción
-        pixmap_escalado = pixmap.scaled(
-            ancho_escala, alto_deseado, Qt.KeepAspectRatio, Qt.SmoothTransformation
-        )
-
-        self.ui.grafica.setPixmap(pixmap_escalado)
         self.ui.grafica.setAlignment(Qt.AlignCenter)
         self.ui.grafica.setScaledContents(False)
+
+        # Guardamos el pixmap original (sin escalar) para poder
+        # reescalarlo cada vez que cambie el tamaño real disponible,
+        # en vez de fijarlo a una altura constante.
+        self._pixmap_grafica_original = pixmap
+        self._actualizar_pixmap_grafica()
+
+    def _actualizar_pixmap_grafica(self):
+        """
+        Reescala la gráfica ya generada al tamaño real disponible del
+        QLabel, conservando su relación de aspecto (sin deformarla).
+        Se llama al mostrar la gráfica y cada vez que el QLabel cambia
+        de tamaño (ver eventFilter).
+        """
+        if self._pixmap_grafica_original is None:
+            return
+
+        tamano_disponible = self.ui.grafica.size()
+        if tamano_disponible.width() <= 0 or tamano_disponible.height() <= 0:
+            return
+
+        pixmap_escalado = self._pixmap_grafica_original.scaled(
+            tamano_disponible, Qt.KeepAspectRatio, Qt.SmoothTransformation
+        )
+        self.ui.grafica.setPixmap(pixmap_escalado)
+
+    def eventFilter(self, obj, event):
+        if obj is self.ui.grafica and event.type() == QEvent.Resize:
+            self._actualizar_pixmap_grafica()
+        return super().eventFilter(obj, event)
 
     def llenar_tabla_resultados(self):
         """

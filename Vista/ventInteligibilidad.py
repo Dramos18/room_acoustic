@@ -1,4 +1,5 @@
 
+from PySide6.QtCore import QSize
 from PySide6.QtGui import QIcon
 from PySide6.QtWidgets import QWidget, QMessageBox, QFileDialog
 import os
@@ -26,6 +27,48 @@ class VentanaInteligibiliad(QWidget):
         self.stacked_widget = stacked_widget
 
         self.ui.botonAtras.setIcon(QIcon("../Recursos/iconos/angulo-izquierdo.png"))
+
+        # Tamaño estándar de "Atrás" en toda la app: 42×42 / icono 22×22
+        # (esta pantalla y Gráfica RT usaban 45×45; se unifican al tamaño
+        # que ya usan Base de Datos, Iniciar Análisis y Tiempo de
+        # Reverberación). Se agrega un border-radius de 21px sobre el
+        # estilo propio del botón para conservarlo perfectamente circular.
+        self.ui.botonAtras.setMinimumSize(QSize(42, 42))
+        self.ui.botonAtras.setMaximumSize(QSize(42, 42))
+        self.ui.botonAtras.setIconSize(QSize(22, 22))
+        self.ui.botonAtras.setStyleSheet(
+            self.ui.botonAtras.styleSheet() + "QPushButton { border-radius: 21px; }"
+        )
+
+        # Mismo lenguaje visual que "Atrás" (icono + tamaño), para que
+        # "Ir al Inicio" no sea el único botón de navegación sin icono.
+        self.ui.botonGoHome.setIcon(QIcon("../Recursos/iconos/angulo-izquierdo.png"))
+        self.ui.botonGoHome.setIconSize(QSize(22, 22))
+
+        # Botón principal "Iniciar Análisis": esta pantalla no tenía
+        # ancho mínimo/máximo (tamaño libre según el texto) ni estados
+        # :pressed/:disabled propios, a diferencia de Base de Datos y
+        # Tiempo de Reverberación. Se fija el mismo padding+min/max-width
+        # que las otras dos (declararlos juntos es necesario para que el
+        # ancho renderizado final coincida).
+        self.ui.frame_bottom.setStyleSheet(
+            self.ui.frame_bottom.styleSheet() + """
+            QPushButton#botonIniciarAnalisis {
+                padding: 8px 20px;
+                min-width: 180px;
+                max-width: 210px;
+            }
+            QPushButton#botonIniciarAnalisis:pressed {
+                background-color: rgba(126,200,247,0.55);
+                color: white;
+            }
+            QPushButton#botonIniciarAnalisis:disabled {
+                background-color: rgba(255,255,255,0.05);
+                border-color: rgba(255,255,255,0.18);
+                color: rgba(255,255,255,0.30);
+            }
+            """
+        )
 
         self.setup_events()
 

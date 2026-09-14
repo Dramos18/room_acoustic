@@ -42,7 +42,65 @@ class VentanaTiempoReverberacion(QWidget):
         # Iconos
         self.ui.botonAtras.setIcon(QIcon("../Recursos/iconos/angulo-izquierdo.png"))
         ruta_check = "../Recursos/iconos/controlar.png"
+        ruta_flecha_combobox = "../Recursos/iconos/angulo-abajo.png"
+        ruta_flecha_arriba = "../Recursos/iconos/angulo-arriba.png"
+        ruta_flecha_abajo = "../Recursos/iconos/angulo-abajo.png"
 
+        # Checkmark consistente para TODOS los checkboxes de esta pantalla
+        # (antes solo "checkObjAdicional" mostraba el ✓; los otros 6 de
+        # superficie + "checkInteligibilidadOpcion" solo cambiaban de tinte).
+        # Se agrega sobre el stylesheet ya cargado desde el .ui, sin
+        # reemplazarlo. Aprovechamos el mismo bloque para la flecha del
+        # ComboBox y para las flechas de los QDoubleSpinBox de
+        # inteligibilidad (distanciaRyE, coeficienteMedio), que hasta
+        # ahora no mostraban ninguna flecha visible.
+        self.setStyleSheet(self.styleSheet() + f"""
+            QCheckBox::indicator:checked {{
+                image: url({ruta_check});
+            }}
+            QComboBox::down-arrow {{
+                image: url({ruta_flecha_combobox});
+                width: 10px;
+                height: 10px;
+            }}
+            QDoubleSpinBox::up-button, QSpinBox::up-button {{
+                subcontrol-origin: border;
+                subcontrol-position: top right;
+                width: 16px;
+                border: none;
+                background: transparent;
+            }}
+            QDoubleSpinBox::down-button, QSpinBox::down-button {{
+                subcontrol-origin: border;
+                subcontrol-position: bottom right;
+                width: 16px;
+                border: none;
+                background: transparent;
+            }}
+            QDoubleSpinBox::up-arrow, QSpinBox::up-arrow {{
+                image: url({ruta_flecha_arriba});
+                width: 8px;
+                height: 8px;
+            }}
+            QDoubleSpinBox::down-arrow, QSpinBox::down-arrow {{
+                image: url({ruta_flecha_abajo});
+                width: 8px;
+                height: 8px;
+            }}
+        """)
+
+        # Botón principal "Iniciar Análisis": ya tenía ancho mín/máx y
+        # :pressed propios; solo le faltaba :disabled, que Base de Datos
+        # e Inteligibilidad ya tienen.
+        self.ui.frBottom3.setStyleSheet(
+            self.ui.frBottom3.styleSheet() + """
+            QPushButton#botonIniciarAnalisis:disabled {
+                background-color: rgba(255,255,255,0.05);
+                border-color: rgba(255,255,255,0.18);
+                color: rgba(255,255,255,0.30);
+            }
+            """
+        )
 
         self.ui.checkObjAdicional.setStyleSheet(f"""
             QCheckBox {{
