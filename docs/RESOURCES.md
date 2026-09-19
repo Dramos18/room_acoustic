@@ -62,8 +62,8 @@ huérfanos ni código muerto).
 | `quitar.png` | Signo menos | Botón "−" de filas de objetos | En uso |
 | `ondas-de-audio.png` | Forma de onda | Tarjeta del Módulo 1 en "Iniciar análisis"; encabezado "Tiempo de Reverberación" en resultados | En uso |
 | `terapia-musical.png` | Oído + altavoz | Tarjeta del Módulo 2 en "Iniciar análisis"; encabezado "Inteligibilidad del Habla" en resultados | En uso |
-| `logoBN.png` | Logo Universidad del Atlántico (blanco y negro) | Barra de título; tarjeta del Módulo 3 en "Iniciar análisis" | En uso |
-| `isotipoUA.png` | Isotipo UA en color | Marca de agua y encabezado de los reportes PDF | En uso |
+| `logoBN.png` | Logo Universidad del Atlántico (blanco y negro) | Barra de título; tarjeta del Módulo 3 en "Iniciar análisis"; encabezado de los reportes PDF | En uso |
+| `isotipoUA.png` | Isotipo UA en color | Solo `_marca_agua` de `reportePDF.py` (función conservada, **sin uso** desde 2026-09-19); no borrar | Sin uso |
 | `backIcon.png` | Chevron `<` (más grueso, 256 px) | — | Sin uso; parecido a `angulo-izquierdo`, no idéntico |
 | `flecha-correcta.png` | Chevron `>` | — | Sin uso; parecido a `angulo-derecho`, no idéntico |
 | `frecuencia-de-sonido.png` | Barras de frecuencia | — | Sin uso |

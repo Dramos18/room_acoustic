@@ -73,6 +73,21 @@ usan la plataforma `offscreen`, sin abrir ventanas):
 7. **Regresión visual del formulario**: comparar píxel a píxel la captura del
    formulario antes y después (`PIL.ImageChops.difference`).
 
+8. **Reportes PDF** (`docs/REPORTS.md`; `MPLBACKEND=Agg`, `QT_QPA_PLATFORM=offscreen`,
+   `QFileDialog.getSaveFileName` y `QMessageBox.exec` simulados): generar (a) RT sin
+   IH (3 páginas), (b) RT con IH (4), (c) solo IH (1), (d) salón de la BD con
+   `Tipo`/`aulas`, (e) contenido largo (materiales largos, 4 objetos adheridos
+   por superficie, 25 objetos adicionales, `Tipo` largo) y (f) los 23 salones.
+   Con un `Canvas` instrumentado comprobar: páginas esperadas, todo el contenido
+   dentro de los márgenes laterales y sobre el pie, sin solapes de texto ni en
+   el encabezado, y sin `...` en contenido. Comprobar que los números del PDF
+   (tabla RT, Tr MID, %ALCONS, clasificación) coinciden con `calcular_resultados`
+   y que `_nivel_alcons` coincide con `AlconsCalculator.evaluar_alcons` en un
+   barrido (límites 1.4, 5, 11.4, 24.4 y 47 incluidos). Rasterizar con
+   `QtPdf` (`QPdfDocument.render`) y revisar; en esta máquina requiere
+   `libgssapi_krb5.so.2` (ver `docs/DEPENDENCIES.md`), usada solo vía
+   `LD_LIBRARY_PATH` para el análisis.
+
 Limitaciones: mover/redimensionar la ventana y el diálogo de guardado real
 solo pueden validarse de forma interactiva en el equipo del usuario.
 

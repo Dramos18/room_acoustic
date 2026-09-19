@@ -36,6 +36,10 @@ Debe contener los 23 tipos de salón definidos por el proyecto.
 
 Debe permitir generar resultados en PDF.
 
+Los reportes comparten un mismo sistema visual (encabezado con logo, pie con
+paginación, tablas, escala de %ALCONS de 6 niveles idéntica a la del modelo,
+sin truncar textos ni invadir márgenes). Detalle en `docs/REPORTS.md`.
+
 ### RF-08 — Visualización
 
 Debe permitir visualizar resultados acústicos de forma comprensible y

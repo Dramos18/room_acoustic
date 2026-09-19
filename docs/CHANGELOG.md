@@ -1,5 +1,45 @@
 # Changelog
 
+## 2026-09-19 — UX-07: estandarización visual de los reportes PDF
+
+Solo `Datos/utils/reportePDF.py` (más documentación). Sin cambios en fórmulas,
+RT60/Sabine/Eyring/%ALCONS/Peutz, resultados, estructuras de datos, nombres
+públicos, firmas, flujo de guardado ni número de páginas de los casos normales
+(3, 4 y 1). Sistema descrito en `docs/REPORTS.md`; decisión D-018.
+
+- **Encabezado único** `_header` (logo blanco `logoBN.png` a la izquierda,
+  título, subtítulo y fecha en líneas separadas): el logo ya no se superpone a
+  la fecha (antes x 504–536 sobre x 427–540). Sirve a RT, Inteligibilidad y
+  variantes futuras.
+- **Marca de agua retirada** del flujo; `_marca_agua` se conserva documentada
+  y sin uso.
+- **%ALCONS de 6 niveles** (Excelente/Buena/Regular/Pobre/Mala/Crítico) con
+  los límites de `docs/ACOUSTIC_MODEL.md` §5; antes la barra tenía 5 niveles
+  hasta 20 %. `_bloque_alcons` compartido por el reporte independiente y la
+  página 4 del RT. Se añadió el color del 6.º nivel (Crítico).
+- **Ancho útil común (468 pt)** para tablas, tarjetas y filetes (antes
+  490/440/468/480/546); tipografía, márgenes y espaciados en constantes.
+- **Tablas**: columnas proporcionales, texto ajustado con `simpleSplit` (antes
+  truncado a 28/22 caracteres), paginación con encabezado repetido (antes 25
+  filas invadían el pie), filas de referencia 500/1000/2000 Hz resaltadas
+  completas.
+- **Identificación del aula** (`Tipo`, `aulas`) en la ficha y el subtítulo solo
+  si existen en los datos.
+- **Ortografía**: tildes y signos en los textos propios; unidades (m, m², m³,
+  s, %) y decimales uniformes (solo al imprimir).
+- **Conclusión**: caja con relleno uniforme y alto calculado (antes el texto
+  quedaba a ~4 pt del borde inferior).
+- **Semáforo** con ✓/✗ dibujados con trazos de ReportLab (sin emojis).
+- `Recursos/estilos/paleta.py`: los colores institucionales del PDF se
+  derivan de ahí.
+- **Cambios de texto a revisar**: "≤ 0.8 s" pasó a "menor o igual a 0.8 s"
+  (Helvetica estándar no tiene `≤`); el %ALCONS "Crítico" ahora tiene su propio
+  color. Los parámetros del cálculo se imprimen con unidad.
+- Pruebas (`docs/TESTING.md`, punto 8): 23 salones y casos de contenido largo
+  sin desbordes ni solapes; números del PDF idénticos al modelo; escala
+  idéntica a `evaluar_alcons` en 288 valores; revisión visual rasterizada.
+- No incluido a propósito: feedback al guardar (D-017).
+
 ## 2026-09-18 — Módulo 1 (Tiempo de Reverberación): pantalla de resultados y flujo de guardado
 
 Cierre visual del recorrido Inicio → Formulario RT → Resultados → Guardar

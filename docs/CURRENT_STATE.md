@@ -108,3 +108,11 @@ modificar inmediatamente el código.
 - Sigue sin existir carpeta `tests/`; la verificación de UI es un
   procedimiento manual reproducible (`docs/TESTING.md`).
 
+## Actualización 2026-09-19 — Reportes PDF (UX-07)
+
+- Reportes RT (3/4 páginas) e Inteligibilidad (1 página) estandarizados:
+  encabezado único con logo blanco, sin marca de agua, ortografía corregida,
+  escala de %ALCONS de 6 niveles igual a la del modelo, tablas con ajuste de
+  texto y paginación. Ver `docs/REPORTS.md`.
+- Sin cambios en modelo, datos ni firmas. Feedback al guardar (D-017) sigue
+  pendiente. Revisión visual de los PDF por el equipo: POR VALIDAR.

@@ -141,3 +141,14 @@ aprobar el cambio de firma de esa función.
 
 **Estado:** Propuesta pendiente de aprobación.
 
+## D-018 — Sistema visual único para los reportes PDF
+
+Todos los reportes usan un mismo encabezado (`_header`, logo blanco `logoBN.png`,
+título, subtítulo y fecha en líneas separadas), pie, jerarquía de títulos, ancho
+útil de 468 pt, tablas sin truncar por caracteres y bloque `_bloque_alcons`
+compartido. Se retira la marca de agua del flujo (la función se conserva sin
+uso). La escala de %ALCONS del PDF tiene 6 niveles idénticos a
+`AlconsCalculator.evaluar_alcons`. Solo presentación: sin cambios en fórmulas,
+resultados, estructuras de datos ni firmas. Detalle en `docs/REPORTS.md`.
+
+**Estado:** Implementada; pendiente de revisión visual del equipo.

@@ -39,6 +39,11 @@ una conversación anterior.
 
 ## Próximos pasos (actualizado 2026-09-18)
 
+**Reportes PDF (UX-07, 2026-09-19):** estandarizados en
+`Datos/utils/reportePDF.py`; ver `docs/REPORTS.md` antes de tocarlos.
+Pendiente de revisión visual del equipo (sin commit al cierre de esta
+sesión).
+
 Orden acordado: primero cerrar cada módulo, tomando el Módulo 1 como
 referencia visual.
 
