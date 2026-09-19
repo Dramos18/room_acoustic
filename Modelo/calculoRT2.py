@@ -457,8 +457,13 @@ def graficar_rt60(rt60, rt60_eyring, nombre=None):
 
     plt.grid(axis="both", color="gray", linestyle="--", linewidth=0.5, alpha=0.7)
 
+    # Línea de referencia de 0.8 s (BB93). Se rotula para que aparezca en la
+    # leyenda: antes era una línea roja sin explicación.
+    plt.axhline(y=0.8, color="red", linewidth=0.8, linestyle="--", alpha=0.8,
+                label="Límite 0.8 s (BB93)")
+
     # Leyenda
-    plt.legend(fontsize=12, loc="upper right", title="Modelos", title_fontsize=13)
+    plt.legend(fontsize=12, loc="upper right")
 
     # Anotaciones "Infinito" para casos relevantes
     for i, freq in enumerate(frecuencias):
@@ -470,16 +475,18 @@ def graficar_rt60(rt60, rt60_eyring, nombre=None):
                          xytext=(10, 5), color="#58B3FF", fontsize=12, fontweight="bold")
 
     # Línea base y ajustes finales
-    plt.axhline(y=0, color="black", linewidth=0.8, linestyle="--", alpha=0.8)
-    plt.axhline(y=0.8, color="red", linewidth=0.8, linestyle="--", alpha=0.8)# Línea base (0)
+    plt.axhline(y=0, color="black", linewidth=0.8, linestyle="--", alpha=0.8)  # Línea base (0)
     plt.tight_layout()  # Ajuste automático de los márgenes
 
-    # Guardar el gráfico en un objeto BytesIO
+    # Guardar el gráfico en un objeto BytesIO. 150 dpi (antes 100) para que
+    # no se vea borroso al ampliarse en pantallas grandes.
     buffer = io.BytesIO()
-    plt.savefig(buffer, format="png")  # Guardar gráfico en formato PNG
+    plt.savefig(buffer, format="png", dpi=150)  # Guardar gráfico en formato PNG
     buffer.seek(0)  # Regresar el puntero al inicio del buffer
 
-    plt.show()  # Mostrar el gráfico
+    # Sin plt.show(): abría una ventana extra de matplotlib y bloqueaba la
+    # aplicación hasta cerrarla; el gráfico ya se muestra dentro de la pantalla
+    # de resultados a partir del buffer.
     plt.close()  # Cerrar el gráfico para liberar memoria
 
     return buffer  # Retornar el objeto BytesIO con el gráfico

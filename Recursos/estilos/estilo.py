@@ -1,3 +1,5 @@
+from Recursos.estilos import paleta
+
 estiloFrameRT = """
 QGroupBox {
     border: 2px solid white;
@@ -271,3 +273,102 @@ estiloTree = """
         }
     
     """
+
+
+# ─────────────────────────────────────────────────────────────
+#  Componentes compartidos entre pantallas
+#  Referencia visual: formulario de Tiempo de Reverberación
+#  (Vista/archivos_qtDesigner/tiempoReverberacionUI.ui). Mismos valores
+#  que ya usa ese formulario; centralizados para que el resto de
+#  pantallas (resultados, Inteligibilidad, Base de Datos) los reutilicen
+#  en vez de repetirlos.
+# ─────────────────────────────────────────────────────────────
+
+# Botón circular "Atrás" (42x42, borde tenue; hover/pressed rellenan).
+estiloBotonAtras = """
+QPushButton {
+    background-color: transparent;
+    border: 1px solid rgba(255,255,255,0.35);
+    border-radius: 21px;
+}
+QPushButton:hover { background-color: rgba(255,255,255,0.18); border: 1px solid white; }
+QPushButton:pressed { background-color: rgba(255,255,255,0.38); }
+"""
+
+
+def estiloBarraSuperior(nombre):
+    """Barra superior oscura con línea inferior (frame con objectName `nombre`)."""
+    return (
+        f"QFrame#{nombre} {{ background-color: rgba(0,0,0,0.25); "
+        f"border-bottom: 1px solid rgba(255,255,255,0.13); }}"
+    )
+
+
+def estiloBarraInferior(nombre, primario, compacto=False):
+    """
+    Barra inferior oscura con línea superior. Los QPushButton hijos son
+    secundarios (contorno tenue); el que tenga objectName `primario` es la
+    acción principal (acento azul, mismo aspecto y tamaño que el botón
+    "Iniciar Análisis" del formulario: 224x34 renderizado). `compacto`
+    reduce el ancho de los botones para ventanas muy angostas (< ~560 px),
+    donde dos botones de 224 px no caben en una fila.
+    """
+    relleno, ancho_min, ancho_max = ("8px 12px", 110, 210) if compacto else ("8px 20px", 180, 210)
+    return f"""
+QFrame#{nombre} {{
+    background-color: rgba(0,0,0,0.22);
+    border-top: 1px solid rgba(255,255,255,0.12);
+}}
+QPushButton {{
+    background-color: rgba(255,255,255,0.10);
+    border: 1.5px solid rgba(255,255,255,0.40);
+    color: rgba(255,255,255,0.90);
+    font-weight: bold;
+    font-size: 12px;
+    border-radius: 12px;
+    padding: {relleno};
+    min-width: {ancho_min}px;
+    max-width: {ancho_max}px;
+}}
+QPushButton:hover {{ background-color: rgba(255,255,255,0.22); border-color: white; color: white; }}
+QPushButton:pressed {{ background-color: rgba(255,255,255,0.38); color: white; }}
+QPushButton:disabled {{
+    background-color: rgba(255,255,255,0.05);
+    border-color: rgba(255,255,255,0.18);
+    color: rgba(255,255,255,0.30);
+}}
+QPushButton#{primario} {{
+    background-color: rgba(126,200,247,0.18);
+    border: 1.5px solid {paleta.ACENTO};
+    color: {paleta.ACENTO};
+}}
+QPushButton#{primario}:hover {{
+    background-color: rgba(126,200,247,0.35);
+    color: white;
+    border-color: white;
+}}
+QPushButton#{primario}:pressed {{ background-color: rgba(126,200,247,0.55); color: white; }}
+QPushButton#{primario}:disabled {{
+    background-color: rgba(255,255,255,0.05);
+    border-color: rgba(255,255,255,0.18);
+    color: rgba(255,255,255,0.30);
+}}
+"""
+
+
+def estiloTarjeta(nombre, fondo="rgba(255,255,255,0.06)", borde="rgba(255,255,255,0.22)"):
+    """Tarjeta translúcida (mismo tratamiento que los QGroupBox del formulario de RT)."""
+    return (
+        f"QFrame#{nombre} {{ background-color: {fondo}; border: 1px solid {borde}; "
+        f"border-radius: 10px; }}"
+    )
+
+
+def estiloTexto(tamano_pt, color=paleta.TEXTO_PRINCIPAL, negrita=False):
+    """QSS para un QLabel de texto sobre fondo oscuro (sin fondo ni borde propios)."""
+    peso = "bold" if negrita else "normal"
+    return (
+        f"QLabel {{ background: transparent; border: none; color: {color}; "
+        f"font-size: {tamano_pt}pt; font-weight: {peso}; }}"
+    )
+

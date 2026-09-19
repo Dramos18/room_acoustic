@@ -27,11 +27,21 @@ Actúa como punto de navegación hacia los análisis.
 Integra: - captura de datos; - superficies; - objetos; - cálculo; -
 navegación; - estilos; - resultados.
 
-## Gráficas
+## Gráficas / resultados de RT
 
-`Vista/ventGraficaRT.py`
+`Vista/ventGraficaRT.py` (clase `VentanaGraficaRT`; diseño en
+`vistaGraficaRT.ui`, `Ui_formGraficoRT`). También la usa el flujo de Base de
+Datos.
 
-Integra visualización de resultados RT.
+Estructura (2026-09-18): barra superior (Atrás + "Resultados del análisis" y
+subtítulo) · contenido: gráfico | panel · barra inferior ("Ir al Inicio"
+secundario, "Guardar Reporte PDF" principal). El panel tiene dos bloques:
+"Tiempo de Reverberación" (veredicto, Tr MID Sabine/Eyring, tabla por banda
+con las bandas 500/1000/2000 Hz resaltadas, conclusión) e "Inteligibilidad
+del Habla" (independiente). Gráfico y panel se apilan por debajo de 1100 px.
+El acordeón heredado (`tollboxCombinada`/`stackedWidget`) sigue en el `.ui`,
+oculto. Flujo: formulario → `procesar_datos` → `calcular_resultados` →
+`VentanaGraficaRT` → `ReportePDF.reporte_tiempo_reverberacion`.
 
 ## Inteligibilidad
 
@@ -59,6 +69,42 @@ Contiene clases `Ui_*` generadas a partir de `.ui`.
 Contiene: - ventana principal; - barra de título; - inicio; -
 información BD; - inteligibilidad; - objetos; - RT; - gráficas; -
 utilidades.
+
+## Patrón visual de referencia (Módulo 1 — Tiempo de Reverberación)
+
+El formulario RT y su pantalla de resultados son la referencia para los
+módulos 2 (Inteligibilidad) y 3 (Base de Datos). No se busca que todas las
+pantallas sean idénticas, sino que compartan estos elementos:
+
+| Elemento | Definición (centralizada) |
+|---|---|
+| Fondo | Degradado azul oscuro del `.ui`; tarjetas translúcidas |
+| Barra superior | `estilo.estiloBarraSuperior(nombre)`; título 18 pt en negrita + subtítulo 9 pt (`tipografia.TITULO_PANTALLA`, `AUXILIAR`) |
+| Botón "Atrás" | `estilo.estiloBotonAtras`; 42×42, icono `angulo-izquierdo.png` 22×22 |
+| Barra inferior | `estilo.estiloBarraInferior(nombre, primario)`; secundario con contorno tenue, principal con acento `#7ec8f7`, 224×34 |
+| Tarjeta | `estilo.estiloTarjeta(nombre)`; texto con `estilo.estiloTexto(pt, color, negrita)` |
+| Colores | `paleta.py` (acento, texto principal/secundario, estado óptimo/no óptimo) |
+| Tamaños de texto | `tipografia.py` (`VALOR` 24, `CUERPO` 11, `AUXILIAR` 9) |
+| Flechas de ComboBox/SpinBox | `angulo-abajo.png` / `angulo-arriba.png` |
+| Checkbox marcado | `controlar.png` |
+| Estado de resultado | color + icono (✓ `controlar.png`, ✗ `cruz.png`) + texto, nunca solo color |
+| Iconos de módulo | `ondas-de-audio.png` (RT), `terapia-musical.png` (Inteligibilidad) |
+| Sin emojis | Se usan iconos de `Recursos/iconos/` o solo texto |
+| Responsivo | Ancho < 1100 px: columnas apiladas; < 560 px: pie compacto |
+| Ajustes por código | Los `.ui` no se modifican (ver `CHANGELOG.md`, 2026-09-14) |
+
+Regla de iconos: antes de usar un icono existente preguntarse si
+realmente representa esa acción o entidad; si no, no se pone otro solo para
+llenar el espacio (se documenta el recurso que convendría crear). Preferir
+iconografía mínima: iconos de módulo, estado (✓/✗), navegación y flechas.
+
+Reglas para nuevas pantallas: reutilizar antes de crear (buscar en
+`Recursos/estilos/` y `Recursos/iconos/`); barras superior/inferior a
+stretch 0 y contenido a stretch 1; un `QLabel` con pixmap necesita un
+ancho mínimo explícito para poder encogerse.
+
+Recursos gráficos (iconos, GIF, constantes de estilo) y lista de iconos por
+crear: `docs/RESOURCES.md`.
 
 ## Inventario .ui → .py generado → controlador (auditoría UI/UX 2026-09-13)
 

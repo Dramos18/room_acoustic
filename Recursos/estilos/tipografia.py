@@ -18,7 +18,9 @@ Expresados en puntos (`pt`), que es la unidad ya dominante en los `.ui`
 de las pantallas afectadas.
 """
 
+TITULO_PANTALLA = 18  # título de la barra superior (igual que el formulario de RT)
 TITULO = 20      # título de sección dentro de una pantalla
+VALOR = 24       # cifra principal de un resultado (Tr MID, %ALCONS)
 SUBTITULO = 13   # subtítulo / texto destacado
 CUERPO = 11      # texto de orientación al usuario, valores importantes
 AUXILIAR = 9     # etiquetas secundarias, metadatos, contadores

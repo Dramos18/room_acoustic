@@ -339,7 +339,6 @@ QStackedWidget {
     border-radius: 12px;
     border: 10px solid white;
     padding: 10px;
-    box-shadow: 5px 4px 12px rgba(0, 0, 0, 0.1); /* Sombra suave */
 }
 </string>
                    </property>

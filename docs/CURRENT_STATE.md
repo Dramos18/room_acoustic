@@ -83,3 +83,28 @@ modificar inmediatamente el código.
   (no se ha decidido adoptarlo).
 - El punto 3 de esta sección (`prueba.py` legacy) sigue vigente y sin
   cambios.
+
+## Actualización 2026-09-18 — Interfaz (UI/UX)
+
+- Módulo 1 (Tiempo de Reverberación) cerrado visualmente: formulario
+  (referencia de calidad) → resultados → guardar PDF. Estructura de la
+  pantalla de resultados y patrón compartido: `docs/UI_INVENTORY.md`.
+- Estilos reutilizables en `Recursos/estilos/` (`estilo.py`, `paleta.py`,
+  `tipografia.py`); recursos gráficos inventariados en `docs/RESOURCES.md`.
+- Corregidos: `plt.show()` que abría una ventana extra y bloqueaba el flujo;
+  aviso `Unknown property box-shadow` (origen en `vistaGraficaRT.ui/.py`);
+  regresión de stretch que dejaba bandas vacías en resultados y Base de
+  Datos; ruta del GIF de transición de Base de Datos.
+- Sin emojis en la pantalla de resultados. El prefijo `⚠` de los mensajes de
+  validación del formulario RT se mantiene.
+- Módulos 2 (Inteligibilidad) y 3 (Base de Datos): pendientes de alinearse
+  al patrón del Módulo 1 (botones "Ir al Inicio" aún con chevron, encabezados,
+  barras, iconos de módulo).
+- Pendientes: mover/redimensionar/maximizar la ventana (D-016), feedback al
+  guardar el PDF (D-017), iconos nuevos opcionales (`RESOURCES.md`), P3 de
+  `CHANGELOG.md`.
+- Resultados numéricos: sin cambios (23 salones idénticos al commit anterior
+  a los ajustes de resultados).
+- Sigue sin existir carpeta `tests/`; la verificación de UI es un
+  procedimiento manual reproducible (`docs/TESTING.md`).
+

@@ -207,7 +207,6 @@ class Ui_formGraficoRT(object):
 "    border-radius: 12px;\n"
 "    border: 10px solid white;\n"
 "    padding: 10px;\n"
-"    box-shadow: 5px 4px 12px rgba(0, 0, 0, 0.1); /* Sombra suave */\n"
 "}\n"
 "")
         self.infoRT.setFrameShape(QFrame.StyledPanel)

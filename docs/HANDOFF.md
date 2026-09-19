@@ -36,3 +36,27 @@ navegación principal.
 Antes de continuar trabajo iniciado por otra sesión, Claude debe revisar
 el estado real del repositorio y no confiar únicamente en el resumen de
 una conversación anterior.
+
+## Próximos pasos (actualizado 2026-09-18)
+
+Orden acordado: primero cerrar cada módulo, tomando el Módulo 1 como
+referencia visual.
+
+1. **Módulo 2 — Inteligibilidad**: formulario → resultados → reporte. Alinear
+   barra superior/inferior, botón "Atrás", botón principal, encabezados y
+   estados con el patrón de `docs/UI_INVENTORY.md`; quitar el chevron de
+   "Ir al Inicio". Hoy sus resultados son un `QMessageBox`.
+2. **Módulo 3 — Base de Datos**: formulario/selección → resultados →
+   flujo de reporte. Considerar `base-de-datos.png` (`RESOURCES.md`).
+3. **Ventana**: mover, redimensionar, maximizar/minimizar (D-016).
+4. **Feedback al guardar el PDF** (D-017).
+5. **Iconos**: el equipo agrega los recursos que vea necesarios en
+   `Recursos/iconos/` y los registra en `docs/RESOURCES.md` (sección 8).
+6. Pendientes P3 del Módulo 1 en `docs/CHANGELOG.md` (eje logarítmico del
+   gráfico, iconos de inicio/guardar, etc.).
+
+Reglas vigentes para continuar: no tocar fórmulas ni datos; reutilizar antes
+de crear (estilos, iconos, constantes); sin emojis; ajustes por código sin
+regenerar `.ui` (D-011); verificar tras cada bloque (`docs/TESTING.md`); no
+hacer commit sin revisión visual del usuario.
+

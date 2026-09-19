@@ -283,7 +283,13 @@ class VentanaInfoBaseDatos(QWidget):
         self.ui.frameMedium.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
         self.ui.frame_2.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
         self.ui.scrollMateriales.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
-        self.ui.verticalLayout_3.setStretchFactor(self.ui.frameMedium, 1)
+        # frameTop/frameBottom conservan su alto natural (stretch 0); antes
+        # solo se fijaba frameMedium=1 sobre los 1 y 1 heredados del .ui
+        # (1:8:1), lo que dejaba barra superior e inferior tan altas como
+        # el contenido.
+        self.ui.verticalLayout_3.setStretch(0, 0)
+        self.ui.verticalLayout_3.setStretch(1, 1)
+        self.ui.verticalLayout_3.setStretch(2, 0)
         self.ui.verticalLayout_4.setStretchFactor(self.ui.scrollMateriales, 1)
 
         # Preparar el layout interno del QScrollArea de cards
