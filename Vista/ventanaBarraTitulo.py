@@ -5,8 +5,9 @@ from Vista.archivos_pyGenerados.barraTitulo import Ui_formBarraTitulo
 
 # Ancho (px) de la franja junto a cada borde de la ventana donde un clic
 # inicia el redimensionado en vez del contenido normal — ver diagnóstico
-# D-016 en docs/DECISIONS.md.
-_MARGEN_REDIMENSION = 6
+# D-016 en docs/DECISIONS.md. Se amplió de 6 a 10 tras la prueba real: 6px
+# exigía demasiada precisión para acertar el borde.
+_MARGEN_REDIMENSION = 10
 
 class VentanaConBarra(QWidget):
     def __init__(self, contenido):
@@ -17,6 +18,10 @@ class VentanaConBarra(QWidget):
         """
         super().__init__()
         self.setWindowFlags(Qt.FramelessWindowHint)
+        # Necesario para recibir mouseMoveEvent sin ningún botón presionado
+        # (hover), y así poder cambiar el cursor al acercarse a un borde
+        # redimensionable antes de hacer clic.
+        self.setMouseTracking(True)
         # Layout general (barra arriba, contenido abajo)
         layout_general = QVBoxLayout(self)
         layout_general.setContentsMargins(0, 0, 0, 0)
@@ -97,6 +102,38 @@ class VentanaConBarra(QWidget):
         if abajo:
             edges |= Qt.Edge.BottomEdge
         return edges
+
+    @staticmethod
+    def _cursor_para_borde(edges):
+        """Forma de cursor correspondiente a `edges` (o flecha normal si es None)."""
+        if edges is None:
+            return Qt.ArrowCursor
+        izquierda = bool(edges & Qt.Edge.LeftEdge)
+        derecha = bool(edges & Qt.Edge.RightEdge)
+        arriba = bool(edges & Qt.Edge.TopEdge)
+        abajo = bool(edges & Qt.Edge.BottomEdge)
+        if (arriba and izquierda) or (abajo and derecha):
+            return Qt.SizeFDiagCursor
+        if (arriba and derecha) or (abajo and izquierda):
+            return Qt.SizeBDiagCursor
+        if izquierda or derecha:
+            return Qt.SizeHorCursor
+        return Qt.SizeVerCursor  # arriba o abajo (ya se descartó "ninguno")
+
+    def mouseMoveEvent(self, event):
+        # Cambia el cursor al pasar por un borde redimensionable, antes de
+        # hacer clic — el usuario señaló que sin esta señal visual el
+        # margen de redimensión era difícil de ubicar. No reposiciona nada
+        # (eso lo hace el compositor tras startSystemMove/startSystemResize
+        # en mousePressEvent); requiere setMouseTracking(True) en __init__.
+        if self.isMaximized():
+            self.unsetCursor()
+            return
+        borde = self._borde_bajo_cursor(event.position().toPoint())
+        if borde is None:
+            self.unsetCursor()
+        else:
+            self.setCursor(self._cursor_para_borde(borde))
 
     def mousePressEvent(self, event):
         # Mover y redimensionar vía el compositor (startSystemMove/
