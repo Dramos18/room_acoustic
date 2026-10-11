@@ -54,13 +54,13 @@ class AlconsCalculator:
 
         if 0 <= alcons <= 1.4:
             return " Excelente: Condiciones acústicas ideales. Máxima inteligibilidad."
-        elif alcons <= 5:
+        elif alcons <= 4.8:
             return " Buena: Rendimiento acústico adecuado con ligeras pérdidas."
         elif alcons <= 11.4:
             return " Regular: Deficiencias acústicas notables. La inteligibilidad puede verse afectada."
-        elif alcons <= 24.4:
+        elif alcons <= 24.2:
             return " Pobre: Dificultades para interpretar palabras con claridad."
-        elif alcons <= 47:
+        elif alcons <= 46.5:
             return " Mala: Inteligibilidad insuficiente. Necesita mejoras significativas."
         else:
             return " Crítico: Acústica extremadamente deficiente. Requiere atención urgente."
