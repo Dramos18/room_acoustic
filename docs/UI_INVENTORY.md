@@ -66,9 +66,48 @@ Flujo: formulario → `enviar_calculos_inteligibilidad` →
 
 ## Base de datos
 
-`Vista/ventInfoBD.py` `Vista/ventInfoBD2.py`
+`Vista/ventInfoBD.py` (activo; `Vista/ventInfoBD2.py` es huérfano, sin
+ningún `import` en el repositorio — ver sección "Pantallas/archivos
+huérfanos" más abajo).
 
-Relacionadas con consulta/visualización de información de aulas.
+Cerrado visualmente al patrón de M1/M2 (auditoría + bloque M3-UX,
+2026-10-11). Estructura: ComboBox de selección de aula ("Tipo de aula —
+Bloque H"), 4 mini-cards de dimensiones (Aulas/Largo/Ancho/Alto), y una
+lista de cards dentro de un `QScrollArea` interno (`scrollMateriales`,
+scroll solo vertical) con una card por superficie (Frontal/Trasera/
+Izquierda/Derecha/Piso/Techo, con sus objetos adheridos si los hay) y una
+card de objetos adicionales — construidas dinámicamente en Python
+(`_card_superficie`, `_card_objetos_adicionales`, `_fila_objeto` en
+`ventInfoBD.py`), no desde el `.ui`.
+
+No tiene pantalla de resultados propia: reutiliza directamente
+`VentanaGraficaRT` (la misma de Módulo 1) — al elegir una aula y pulsar
+"Iniciar Análisis", el salón pasa por el mismo `Controlador/controlTR.py::
+procesar_datos`/`Modelo/calculoRT2.py` que usa RT, y se muestran los mismos
+resultados (RT60, Tr MID, %ALCons si el salón trae `inteligibilidad`) y el
+mismo PDF, con `Tipo`/`aulas` identificando el salón en el subtítulo.
+
+Validación: si no se selecciona ninguna aula, un mensaje inline junto al
+ComboBox ("⚠ Seleccione un tipo de aula de la base de datos") lo indica —
+no bloqueante, desaparece en cuanto se elige una opción válida (mismo
+patrón que `labelErrorInteligibilidad` del Módulo 2).
+
+Navegación: "Atrás" (vuelve a "Iniciar análisis") e "Ir al Inicio" (vuelve
+al índice 0) en el pie, junto a "Iniciar Análisis" — el botón "Ir al
+Inicio" no existía antes del bloque M3-UX; se construyó en Python sobre el
+pie ya generado por el `.ui` (sin editarlo), mismo criterio que D-011 y que
+el pie de `VentanaResultadosInteligibilidad`.
+
+Pendiente real: el icono de la tarjeta de este módulo en "Iniciar análisis"
+sigue siendo `logoBN.png` (genérico/institucional), no uno temático como
+`ondas-de-audio.png` (M1) o `terapia-musical.png` (M2) — ver
+`docs/RESOURCES.md` (`base-de-datos.png`, recomendado, aún sin aportar por
+el equipo). También quedan, de menor prioridad, sin resolver: `frameTop`/
+`frameBottom` con QSS propio en vez de los helpers de `estilo.py` (difieren
+en detalles — opacidades, padding — que impiden migrarlos sin cambiar algo
+visualmente), y un `QScrollArea` externo que envuelve todo el formulario
+(cabecera incluida) además del interno de las cards — hoy inofensivo (no
+se activa en ningún tamaño probado), ver auditoría de cierre del Módulo 3.
 
 ## UI generada
 

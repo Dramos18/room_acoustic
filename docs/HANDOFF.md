@@ -60,8 +60,18 @@ referencia visual.
    dos iconos opcionales recomendados (`distanciaPeople.png`, `info.png`,
    ver `docs/RESOURCES.md`) sin implementar, exigirían tocar
    `frame_GuiaValores`.
-2. **Módulo 3 — Base de Datos**: formulario/selección → resultados →
-   flujo de reporte. Considerar `base-de-datos.png` (`RESOURCES.md`).
+2. **Módulo 3 — Base de Datos**: ✅ cerrado visualmente (auditoría +
+   bloque M3-UX, 2026-10-11). Validación inline junto al ComboBox (ya no
+   `QMessageBox.Critical`) y botón "Ir al Inicio" añadido al pie (no
+   existía; construido en Python sin tocar `infoBD.ui`), ambos al mismo
+   patrón de M1/M2. Resultados: sigue reutilizando `VentanaGraficaRT` (la
+   de Módulo 1), decisión correcta, no una carencia. Detalle completo en
+   `docs/UI_INVENTORY.md`.
+   Pendiente real: icono temático propio (hoy `logoBN.png`); considerar
+   `base-de-datos.png` (`RESOURCES.md`) cuando el equipo lo aporte. De
+   menor prioridad, sin resolver a propósito (bajo riesgo de cambiar algo
+   visualmente sin necesidad): migrar `frameTop`/`frameBottom` a los
+   helpers de `estilo.py`.
 3. **Ventana**: mover, redimensionar, maximizar/minimizar (D-016).
 4. **Feedback al guardar el PDF** (D-017).
 5. **Iconos**: el equipo agrega los recursos que vea necesarios en

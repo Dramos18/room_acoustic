@@ -1,7 +1,7 @@
 from PySide6.QtCore import Qt
 from PySide6.QtGui import QIcon, QColor
 from PySide6.QtWidgets import (
-    QWidget, QVBoxLayout, QHBoxLayout, QLabel,
+    QWidget, QVBoxLayout, QHBoxLayout, QLabel, QPushButton,
     QFrame, QSizePolicy, QMessageBox, QSpacerItem
 )
 
@@ -9,7 +9,7 @@ from Controlador.controlTR import procesar_datos
 from Vista.ventGraficaRT import VentanaGraficaRT
 from Vista.ventTransicion import VentanaTransicion
 from Vista.archivos_pyGenerados.infoBD import Ui_Form
-from Recursos.estilos.estilo import estiloWarning
+from Recursos.estilos.estilo import estiloWarning, estiloTexto
 from Recursos.estilos import paleta, tipografia
 from Datos.salones import salones
 
@@ -317,6 +317,31 @@ class VentanaInfoBaseDatos(QWidget):
             """
         )
 
+        # Mensaje de validación inline (no bloqueante), junto al ComboBox:
+        # mismo criterio que labelErrorInteligibilidad en
+        # Vista/ventInteligibilidad.py (auditoría de cierre del Módulo 3,
+        # bloque M3-UX-01) — sustituye al QMessageBox.Critical que
+        # interrumpía el flujo cuando no había aula seleccionada.
+        self.ui.labelErrorAula = QLabel("")
+        self.ui.labelErrorAula.setWordWrap(True)
+        self.ui.labelErrorAula.setStyleSheet(
+            estiloTexto(tipografia.AUXILIAR, paleta.ESTADO_NO_OPTIMO, negrita=True)
+        )
+        self.ui.verticalLayout_4.insertWidget(1, self.ui.labelErrorAula)
+
+        # "Ir al Inicio": no existía ningún botón de este tipo en
+        # infoBD.ui (a diferencia de M1/M2). Se construye en Python, sin
+        # tocar el .ui (mismo criterio que D-011 y que
+        # VentanaResultadosInteligibilidad, que también arma su pie por
+        # código) — se quita el espaciador final que centraba el único
+        # botón y se añade "Ir al Inicio" antes de "Iniciar Análisis",
+        # mismo orden secundario→principal que el pie de M1/M2.
+        self.ui.horizontalLayout_5.removeItem(self.ui.horizontalSpacer_5)
+        self.ui.botonGoHome = QPushButton("Ir al Inicio")
+        self.ui.botonGoHome.setObjectName("botonGoHome")
+        self.ui.botonGoHome.setToolTip("Volver a la pantalla principal")
+        self.ui.horizontalLayout_5.insertWidget(1, self.ui.botonGoHome)
+
         # Conectar ComboBox
         self.cargar_salones(self.ui.comboBox, self.salones)
         self.ui.comboBox.currentIndexChanged.connect(self._on_combo_changed)
@@ -338,8 +363,13 @@ class VentanaInfoBaseDatos(QWidget):
     def setup_events(self):
         self.ui.botonAtras.clicked.connect(self.regresar_a_ventana_anterior)
         self.ui.botonIniciarAnalisis.clicked.connect(self.iniciar_analisis)
+        self.ui.botonGoHome.clicked.connect(self.ir_ventana_home)
 
     def _on_combo_changed(self):
+        # El mensaje de error desaparece en cuanto se elige una aula
+        # válida, no solo al volver a pulsar "Iniciar Análisis".
+        if self.ui.comboBox.currentIndex() != 0:
+            self.ui.labelErrorAula.setText("")
         self.mostrar_informacion(
             self.ui.comboBox,
             self.ui.labelNumeroAula,
@@ -352,6 +382,10 @@ class VentanaInfoBaseDatos(QWidget):
     def regresar_a_ventana_anterior(self):
         if hasattr(self, "stacked_widget") and self.stacked_widget:
             self.stacked_widget.setCurrentIndex(self.indice_anterior)
+
+    def ir_ventana_home(self):
+        if hasattr(self, "stacked_widget") and self.stacked_widget:
+            self.stacked_widget.setCurrentIndex(0)
 
     # ── Carga del ComboBox — sin cambios ────────────────────────
 
@@ -442,6 +476,7 @@ class VentanaInfoBaseDatos(QWidget):
     def iniciar_analisis(self):
         selected_index = self.ui.comboBox.currentIndex()
         if selected_index != 0:
+            self.ui.labelErrorAula.setText("")
             transicion = VentanaTransicion(
                 "../Recursos/gifs/ondas.gif",
                 duracion_ms=2000,
@@ -461,9 +496,8 @@ class VentanaInfoBaseDatos(QWidget):
             transicion.exec()
             self.stacked_widget.setCurrentWidget(ventana_grafica)
         else:
-            msgError = QMessageBox(self)
-            msgError.setIcon(QMessageBox.Critical)
-            msgError.setWindowTitle("Error")
-            msgError.setText("Seleccione un tipo de aula de la base de datos")
-            msgError.setStyleSheet(estiloWarning)
-            msgError.exec()
+            # Validación inline, no bloqueante (bloque M3-UX-01): antes
+            # era un QMessageBox.Critical que interrumpía el flujo; ahora
+            # es un texto junto al ComboBox, igual que
+            # labelErrorInteligibilidad en el formulario de Inteligibilidad.
+            self.ui.labelErrorAula.setText("⚠ Seleccione un tipo de aula de la base de datos")
