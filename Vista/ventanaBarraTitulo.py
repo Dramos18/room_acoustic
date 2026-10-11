@@ -3,6 +3,11 @@ from PySide6.QtGui import QIcon, QPixmap
 from PySide6.QtWidgets import QWidget, QVBoxLayout
 from Vista.archivos_pyGenerados.barraTitulo import Ui_formBarraTitulo
 
+# Ancho (px) de la franja junto a cada borde de la ventana donde un clic
+# inicia el redimensionado en vez del contenido normal — ver diagnóstico
+# D-016 en docs/DECISIONS.md.
+_MARGEN_REDIMENSION = 6
+
 class VentanaConBarra(QWidget):
     def __init__(self, contenido):
         """
@@ -53,28 +58,65 @@ class VentanaConBarra(QWidget):
         self.uiBarra.buttonMinim.clicked.connect(self.showMinimized)
         self.uiBarra.buttonMaxim.clicked.connect(self.toggle_max_restore)
 
-
-
-        # Para controlar el estado maximizado o restaurado
-        self.maximizado = False
-
     def toggle_max_restore(self):
-        if self.maximizado:
+        # Antes se rastreaba el estado maximizado en self.maximizado,
+        # inicializado en False en el constructor — pero main.py llama a
+        # showMaximized() *después* de construir la ventana, así que el
+        # flag nunca reflejaba el estado real: el primer clic en
+        # "restaurar" no hacía nada visible (creía que no estaba
+        # maximizada y volvía a maximizar). Se usa self.isMaximized()
+        # directamente, una sola fuente de verdad (diagnóstico D-016 en
+        # docs/DECISIONS.md).
+        if self.isMaximized():
             self.showNormal()
-            self.maximizado = False
             # Si quieres cambiar el ícono al de maximizar, hazlo aquí
         else:
             self.showMaximized()
-            self.maximizado = True
             # Cambia el ícono al de restaurar si quieres
 
-    def mousePressEvent(self, event):
-        if event.button() == Qt.LeftButton and self.barra.underMouse():
-            self.offset = event.globalPos() - self.frameGeometry().topLeft()
+    def _borde_bajo_cursor(self, pos):
+        """
+        Qt.Edge (o combinación, para las esquinas) si `pos` —coordenadas
+        locales de la ventana— cae dentro de `_MARGEN_REDIMENSION` de algún
+        borde; None si está en el interior.
+        """
+        m = _MARGEN_REDIMENSION
+        izquierda = pos.x() <= m
+        derecha = pos.x() >= self.width() - m
+        arriba = pos.y() <= m
+        abajo = pos.y() >= self.height() - m
+        if not (izquierda or derecha or arriba or abajo):
+            return None
+        edges = Qt.Edge(0)
+        if izquierda:
+            edges |= Qt.Edge.LeftEdge
+        if derecha:
+            edges |= Qt.Edge.RightEdge
+        if arriba:
+            edges |= Qt.Edge.TopEdge
+        if abajo:
+            edges |= Qt.Edge.BottomEdge
+        return edges
 
-    def mouseMoveEvent(self, event):
-        if hasattr(self, 'offset') and event.buttons() == Qt.LeftButton and self.barra.underMouse():
-            self.move(event.globalPos() - self.offset)
+    def mousePressEvent(self, event):
+        # Mover y redimensionar vía el compositor (startSystemMove/
+        # startSystemResize), no con move() manual: en Wayland un cliente
+        # no puede fijar la posición de su propia ventana — ver
+        # diagnóstico D-016 en docs/DECISIONS.md. Una ventana maximizada
+        # no se mueve ni se redimensiona (igual que la mayoría de apps).
+        if event.button() != Qt.LeftButton or self.isMaximized():
+            return
+        ventana = self.windowHandle()
+        if ventana is None:
+            return
+        pos = event.position().toPoint()
+        borde = self._borde_bajo_cursor(pos)
+        if borde is not None:
+            ventana.startSystemResize(borde)
+        elif self.barra.geometry().contains(pos):
+            # Geometría directa en vez de underMouse(): depende solo de la
+            # posición real del clic, no del hover-tracking de Qt.
+            ventana.startSystemMove()
 
 
 
