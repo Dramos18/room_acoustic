@@ -152,3 +152,62 @@ uso). La escala de %ALCONS del PDF tiene 6 niveles idénticos a
 resultados, estructuras de datos ni firmas. Detalle en `docs/REPORTS.md`.
 
 **Estado:** Implementada; pendiente de revisión visual del equipo.
+
+*Nota (2026-10-11):* los 6 niveles de %ALCons que menciona este párrafo
+seguían siendo, en el momento de esta decisión (UX-07), los umbrales
+heredados (1,4/5/11,4/24,4/47). Esta decisión queda como el antecedente
+histórico del sistema visual del PDF; los umbrales numéricos de la escala
+los fija ahora D-019, que la sustituye en ese punto específico sin alterar
+nada más de lo descrito aquí.
+
+## D-019 — Criterio operativo de clasificación del %ALCons (6 categorías)
+
+El equipo aprobó como **criterio operativo del proyecto** una clasificación
+cualitativa de %ALCons de 6 categorías, documentada en detalle en
+`docs/ALCONS_CLASSIFICATION_REVIEW.md`:
+
+```
+0 % ≤ x ≤ 1,4 %      → Excelente
+1,4 % < x ≤ 4,8 %    → Buena
+4,8 % < x ≤ 11,4 %   → Regular
+11,4 % < x ≤ 24,2 %  → Pobre
+24,2 % < x ≤ 46,5 %  → Mala
+x > 46,5 %           → Crítico
+```
+
+Es una **decisión metodológica del proyecto**, no una transcripción literal
+de la fuente bibliográfica consultada (Duran Uron et al., 2025, citando a su
+vez a Carrión Carranza y Carrión, 2001), que publica 5 categorías con
+intervalos no contiguos entre sí y sin categoría para valores superiores a
+46,5 %. Los 5 límites superiores de cada categoría (1,4 / 4,8 / 11,4 / 24,2 /
+46,5) sí coinciden con los que publica esa fuente; el equipo decidió (a)
+asignar los valores intermedios que la fuente deja sin especificar a la
+categoría inmediatamente siguiente, y (b) añadir "Crítico" como **extensión
+operativa propia del proyecto** para x > 46,5 %, sin atribuirla a la fuente.
+
+Esta clasificación **reemplazó** (2026-10-11) los umbrales anteriormente
+activos en `Modelo/alcons2.py::evaluar_alcons` y
+`Datos/utils/reportePDF.py::NIVELES_ALCONS` (1,4 / 5 / 11,4 / 24,4 / 47),
+cuyo origen no estaba documentado en el repositorio (ver
+`docs/ALCONS_CLASSIFICATION_REVIEW.md` §11).
+
+**Implementación.** `Modelo/alcons2.py::evaluar_alcons` y
+`Datos/utils/reportePDF.py::NIVELES_ALCONS` usan ya los 6 niveles de esta
+decisión (mismos nombres, mismos umbrales, misma inclusión del límite
+superior). El panel estático "Escala %ALCons" del formulario de
+Inteligibilidad (`frame_escala`) se corrigió por código en
+`Vista/ventInteligibilidad.py` (sin tocar el `.ui`, mismo criterio que D-011)
+para mostrar las mismas 6 categorías, incluyendo un bloque nuevo para
+"Crítico" que antes no existía ahí. Solo cambió la clasificación: las
+fórmulas de Peutz, el cálculo numérico del %ALCons, la distancia crítica,
+RT60 (Sabine/Eyring) y el diseño visual del PDF no se modificaron (verificado
+contra los 23 salones del Bloque H).
+
+**Esta decisión es el criterio operativo vigente del software.** No implica
+que la redacción académica definitiva de la tesis esté cerrada — la
+documentación académica formal se revisará en un bloque posterior,
+independiente de este.
+
+**Estado:** Aprobada e **implementada** (código, PDF, interfaz del
+formulario de Inteligibilidad). Pendiente: revisión y cierre de la
+documentación académica definitiva de la tesis (fuera de este bloque).

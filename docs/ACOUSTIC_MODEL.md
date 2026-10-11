@@ -58,9 +58,17 @@ Word vigente antes de cualquier refactor matemático.
 
 ## 5. Evaluación cualitativa
 
-`Modelo/alcons2.py` clasifica actualmente: - 0–1.4: Excelente; - hasta
-5: Buena; - hasta 11.4: Regular; - hasta 24.4: Pobre; - hasta 47:
-Mala; - superior: Crítico.
+`Modelo/alcons2.py` clasifica actualmente (criterio operativo vigente,
+D-019, 2026-10-11): - 0–1.4: Excelente; - hasta 4.8: Buena; - hasta 11.4:
+Regular; - hasta 24.2: Pobre; - hasta 46.5: Mala; - superior a 46.5: Crítico.
+
+Es una decisión metodológica/operativa del proyecto, no una transcripción
+literal de la fuente bibliográfica consultada (que publica 5 categorías con
+intervalos no contiguos y sin categoría por encima de 46.5 %); la
+justificación completa, la distinción entre lo que viene de la fuente y lo
+que es decisión propia, y las pruebas de los límites están en
+`docs/ALCONS_CLASSIFICATION_REVIEW.md` y `docs/DECISIONS.md` (D-019). Esto no
+implica que la redacción académica definitiva de la tesis esté cerrada.
 
 La clasificación debe tratarse como parte del contrato funcional hasta
 que el equipo académico apruebe un cambio.

@@ -1,7 +1,7 @@
 
 from PySide6.QtCore import QSize
 from PySide6.QtGui import QIcon
-from PySide6.QtWidgets import QWidget, QMessageBox, QFileDialog
+from PySide6.QtWidgets import QWidget, QMessageBox, QFileDialog, QFrame, QVBoxLayout, QLabel
 import os
 
 from reportlab.lib.pagesizes import letter
@@ -70,9 +70,62 @@ class VentanaInteligibiliad(QWidget):
             """
         )
 
+        self._actualizar_escala_alcons()
         self.setup_events()
 
+    def _actualizar_escala_alcons(self):
+        """
+        El panel "Escala %ALCons" (`frame_escala`, definido en
+        inteligibilidadHabla.ui) traía una escala estática de 5 categorías
+        con umbrales propios (0-2/2-5/5-10/10-15/>15 %) que no coincidían
+        con `AlconsCalculator.evaluar_alcons`. Se corrige por código, sin
+        tocar el .ui (mismo criterio que el resto de ajustes de interfaz,
+        ver D-011 en docs/DECISIONS.md), para reflejar la clasificación
+        operativa vigente del proyecto (D-019, 6 categorías: Excelente,
+        Buena, Regular, Pobre, Mala, Crítico).
+        """
+        ui = self.ui
+        ui.labelNivelExcelente.setText("Excelente  — 0 % a 1.4 %")
+        ui.labelNivelBuena.setText("Buena  — >1.4 % a 4.8 %")
+        ui.labelNivelRegular.setText("Regular  — >4.8 % a 11.4 %")
+        ui.labelNivelPobre.setText("Pobre  — >11.4 % a 24.2 %")
+        ui.labelNivelMala.setText("Mala  — >24.2 % a 46.5 %")
+        # La descripción de "Mala" pertenecía a la antigua categoría abierta
+        # (">15 %", sin límite superior); ahora "Mala" sí tiene límite
+        # superior (46.5 %) y el tono más grave pasa a "Crítico" (nueva).
+        ui.labelDescMala.setText("Comunicación deficiente. Requiere mejoras significativas.")
 
+        # "Crítico" (> 46.5 %) no existía en el panel de 5 categorías; se
+        # añade un bloque nuevo con el mismo patrón visual que los otros 5
+        # (fNiv1..fNiv5) y el mismo rojo oscuro ya usado para este nivel en
+        # el PDF (Datos/utils/reportePDF.py::NIVELES_ALCONS, #8c1212).
+        f_nivel_critico = QFrame(ui.frame_escala)
+        f_nivel_critico.setObjectName("fNiv6")
+        f_nivel_critico.setStyleSheet(
+            "QFrame { background-color: rgba(140,18,18,0.16); border-radius: 8px; "
+            "border: 1px solid rgba(140,18,18,0.45); }"
+        )
+        f_nivel_critico.setFrameShape(QFrame.NoFrame)
+        v_nivel_critico = QVBoxLayout(f_nivel_critico)
+        v_nivel_critico.setSpacing(1)
+        v_nivel_critico.setContentsMargins(8, 5, 8, 5)
+
+        ui.labelNivelCritico = QLabel("Crítico  — >46.5 %", f_nivel_critico)
+        ui.labelNivelCritico.setObjectName("labelNivelCritico")
+        ui.labelNivelCritico.setStyleSheet(
+            "QLabel { color: #8c1212; font-weight: bold; background: transparent; border: none; }"
+        )
+        v_nivel_critico.addWidget(ui.labelNivelCritico)
+
+        ui.labelDescCritico = QLabel(
+            "Comunicación extremadamente deficiente. Requiere atención urgente.",
+            f_nivel_critico,
+        )
+        ui.labelDescCritico.setObjectName("labelDescCritico")
+        ui.labelDescCritico.setWordWrap(True)
+        v_nivel_critico.addWidget(ui.labelDescCritico)
+
+        ui.vloEscala.addWidget(f_nivel_critico)
 
     def setup_events(self):
         self.ui.botonIniciarAnalisis.clicked.connect(lambda: self.enviar_calculos_inteligibilidad())

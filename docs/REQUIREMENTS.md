@@ -40,6 +40,11 @@ Los reportes comparten un mismo sistema visual (encabezado con logo, pie con
 paginación, tablas, escala de %ALCONS de 6 niveles idéntica a la del modelo,
 sin truncar textos ni invadir márgenes). Detalle en `docs/REPORTS.md`.
 
+Nota (2026-10-11, D-019): los límites de esa escala de 6 niveles siguen el
+criterio operativo vigente del proyecto (1.4/4.8/11.4/24.2/46.5), ya
+implementado en el modelo y en el PDF. Ver `docs/ALCONS_CLASSIFICATION_REVIEW.md`
+y `docs/DECISIONS.md`.
+
 ### RF-08 — Visualización
 
 Debe permitir visualizar resultados acústicos de forma comprensible y

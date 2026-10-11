@@ -83,7 +83,8 @@ usan la plataforma `offscreen`, sin abrir ventanas):
    el encabezado, y sin `...` en contenido. Comprobar que los números del PDF
    (tabla RT, Tr MID, %ALCONS, clasificación) coinciden con `calcular_resultados`
    y que `_nivel_alcons` coincide con `AlconsCalculator.evaluar_alcons` en un
-   barrido (límites 1.4, 5, 11.4, 24.4 y 47 incluidos). Rasterizar con
+   barrido (límites 1.4, 4.8, 11.4, 24.2 y 46.5 incluidos; criterio operativo
+   vigente D-019, ver `docs/DECISIONS.md`). Rasterizar con
    `QtPdf` (`QPdfDocument.render`) y revisar; en esta máquina requiere
    `libgssapi_krb5.so.2` (ver `docs/DEPENDENCIES.md`), usada solo vía
    `LD_LIBRARY_PATH` para el análisis.

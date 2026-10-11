@@ -97,16 +97,18 @@ SUBTITULO_POR_DEFECTO = "Room Acoustic · Universidad del Atlántico"
 # ─────────────────────────────────────────────
 #  ESCALA DE %ALCONS (contrato: docs/ACOUSTIC_MODEL.md §5)
 #  Mismos límites e inclusión que AlconsCalculator.evaluar_alcons.
+#  Clasificación operativa vigente del proyecto (D-019, 2026-10-11): ver
+#  docs/DECISIONS.md y docs/ALCONS_CLASSIFICATION_REVIEW.md.
 # ─────────────────────────────────────────────
 
 NIVELES_ALCONS = [
     # (límite superior inclusivo, color, nombre, rango)
     (1.4,  (0.07, 0.53, 0.25), "Excelente", "0 – 1.4"),
-    (5,    (0.13, 0.72, 0.35), "Buena",     "1.4 – 5"),
-    (11.4, (0.93, 0.75, 0.08), "Regular",   "5 – 11.4"),
-    (24.4, (0.93, 0.48, 0.08), "Pobre",     "11.4 – 24.4"),
-    (47,   (0.82, 0.11, 0.11), "Mala",      "24.4 – 47"),
-    (None, (0.55, 0.07, 0.07), "Crítico",   "> 47"),
+    (4.8,  (0.13, 0.72, 0.35), "Buena",     "1.4 – 4.8"),
+    (11.4, (0.93, 0.75, 0.08), "Regular",   "4.8 – 11.4"),
+    (24.2, (0.93, 0.48, 0.08), "Pobre",     "11.4 – 24.2"),
+    (46.5, (0.82, 0.11, 0.11), "Mala",      "24.2 – 46.5"),
+    (None, (0.55, 0.07, 0.07), "Crítico",   "> 46.5"),
 ]
 
 

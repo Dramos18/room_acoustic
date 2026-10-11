@@ -48,19 +48,28 @@ class AlconsCalculator:
     def evaluar_alcons(alcons):
         """
         Evalúa el %ALCONS y proporciona una calificación de inteligibilidad.
+
+        Clasificación operativa vigente del proyecto (D-019, 2026-10-11;
+        ver docs/DECISIONS.md y docs/ALCONS_CLASSIFICATION_REVIEW.md): toma
+        los límites superiores publicados por la fuente bibliográfica
+        consultada (0-1,4 / 1,6-4,8 / 5,3-11,4 / 12-24,2 / 27-46,5) y los
+        convierte en una escala continua de 6 categorías, asignando los
+        valores intermedios que la fuente no especifica a la categoría
+        inmediatamente siguiente y añadiendo "Crítico" (> 46,5) como
+        extensión operativa propia del proyecto, no presente en la fuente.
         """
         if alcons < 0:
             return "Error: El valor de ALcons no puede ser negativo. Verifique los datos ingresados."
 
         if 0 <= alcons <= 1.4:
             return " Excelente: Condiciones acústicas ideales. Máxima inteligibilidad."
-        elif alcons <= 5:
+        elif alcons <= 4.8:
             return " Buena: Rendimiento acústico adecuado con ligeras pérdidas."
         elif alcons <= 11.4:
             return " Regular: Deficiencias acústicas notables. La inteligibilidad puede verse afectada."
-        elif alcons <= 24.4:
+        elif alcons <= 24.2:
             return " Pobre: Dificultades para interpretar palabras con claridad."
-        elif alcons <= 47:
+        elif alcons <= 46.5:
             return " Mala: Inteligibilidad insuficiente. Necesita mejoras significativas."
         else:
             return " Crítico: Acústica extremadamente deficiente. Requiere atención urgente."

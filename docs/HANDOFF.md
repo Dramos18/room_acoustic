@@ -51,6 +51,13 @@ referencia visual.
    barra superior/inferior, botón "Atrás", botón principal, encabezados y
    estados con el patrón de `docs/UI_INVENTORY.md`; quitar el chevron de
    "Ir al Inicio". Hoy sus resultados son un `QMessageBox`.
+   **Desbloqueado 2026-10-11**: la clasificación de %ALCons que mostrará la
+   pantalla de resultados ya es la vigente (D-019, implementada en
+   `Modelo/alcons2.py`, `Datos/utils/reportePDF.py` y el panel del
+   formulario; ver `docs/ALCONS_CLASSIFICATION_REVIEW.md`). El rediseño
+   visual completo del módulo (formulario → cálculo → resultados →
+   navegación) es un bloque independiente, pendiente de aprobación
+   explícita antes de empezar.
 2. **Módulo 3 — Base de Datos**: formulario/selección → resultados →
    flujo de reporte. Considerar `base-de-datos.png` (`RESOURCES.md`).
 3. **Ventana**: mover, redimensionar, maximizar/minimizar (D-016).

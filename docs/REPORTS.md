@@ -98,13 +98,16 @@ texto `_lineas`, `_recortar`, `_num`, `_cantidad`.
 ## %ALCONS: escala de 6 niveles
 
 `NIVELES_ALCONS` reproduce exactamente `AlconsCalculator.evaluar_alcons`
-(`docs/ACOUSTIC_MODEL.md` §5; límites superiores inclusivos): Excelente ≤ 1.4,
-Buena ≤ 5, Regular ≤ 11.4, Pobre ≤ 24.4, Mala ≤ 47, Crítico > 47.
+(`docs/ACOUSTIC_MODEL.md` §5; criterio operativo vigente, D-019,
+2026-10-11; límites superiores inclusivos): Excelente ≤ 1.4, Buena ≤ 4.8,
+Regular ≤ 11.4, Pobre ≤ 24.2, Mala ≤ 46.5, Crítico > 46.5.
 `_nivel_alcons(valor)` da el nivel; `_barra_nivel` dibuja seis segmentos con
 nombre y rango, el activo a color completo y un marcador con el valor.
 **Si el modelo cambia sus límites, hay que actualizar `NIVELES_ALCONS`**; la
 prueba de barrido (`docs/TESTING.md`, punto 8) lo detecta. La clasificación
-textual mostrada es la que devuelve el modelo, sin reescribirla.
+textual mostrada es la que devuelve el modelo, sin reescribirla. Justificación
+metodológica completa de estos límites (y distinción frente a la fuente
+bibliográfica): `docs/ALCONS_CLASSIFICATION_REVIEW.md`.
 
 ## Unidades y decimales
 

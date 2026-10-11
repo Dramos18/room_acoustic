@@ -1,5 +1,63 @@
 # Changelog
 
+## 2026-10-11 — D-019 implementada: nueva clasificación de %ALCons en modelo, PDF e interfaz
+
+A partir de este bloque, la clasificación de 6 categorías de D-019 es la
+**clasificación operativa vigente del software**. Solo cambió la
+clasificación cualitativa del %ALCons; no se tocaron fórmulas, el cálculo
+numérico, la distancia crítica, RT60 (Sabine/Eyring), el diseño visual del
+PDF, la navegación ni ningún otro módulo.
+
+- **`Modelo/alcons2.py::evaluar_alcons`**: umbrales actualizados de
+  1,4/5/11,4/24,4/47 a 1,4/4,8/11,4/24,2/46,5 (mismos 6 nombres de
+  categoría, misma inclusión del límite superior).
+- **`Datos/utils/reportePDF.py::NIVELES_ALCONS`**: mismos umbrales nuevos;
+  sin cambios en el diseño visual del reporte.
+- **`Vista/ventInteligibilidad.py`**: el panel estático "Escala %ALCons"
+  (antes 5 categorías con umbrales 0–2/2–5/5–10/10–15/>15 %, ajenos al
+  modelo) se corrige por código — sin tocar `inteligibilidadHabla.ui` ni su
+  `.py` generado (mismo criterio que D-011) — para mostrar las 6 categorías
+  vigentes, incluyendo un bloque nuevo para "Crítico" que antes no existía
+  en esa pantalla.
+- **Pruebas**: los 11 límites exactos y 4 valores representativos pedidos
+  coinciden con lo esperado en modelo y PDF; barrido de 0–200 % en pasos de
+  0,001 sin huecos ni valores sin clasificar; los 23 salones de
+  `Datos/salones.py` mantienen `sabine_rt`/`eyring_rt`/%ALCons numérico/Dc
+  idénticos a antes de este bloque (ninguno cruza un umbral que cambió, así
+  que su clasificación textual tampoco cambió); PDF se sigue generando;
+  arranque e imports sin excepciones. Detalle en
+  `docs/ALCONS_CLASSIFICATION_REVIEW.md` §15.
+- **Documentación**: `docs/DECISIONS.md` (D-019 marcada como implementada;
+  D-018 anotada como antecedente de los umbrales que usó antes de D-019),
+  `docs/ACOUSTIC_MODEL.md` §5, `docs/REPORTS.md` y `docs/REQUIREMENTS.md`
+  actualizados con los nuevos números; `docs/ALCONS_CLASSIFICATION_REVIEW.md`
+  actualizada de punta a punta (ya no describe una propuesta pendiente, sino
+  la decisión implementada, manteniendo la distinción entre lo que viene de
+  la fuente bibliográfica y lo que es decisión operativa del proyecto).
+- **No incluido a propósito** (fuera del alcance de este bloque): rediseño
+  visual del Módulo 2, Módulo 1, Módulo 3, D-016, D-017, limpieza de
+  `Modelo/%alcons.py` (legacy, sin uso, conserva su propia clasificación
+  antigua), `print()` de diagnóstico, cualquier otra refactorización.
+
+## 2026-10-11 — Criterio operativo de clasificación del %ALCons (D-019): solo documentación
+
+Ningún archivo de código, `.ui` ni PDF se modificó. Se registró el análisis
+metodológico y la decisión en `docs/ALCONS_CLASSIFICATION_REVIEW.md` (nuevo)
+y `docs/DECISIONS.md` (D-019): el equipo aprobó un criterio operativo de 6
+categorías para el %ALCons (límites 1,4/4,8/11,4/24,2/46,5), distinguiendo
+explícitamente qué proviene de la fuente bibliográfica consultada (Duran
+Uron et al., 2025) y qué es decisión propia del proyecto (cierre de huecos
+entre categorías, categoría "Crítico"). **No implementado todavía**: el
+código (`Modelo/alcons2.py`), el PDF (`Datos/utils/reportePDF.py`) y el
+panel estático del formulario de Inteligibilidad siguen con sus escalas
+actuales, ya documentadas como distintas entre sí. Notas de coherencia
+añadidas (sin cambiar lo que describen) en `docs/ACOUSTIC_MODEL.md` §5,
+`docs/REPORTS.md` y `docs/REQUIREMENTS.md` (RF-07). Se registró además,
+como fuente de referencia para futuras investigaciones (sin usarla para
+justificar esta decisión), el documento de Rodríguez Barraza y Jimeno
+Martínez (2020) sobre el Bloque H. El Bloque 2 (Inteligibilidad, UI) sigue
+en pausa hasta que se apruebe la implementación (ver `docs/HANDOFF.md`).
+
 ## 2026-09-19 — UX-07: estandarización visual de los reportes PDF
 
 Solo `Datos/utils/reportePDF.py` (más documentación). Sin cambios en fórmulas,
