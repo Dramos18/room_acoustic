@@ -47,17 +47,19 @@ sesión).
 Orden acordado: primero cerrar cada módulo, tomando el Módulo 1 como
 referencia visual.
 
-1. **Módulo 2 — Inteligibilidad**: formulario → resultados → reporte. Alinear
-   barra superior/inferior, botón "Atrás", botón principal, encabezados y
-   estados con el patrón de `docs/UI_INVENTORY.md`; quitar el chevron de
-   "Ir al Inicio". Hoy sus resultados son un `QMessageBox`.
-   **Desbloqueado 2026-10-11**: la clasificación de %ALCons que mostrará la
-   pantalla de resultados ya es la vigente (D-019, implementada en
-   `Modelo/alcons2.py`, `Datos/utils/reportePDF.py` y el panel del
-   formulario; ver `docs/ALCONS_CLASSIFICATION_REVIEW.md`). El rediseño
-   visual completo del módulo (formulario → cálculo → resultados →
-   navegación) es un bloque independiente, pendiente de aprobación
-   explícita antes de empezar.
+1. **Módulo 2 — Inteligibilidad**: ✅ cerrado visualmente (bloque M2-UX,
+   2026-10-11). Formulario con barra superior/inferior y botón "Atrás"
+   alineados al patrón de `docs/UI_INVENTORY.md`, flechas de los 5
+   `QDoubleSpinBox` corregidas, validación inline (no bloqueante), y
+   pantalla de resultados propia (`Vista/ventResultadosInteligibilidad.py`,
+   ya no `QMessageBox`) con la escala de %ALCons de 6 niveles (D-019)
+   visible junto al resultado. Detalle completo en `docs/CHANGELOG.md`.
+   Pendiente, señalado pero no resuelto en este bloque: verificar en
+   pantalla real la responsividad de las 3 columnas del formulario
+   (`frame_GuiaValores`/`frame_form`/`frame_escala`) en ventanas angostas;
+   dos iconos opcionales recomendados (`distanciaPeople.png`, `info.png`,
+   ver `docs/RESOURCES.md`) sin implementar, exigirían tocar
+   `frame_GuiaValores`.
 2. **Módulo 3 — Base de Datos**: formulario/selección → resultados →
    flujo de reporte. Considerar `base-de-datos.png` (`RESOURCES.md`).
 3. **Ventana**: mover, redimensionar, maximizar/minimizar (D-016).

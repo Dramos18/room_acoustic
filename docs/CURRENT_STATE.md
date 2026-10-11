@@ -116,3 +116,19 @@ modificar inmediatamente el código.
   texto y paginación. Ver `docs/REPORTS.md`.
 - Sin cambios en modelo, datos ni firmas. Feedback al guardar (D-017) sigue
   pendiente. Revisión visual de los PDF por el equipo: POR VALIDAR.
+
+## Actualización 2026-10-11 — D-019 y Módulo 2 (Inteligibilidad)
+
+- **D-019**: clasificación operativa de %ALCons de 6 categorías
+  (1,4/4,8/11,4/24,2/46,5) implementada en `Modelo/alcons2.py`,
+  `Datos/utils/reportePDF.py` y la interfaz. Ver `docs/DECISIONS.md` y
+  `docs/ALCONS_CLASSIFICATION_REVIEW.md`.
+- **Módulo 2 (Inteligibilidad)**: cerrado visualmente (bloque M2-UX, mismo
+  nivel que el Módulo 1). Pantalla de resultados propia
+  (`Vista/ventResultadosInteligibilidad.py`), ya no `QMessageBox`; flechas
+  de SpinBox corregidas; validación inline; helpers de estilo centralizados.
+  Ver `docs/CHANGELOG.md`.
+- Módulo 3 (Base de Datos) y los bloques D-016/D-017 siguen pendientes de
+  alinear, en ese orden según `docs/HANDOFF.md`.
+- Resultados numéricos: sin cambios (23 salones idénticos; Sabine/Eyring y
+  %ALCons numérico verificados contra el commit anterior a D-019).

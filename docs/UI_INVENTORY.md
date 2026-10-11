@@ -45,10 +45,24 @@ oculto. Flujo: formulario → `procesar_datos` → `calcular_resultados` →
 
 ## Inteligibilidad
 
-`Vista/ventInteligibilidad.py`
+`Vista/ventInteligibilidad.py` (formulario) + `Vista/ventResultadosInteligibilidad.py`
+(resultados, clase `VentanaResultadosInteligibilidad`; bloque M2-UX,
+2026-10-11).
 
-Integra: - validación; - cálculo mediante `AlconsCalculator`; -
-resumen; - generación de PDF.
+Formulario: validación inline (no bloqueante, igual que RT), cálculo
+mediante `AlconsCalculator`, navegación a la pantalla de resultados. Sigue
+el mismo patrón visual que el Módulo 1 (`estiloBarraSuperior`,
+`estiloBotonAtras`, `estiloBarraInferior`; flechas de los 5
+`QDoubleSpinBox` corregidas con el mismo QSS que `tiempoReverberacionUI.ui`).
+
+Resultados: pantalla propia (ya no `QMessageBox`), construida en Python sin
+`.ui` nuevo (mismo criterio que `VentanaGraficaRT`): %ALCons y categoría en
+grande con el color del nivel, escala de 6 segmentos (misma fuente que el
+PDF, `Datos/utils/reportePDF.py::NIVELES_ALCONS`), parámetros utilizados,
+resultado acústico (Dc, R), botones "Ir al Inicio"/"Guardar Reporte PDF".
+Flujo: formulario → `enviar_calculos_inteligibilidad` →
+`AlconsCalculator.generar_reporte` → `mostrar_pantalla_resultados` →
+`VentanaResultadosInteligibilidad` → `ReportePDF.reporte_inteligibiliad`.
 
 ## Base de datos
 

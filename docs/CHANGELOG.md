@@ -1,5 +1,74 @@
 # Changelog
 
+## 2026-10-11 — Módulo 2 (Inteligibilidad): pantalla de resultados propia y cierre visual (bloque M2-UX)
+
+Auditoría UX/UI previa sin cambios de código; este bloque implementa lo
+aprobado de esa auditoría. No se tocó `Modelo/alcons2.py`,
+`Datos/utils/reportePDF.py`, ni ningún `.ui`/`.py` generado (mismo criterio
+D-011). D-019 (clasificación de %ALCons) no se modificó.
+
+- **Nueva pantalla de resultados** (`Vista/ventResultadosInteligibilidad.py`,
+  clase `VentanaResultadosInteligibilidad`): reemplaza el `QMessageBox` que
+  mostraba antes `mostrar_resumen_reporte`. Construida en Python puro, sin
+  `.ui` nuevo (mismo criterio que `VentanaGraficaRT`): valor de %ALCons y
+  categoría en grande con el color del nivel, escala de 6 segmentos (colores
+  y umbrales tomados directamente de `Datos/utils/reportePDF.py::NIVELES_ALCONS`
+  y `_nivel_alcons`, para que esta pantalla y el PDF no puedan desincronizarse),
+  parámetros utilizados y resultado acústico (Dc, R). Reutiliza
+  `estiloBarraSuperior`/`estiloBotonAtras`/`estiloBarraInferior`/
+  `estiloTarjeta`/`estiloTexto` de `Recursos/estilos/estilo.py`, sin estilos
+  paralelos. El PDF se genera llamando a `ReportePDF.reporte_inteligibiliad`
+  directamente, sin duplicar lógica.
+- **`Vista/ventInteligibilidad.py`**:
+  - Flechas de los 5 `QDoubleSpinBox` (`distanciaRyE`, `recintoTR`,
+    `volumenSala`, `coeficienteMedio`, `superficieTotal`): no tenían QSS de
+    `::up-button/::down-button/::up-arrow/::down-arrow`, así que Qt usaba el
+    control nativo, invisible sobre el fondo oscuro. Se aplica el mismo
+    bloque QSS (y los mismos iconos `angulo-arriba.png`/`angulo-abajo.png`)
+    que ya corrige esto en `Vista/ventTiempoReverberacion.py`.
+  - Validación: el `QMessageBox.Warning` bloqueante se reemplaza por un
+    texto inline (`labelErrorInteligibilidad`, nuevo `QLabel`, no viene del
+    `.ui`) con el mismo prefijo `⚠` y el mismo criterio no bloqueante que el
+    formulario de RT; el mensaje ahora nombra cada campo inválido en vez de
+    un texto genérico. De paso se corrige el tope superior del coeficiente
+    de absorción (antes solo exigía `> 0`; ahora `0 < α ≤ 1`, coherente con
+    `docs/REQUIREMENTS.md`) — una corrección que la auditoría anterior daba
+    por hecha pero no estaba implementada.
+  - Cabecera y pie: reemplazados los estilos inline por los helpers
+    centralizados (`estiloBarraSuperior`, `estiloBotonAtras`,
+    `estiloBarraInferior`), igual que el resto de la app.
+  - `botonGoHome` ya no lleva icono de chevron (inconsistente con Módulo 1 y
+    Base de Datos, que lo dejan solo texto).
+  - `enviar_calculos_inteligibilidad` navega ahora a
+    `VentanaResultadosInteligibilidad` (mismo patrón que
+    `abrir_ventana_tiempoReverberacion`/`iniciar_analisis`: `addWidget` +
+    `setCurrentWidget`, `indice_anterior` guardado antes de navegar).
+  - `mostrar_resumen_reporte`, `generar_reporte_pdf` y `agregar_marca_agua`
+    quedan sin uso (superados por la pantalla nueva); se conservan
+    documentadas, sin eliminar, mismo criterio que `_marca_agua` (UX-07).
+- **Iconos**: no se incorporó ningún icono nuevo de los 9 agregados por el
+  equipo en `Recursos/iconos/` (`advertencia.png`, `distanciaPeople.png`,
+  `info.png`, etc.) — se reutilizaron solo los ya existentes
+  (`terapia-musical.png`, `angulo-izquierdo.png`, `angulo-arriba.png`,
+  `angulo-abajo.png`). La auditoría UX/UI propuso `distanciaPeople.png`
+  (junto a "Distancia (r)" en la guía) e `info.png` (junto a "Guía de
+  valores") como mejoras opcionales de bajo costo; no se implementaron en
+  este bloque porque exigirían reestructurar `frame_GuiaValores` (más
+  invasivo que lo demás de este bloque) — quedan documentadas en
+  `docs/RESOURCES.md` para un bloque de pulido visual posterior.
+- **Pruebas**: validación (todos los campos en 0, coeficiente > 1, caso
+  válido); navegación completa a través de la app real
+  (`VentanaPrincipal` → Iniciar análisis → Inteligibilidad → Resultados →
+  Atrás/Ir al Inicio); los 6 niveles de %ALCons renderizan con su color
+  correcto en la nueva pantalla; capturas en 500×800, 1366×768 y 1920×1080;
+  sin advertencias de Qt nuevas; PDF generado desde la nueva pantalla; 23
+  salones, Sabine/Eyring y %ALCons numérico sin cambios.
+- **No incluido a propósito**: responsividad de las 3 columnas del
+  formulario (`frame_GuiaValores`/`frame_form`/`frame_escala`) en ventanas
+  muy angostas — no se modificó (el `.ui` no se tocó) y no se pudo medir con
+  certeza fuera de una pantalla real; queda señalado para revisión.
+  Tampoco: rediseño de Módulo 1 o 3, D-016, D-017, limpieza de legacy.
+
 ## 2026-10-11 — D-019 implementada: nueva clasificación de %ALCons en modelo, PDF e interfaz
 
 A partir de este bloque, la clasificación de 6 categorías de D-019 es la
