@@ -143,7 +143,11 @@ pasar por el borde.
 inteligibilidad sí). Propuesta en `CHANGELOG.md` (2026-09-18); requiere
 aprobar el cambio de firma de esa función.
 
-**Estado:** Propuesta pendiente de aprobación.
+**Estado:** Implementada (2026-10-11) en `Datos/utils/reportePDF.py`. El
+cuerpo de `reporte_tiempo_reverberacion` (usada por M1 y M3 vía
+`VentanaGraficaRT`) quedó envuelto en `try/except`, con el mismo
+`QMessageBox` de éxito/error que ya tenía `reporte_inteligibiliad` (M2). No
+hizo falta cambiar la firma del método. Detalle en `docs/CHANGELOG.md`.
 
 ## D-018 — Sistema visual único para los reportes PDF
 

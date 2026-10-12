@@ -1,5 +1,31 @@
 # Changelog
 
+## 2026-10-11 — D-017 implementada: feedback al guardar el PDF de RT
+
+`Datos/utils/reportePDF.py::ReportePDF.reporte_tiempo_reverberacion` (usada
+por M1 y M3, vía `VentanaGraficaRT`) no informaba éxito ni error al guardar
+el PDF, a diferencia de `reporte_inteligibiliad` (M2), que sí lo hacía. Se
+cierra la brecha señalada en D-017 (`docs/DECISIONS.md`).
+
+- El cuerpo del método se envolvió en `try/except Exception`, con el mismo
+  patrón que ya usaba `reporte_inteligibiliad`: `QMessageBox.Information`
+  ("Reporte Generado", con la ruta del archivo) si el guardado tiene éxito,
+  `QMessageBox.Critical` ("Error", con el mensaje de la excepción) si falla.
+  No se cambió la firma del método (la propuesta original de D-017
+  consideraba necesario cambiarla; no lo fue).
+- No se tocó la lógica de dibujo del PDF (`_dibujar_reporte_rt`, `_Doc`,
+  encabezado, pie, paginación) ni ningún otro método de `ReportePDF`. No se
+  modificó M1, M2 ni M3 (solo el guardado del PDF compartido por M1/M3).
+- Cancelar el diálogo de guardado sigue sin mostrar ningún mensaje ni crear
+  archivo (comportamiento ya existente, verificado sin cambios).
+- **Pruebas**: script con `QFileDialog.getSaveFileName` y `QMessageBox.exec`
+  simulados (mismo criterio que `docs/TESTING.md` §8), contra un resultado
+  real de `calcular_resultados` (Salón tipo 1): (a) guardado exitoso →
+  PDF con cabecera `%PDF-` y `QMessageBox.Information` con la ruta correcta;
+  (b) ruta en directorio inexistente → no crea archivo, `QMessageBox.Critical`
+  con el mensaje de la excepción; (c) cancelar → sin archivo, sin mensaje.
+  Los tres casos pasaron.
+
 ## 2026-10-11 — Módulo 2 (Inteligibilidad): pantalla de resultados propia y cierre visual (bloque M2-UX)
 
 Auditoría UX/UI previa sin cambios de código; este bloque implementa lo

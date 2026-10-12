@@ -919,12 +919,28 @@ class ReportePDF:
         if not nombre_archivo:
             return
 
-        fecha_hora = datetime.now().strftime("%d/%m/%Y %H:%M")
-        subtitulo = _subtitulo_reporte(resultados.get("salon", {}))
-        total = _contar_paginas(lambda d: _dibujar_reporte_rt(d, resultados), fecha_hora, subtitulo)
-        c = canvas.Canvas(nombre_archivo, pagesize=letter)
-        doc = _Doc(c, fecha_hora, total, subtitulo)
-        _dibujar_reporte_rt(doc, resultados)
-        doc.cerrar()
+        try:
+            fecha_hora = datetime.now().strftime("%d/%m/%Y %H:%M")
+            subtitulo = _subtitulo_reporte(resultados.get("salon", {}))
+            total = _contar_paginas(lambda d: _dibujar_reporte_rt(d, resultados), fecha_hora, subtitulo)
+            c = canvas.Canvas(nombre_archivo, pagesize=letter)
+            doc = _Doc(c, fecha_hora, total, subtitulo)
+            _dibujar_reporte_rt(doc, resultados)
+            doc.cerrar()
 
-        c.save()
+            c.save()
+
+            msgOk = QMessageBox(self)
+            msgOk.setIcon(QMessageBox.Information)
+            msgOk.setWindowTitle("Reporte Generado")
+            msgOk.setText(f"El reporte PDF se ha guardado correctamente en:\n{nombre_archivo}")
+            msgOk.setStyleSheet(estiloWarning)
+            msgOk.exec()
+
+        except Exception as e:
+            msgError = QMessageBox(self)
+            msgError.setIcon(QMessageBox.Critical)
+            msgError.setWindowTitle("Error")
+            msgError.setText(f"Hubo un error al generar el PDF:\n{str(e)}")
+            msgError.setStyleSheet(estiloWarning)
+            msgError.exec()

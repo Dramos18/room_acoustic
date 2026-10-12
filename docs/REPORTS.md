@@ -140,8 +140,9 @@ Los textos que vienen del modelo se imprimen tal cual (solo se quita el prefijo
   y texto ÓPTIMA / NO ÓPTIMA: no depende solo del color.
 - Caja de conclusión con altura calculada a partir del texto (relleno
   uniforme arriba y abajo).
-- El guardado no cambió: mismo diálogo, mismos mensajes. El feedback del
-  reporte RT sigue pendiente (D-017).
+- El guardado no cambió en este bloque (UX-07): mismo diálogo, mismos
+  mensajes. El feedback del reporte RT (D-017) se implementó después, el
+  2026-10-11 — ver `docs/DECISIONS.md` y `docs/CHANGELOG.md`.
 
 ## Cómo probar
 

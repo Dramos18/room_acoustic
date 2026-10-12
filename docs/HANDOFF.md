@@ -79,7 +79,10 @@ referencia visual.
    borde antes de hacer clic. Todo en `Vista/ventanaBarraTitulo.py`
    (commits `e1adca8`, `13efea8`). Detalle completo en `docs/CHANGELOG.md`
    y `docs/DECISIONS.md`.
-4. **Feedback al guardar el PDF** (D-017).
+4. **Feedback al guardar el PDF**: ✅ implementada (D-017, 2026-10-11).
+   `ReportePDF.reporte_tiempo_reverberacion` (M1 y M3) ya muestra el mismo
+   `QMessageBox` de éxito/error que ya tenía `reporte_inteligibiliad` (M2).
+   Detalle en `docs/CHANGELOG.md` y `docs/DECISIONS.md`.
 5. **Iconos**: el equipo agrega los recursos que vea necesarios en
    `Recursos/iconos/` y los registra en `docs/RESOURCES.md` (sección 8).
 6. Pendientes P3 del Módulo 1 en `docs/CHANGELOG.md` (eje logarítmico del

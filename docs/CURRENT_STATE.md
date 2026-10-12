@@ -128,9 +128,9 @@ modificar inmediatamente el código.
   (`Vista/ventResultadosInteligibilidad.py`), ya no `QMessageBox`; flechas
   de SpinBox corregidas; validación inline; helpers de estilo centralizados.
   Ver `docs/CHANGELOG.md`.
-- Módulo 3 (Base de Datos) y el bloque D-017 siguen pendientes de alinear,
-  en ese orden según `docs/HANDOFF.md`. D-016 (mover, redimensionar,
-  maximizar/restaurar la ventana) ya fue implementado (2026-10-11); ver
-  `docs/DECISIONS.md`.
+- Módulo 3 (Base de Datos) sigue pendiente de alinear según
+  `docs/HANDOFF.md`. D-016 (mover, redimensionar, maximizar/restaurar la
+  ventana) y D-017 (feedback al guardar el PDF de RT) ya fueron
+  implementados (2026-10-11); ver `docs/DECISIONS.md`.
 - Resultados numéricos: sin cambios (23 salones idénticos; Sabine/Eyring y
   %ALCons numérico verificados contra el commit anterior a D-019).
