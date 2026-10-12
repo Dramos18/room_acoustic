@@ -7,6 +7,7 @@ from Vista.archivos_pyGenerados.iniciarAnalisis import Ui_ventanaIniciarAnalisis
 from Vista.ventanaBarraTitulo import VentanaConBarra
 from Vista.archivos_pyGenerados.ventanaPrincipal import Ui_formVentanaPrincipal
 from Vista.ventIniciarAnalisis import VentanaIniciarAnalisis
+from Vista.ventAyuda import VentanaAyuda
 from Recursos.estilos import tipografia
 
 
@@ -64,14 +65,18 @@ class VentanaPrincipal(VentanaConBarra):
         )
         self.ui.stackedWidget.addWidget(self.iniciar_analisis_widget)
 
+        # Página de "Ayuda": igual que "Iniciar análisis", se crea una sola
+        # vez y se reutiliza (su contenido no depende de ningún cálculo).
+        self.ventana_ayuda = VentanaAyuda(stacked_widget=self.ui.stackedWidget)
+        self.ui.stackedWidget.addWidget(self.ventana_ayuda)
+
         # ── Conexiones ────────────────────────────────────────────────────────
         self.setup_events()
         self.setup_iniciar_analisis_events()
 
     def setup_events(self):
         self.ui.botonIniciar.clicked.connect(self.mostrar_iniciar_analisis)
-        # botonAyuda: conectar aquí cuando la sección de ayuda esté lista
-        # self.ui.botonAyuda.clicked.connect(self.mostrar_ayuda)
+        self.ui.botonAyuda.clicked.connect(self.mostrar_ayuda)
 
     def setup_iniciar_analisis_events(self):
         self.ui_iniciar.botonRegresar.clicked.connect(self.volver_a_inicio)
@@ -79,6 +84,10 @@ class VentanaPrincipal(VentanaConBarra):
     @Slot()
     def mostrar_iniciar_analisis(self):
         self.ui.stackedWidget.setCurrentWidget(self.iniciar_analisis_widget)
+
+    @Slot()
+    def mostrar_ayuda(self):
+        self.ui.stackedWidget.setCurrentWidget(self.ventana_ayuda)
 
     @Slot()
     def volver_a_inicio(self):
