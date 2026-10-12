@@ -100,9 +100,10 @@ en la tesis. Cada uno indica cómo se verifica (ver `docs/TESTING.md`).
 | RNF-UI-10 | Estilos, colores y tamaños de texto reutilizables se definen una sola vez en `Recursos/estilos/` (`estilo.py`, `paleta.py`, `tipografia.py`); no se duplican por pantalla | Revisión de código |
 | RNF-UI-11 | Componentes consistentes entre módulos: botón "Atrás" 42×42 con icono 22×22, botón principal 224×34 con estados hover/pressed/disabled, flechas de ComboBox/SpinBox, checkbox con ✓ | Inspección de capturas y de `docs/UI_INVENTORY.md` |
 
-Pendiente de definir como requisitos cuando se aprueben: mover y
-redimensionar la ventana (ver `docs/HANDOFF.md`) y feedback al guardar el PDF
-(propuesta en `docs/CHANGELOG.md`, 2026-09-18).
+Pendiente de definir como requisito formal cuando se apruebe: feedback al
+guardar el PDF (propuesta en `docs/CHANGELOG.md`, 2026-09-18). Mover,
+redimensionar y maximizar/restaurar la ventana (D-016) ya está implementado
+(2026-10-11); ver `docs/DECISIONS.md` y `docs/HANDOFF.md`.
 
 ## Requisitos de ejecución (entorno)
 

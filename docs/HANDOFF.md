@@ -72,7 +72,13 @@ referencia visual.
    menor prioridad, sin resolver a propósito (bajo riesgo de cambiar algo
    visualmente sin necesidad): migrar `frameTop`/`frameBottom` a los
    helpers de `estilo.py`.
-3. **Ventana**: mover, redimensionar, maximizar/minimizar (D-016).
+3. **Ventana**: ✅ implementada (D-016, 2026-10-11). Mover y redimensionar vía
+   `startSystemMove()`/`startSystemResize()` (en vez de `move()`, que no
+   funciona en Wayland), maximizar/restaurar corregido (usa
+   `isMaximized()` directamente), y cursor de redimensión al pasar por el
+   borde antes de hacer clic. Todo en `Vista/ventanaBarraTitulo.py`
+   (commits `e1adca8`, `13efea8`). Detalle completo en `docs/CHANGELOG.md`
+   y `docs/DECISIONS.md`.
 4. **Feedback al guardar el PDF** (D-017).
 5. **Iconos**: el equipo agrega los recursos que vea necesarios en
    `Recursos/iconos/` y los registra en `docs/RESOURCES.md` (sección 8).

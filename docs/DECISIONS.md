@@ -131,7 +131,11 @@ y no tiene redimensionado. Se implementará como bloque propio con
 `startSystemMove()`/`startSystemResize()`; diagnóstico en `CHANGELOG.md`
 (2026-09-18). Incluye corregir el estado inicial de `maximizado`.
 
-**Estado:** Pendiente de implementación.
+**Estado:** Implementada (2026-10-11) en `Vista/ventanaBarraTitulo.py`
+(commits `e1adca8`, `13efea8`): mover, redimensionar y maximizar/restaurar
+vía `startSystemMove()`/`startSystemResize()`, estado de maximizado leído
+con `isMaximized()` (ya no un flag propio), y cursor de redimensión al
+pasar por el borde.
 
 ## D-017 — Feedback al guardar el reporte PDF
 
