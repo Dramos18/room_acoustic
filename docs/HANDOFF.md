@@ -87,6 +87,20 @@ referencia visual.
    `Recursos/iconos/` y los registra en `docs/RESOURCES.md` (sección 8).
 6. Pendientes P3 del Módulo 1 en `docs/CHANGELOG.md` (eje logarítmico del
    gráfico, iconos de inicio/guardar, etc.).
+7. **Ayuda**: ✅ implementada V1 (2026-10-11). `botonAyuda` del Inicio
+   (antes sin conectar) ahora abre `Vista/ventAyuda.py` (`VentanaAyuda`),
+   guía interactiva construida en Python puro, sin `.ui` nuevo: menú de
+   6 secciones, stepper para "Cómo empezar", componente de flujo
+   Entrada→Procesamiento→Resultado reutilizado en Tiempo de
+   Reverberación/Inteligibilidad/Base de Datos/Resultados y PDF, escala
+   de %ALCons tomada de `NIVELES_ALCONS` (D-019, sin duplicar umbrales).
+   Responsive real (3→2→1 columnas, stepper/flujos de horizontal a
+   vertical) verificado en 1920×1080, 1366×768, 800×600 y 500×800. No se
+   tocó M1, M2, M3, el modelo, D-019, el PDF ni D-016. Detalle completo
+   en `docs/UI_INVENTORY.md`.
+   Pendiente real, señalado a propósito para una fase posterior:
+   refinamiento visual (consistencia de fondo/superficie, transparencias
+   y bordes entre componentes) y ampliación de contenido — no bloqueante.
 
 Reglas vigentes para continuar: no tocar fórmulas ni datos; reutilizar antes
 de crear (estilos, iconos, constantes); sin emojis; ajustes por código sin

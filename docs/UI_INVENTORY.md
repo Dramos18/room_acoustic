@@ -12,7 +12,8 @@ la ventana principal.
 Funciones observadas: - ventana principal; - GIF/logo; - navegación
 hacia análisis; - botón de inicio; - estructura de páginas.
 
-El botón de Ayuda aparece pendiente de conexión en el snapshot.
+El botón de Ayuda ya está conectado (`botonAyuda` → `VentanaAyuda`,
+2026-10-11) — ver sección "Ayuda" más abajo.
 
 ## Inicio de análisis
 
@@ -108,6 +109,54 @@ en detalles — opacidades, padding — que impiden migrarlos sin cambiar algo
 visualmente), y un `QScrollArea` externo que envuelve todo el formulario
 (cabecera incluida) además del interno de las cards — hoy inofensivo (no
 se activa en ningún tamaño probado), ver auditoría de cierre del Módulo 3.
+
+## Ayuda
+
+`Vista/ventAyuda.py` (clase `VentanaAyuda`; sin `.ui` nuevo, construida en
+Python puro — mismo criterio que `VentanaGraficaRT`/
+`VentanaResultadosInteligibilidad`). V1 implementada 2026-10-11; instanciada
+una sola vez desde `Vista/main.py` y agregada al `stackedWidget` igual que
+`VentanaIniciarAnalisis` (se reutiliza, no se reconstruye en cada clic: su
+contenido no depende de ningún cálculo).
+
+Estructura: cabecera (`estiloBarraSuperior`, botón "Atrás" solo visible
+dentro de un tema, migas de pan "Ayuda › <sección>") · contenido: un
+`QStackedWidget` interno propio con 7 páginas (menú + 6 secciones) · pie
+(`estiloBarraInferior`, botón único "Volver al Inicio" — a diferencia de
+M1/M2/M3, Ayuda solo se entra desde el Inicio, así que "Atrás" y "Volver al
+Inicio" no serían la misma acción redundante si se duplicaran).
+
+Menú principal: grid de 6 tarjetas clicables (`_TarjetaTema`, acento lateral
+de color, hover/pressed reales), responsivo de verdad (3→2→1 columnas según
+el ancho de contenido disponible, no una grilla fija que solo se encoge).
+Íconos de módulo solo en Tiempo de Reverberación/Inteligibilidad
+(`ondas-de-audio.png`/`terapia-musical.png`, los mismos que ya identifican
+esos módulos en el resto de la app) — deliberadamente sin ícono en Base de
+Datos: `logoBN.png` se ve ilegible a tamaño de ícono pequeño, mismo motivo
+ya señalado para la tarjeta de M3 en "Iniciar análisis" (ver
+`docs/RESOURCES.md`).
+
+Secciones: "Cómo empezar" (stepper de 5 pasos, horizontal en pantallas
+anchas/vertical en angostas, con un panel de descripción único que cambia
+al seleccionar un paso — no 5 tarjetas sueltas); "Tiempo de Reverberación",
+"Inteligibilidad", "Base de Datos" y "Resultados y PDF" comparten un mismo
+componente de flujo Entrada → Procesamiento → Resultado (`_FlujoEtapas`),
+para que las 4 páginas de módulo tengan una composición consistente en vez
+de bloques de texto distintos cada una; "Acerca del proyecto" (información
+institucional mínima, solo lo que el repositorio respalda — sin autores,
+versión ni año inventados). La escala de %ALCons de la sección
+Inteligibilidad se construye directamente desde
+`Datos/utils/reportePDF.py::NIVELES_ALCONS` (misma fuente que D-019 y el
+PDF), sin duplicar los umbrales numéricos aquí.
+
+No se tocó M1, M2, M3, el modelo acústico, D-019, el PDF ni D-016
+(`Vista/ventanaBarraTitulo.py`) para implementar Ayuda.
+
+Pendiente, señalado a propósito para una fase posterior (no bloqueante):
+revisar la consistencia visual de fondo/superficie, transparencias y
+bordes entre los componentes de Ayuda y el resto de la app — algunos
+elementos se sienten más integrados al lenguaje visual real que otros; y
+ampliar el contenido de cada sección.
 
 ## UI generada
 
