@@ -102,4 +102,4 @@ Cuando una afirmación no esté demostrada, usar **POR VALIDAR**, **PENDIENTE DE
 
 Esta primera versión organiza el inventario y añade documentos de trazabilidad. No implica que todos los documentos existentes hayan sido revisados línea por línea ni que su contenido esté completamente actualizado.
 
-La reconciliación documental es incremental. `CURRENT_STATE.md` y `HANDOFF.md` tienen una actualización vigente al inicio y conservan debajo el registro histórico. `CODEBASE_AUDIT.md` y las secciones antiguas de `CHANGELOG.md` aún requieren revisión de vigencia; no deben interpretarse automáticamente como estado actual.
+La reconciliación documental es incremental. `CURRENT_STATE.md` y `HANDOFF.md` tienen una actualización vigente al inicio y conservan debajo el registro histórico. `CODEBASE_AUDIT.md` fue reconciliado con las correcciones posteriores al snapshot inicial. Las secciones históricas de `CHANGELOG.md` conservan su función cronológica y deben leerse junto con el estado vigente, no como una lista automática de pendientes.
