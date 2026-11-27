@@ -219,3 +219,22 @@ independiente de este.
 **Estado:** Aprobada e **implementada** (código, PDF, interfaz del
 formulario de Inteligibilidad). Pendiente: revisión y cierre de la
 documentación académica definitiva de la tesis (fuera de este bloque).
+
+
+## D-020 — Criterio de transición del modelo de Peutz: 3.16 · Dc
+
+El criterio de transición entre los dos tramos del cálculo de %ALCons se fija en **3.16 · Dc**:
+
+- Si r ≤ 3.16 · Dc, se utiliza la expresión de campo directo/reverberante definida en `Modelo/alcons2.py::calcular_alcons`.
+- Si r > 3.16 · Dc, se utiliza la expresión `%ALCons = 9 · TR`.
+
+**Fundamento de la decisión.** El código activo ya implementa 3.16. La revisión bibliográfica registrada en `docs/ALCONS_CLASSIFICATION_REVIEW.md` §3 identifica el mismo umbral en el artículo académico de 2025 localizado para el proyecto, que lo presenta como parte del modelo de Peutz a través de una referencia secundaria. El documento académico Word del proyecto consignaba 3.5 · Dc; para la versión del software aquí documentada, el equipo confirma 3.16 · Dc y deberá actualizar el manuscrito para evitar describir un comportamiento distinto al implementado.
+
+**Alcance.** Esta decisión confirma el umbral de transición; no cambia ni vuelve a validar experimentalmente las ecuaciones, los parámetros ni la distancia crítica. La distancia crítica que utiliza el flujo activo sigue siendo `Dc = 0.21 · sqrt(V / TR_2000Hz)`, llamada desde `generar_reporte()`. La expresión `0.14 · sqrt(Q · R)` permanece definida en `calcular_distancia_critica()`, pero su llamada está comentada y no forma parte del flujo activo. No se declaran equivalentes ambas expresiones.
+
+**Consecuencias documentales.**
+- `docs/ACOUSTIC_MODEL.md` identifica el umbral y distingue la Dc activa de la alternativa no utilizada.
+- `docs/ACADEMIC_ALIGNMENT.md` deja de tratar 3.16 frente a 3.5 como una decisión técnica pendiente y registra la actualización requerida del Word.
+- `docs/SOFTWARE_VALIDATION.md` mantiene pendiente la validación matemática/experimental independiente y la verificación de las ecuaciones de Dc y R en sus fuentes primarias.
+
+**Estado:** Criterio de implementación confirmado por el equipo (2026-11-27). Revisión bibliográfica primaria y validación experimental: pendientes.
