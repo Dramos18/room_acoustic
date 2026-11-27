@@ -122,7 +122,7 @@ Registrar éxito, tiempo, errores, solicitudes de ayuda y observaciones. Definir
 | Prioridad | Actividad | Evidencia requerida | Estado |
 |---|---|---|---|
 | P0 | Fijar commit y entorno evaluado | Registro de versión/entorno | Pendiente |
-| P0 | Resolver discrepancias Peutz entre código y Word | Decisión técnica/académica trazable | Pendiente |
+| P0 | Actualizar el Word a 3,16 × Dc y verificar fuente primaria de Dc/R | Manuscrito coherente y referencia primaria consultada | Parcial: umbral confirmado; manuscrito y fuente primaria pendientes |
 | P0 | Obtener fuentes primarias de geometría, materiales y coeficientes | Catálogo con procedencia | Pendiente |
 | P1 | Crear pruebas unitarias de geometría, absorción, RT y %ALCons | Suite y resultados | Pendiente |
 | P1 | Ejecutar integración M1/M2/M3 y PDF | Matriz con evidencias | Pendiente de nueva ejecución |
