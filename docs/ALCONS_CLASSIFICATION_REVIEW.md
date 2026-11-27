@@ -402,3 +402,19 @@ de la sesión; resumen aquí para trazabilidad):
 
 No se modificó ninguna fórmula acústica, el cálculo numérico del %ALCons, la
 distancia crítica, RT60 (Sabine/Eyring) ni el diseño visual del PDF.
+
+
+---
+
+## 16. Actualización de contraste con el Word académico (2026-11-27)
+
+En esta fecha se volvió a inspeccionar el archivo `proyectoGradoSoftware.docx` adjuntado al proyecto. En el apartado de inteligibilidad del habla, el manuscrito afirma expresamente que el régimen cercano se aplica cuando la distancia del oyente es menor a **3,5 veces la distancia crítica**. El mismo apartado cita directamente el artículo original de Peutz (1971) en su referencia [37], y cita una fuente adicional para la explicación del umbral.
+
+El software, en cambio, implementa **3,16 · Dc** en `Modelo/alcons2.py::calcular_alcons`. El equipo confirmó el 2026-11-27 que 3,16 · Dc es el criterio que debe conservarse para la versión actual del software (D-020). Por tanto:
+
+1. La discrepancia documental queda resuelta como decisión de configuración del software: se conserva 3,16 · Dc; no se cambia el código.
+2. El Word debe actualizarse para describir 3,16 · Dc cuando explique el algoritmo implementado. La edición del manuscrito no forma parte de esta actualización del repositorio.
+3. La referencia [37] del Word identifica el artículo original de Peutz, pero el fragmento inspeccionado no permite comprobar si la expresión 3,5 procede de esa fuente o de otra referencia intermedia. Antes de afirmar que 3,16 es la constante original de Peutz, se debe consultar el artículo primario o una reproducción académica verificable de su ecuación.
+4. La revisión bibliográfica de este documento sigue siendo pertinente para la clasificación cualitativa D-019. D-020 trata el umbral de transición de la fórmula numérica y no altera la escala cualitativa.
+
+La limitación consignada en §11.1 —que el Word no estuvo disponible durante la preparación original de esta revisión— describe el alcance de aquella sesión y no el estado de acceso al 2026-11-27. La comprobación actual se incorpora aquí para mantener la trazabilidad temporal, sin reescribir retrospectivamente el alcance de la revisión original.
