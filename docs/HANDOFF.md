@@ -16,10 +16,10 @@ Esta sección reemplaza el orden de prioridades de las notas históricas que sig
 ### Siguiente secuencia de trabajo recomendada
 
 1. **Cerrar la procedencia de datos:** recuperar planos/fichas de levantamiento y fuentes de coeficientes; completar trazabilidad en ACOUSTIC_DATA_CATALOG.md. No inventar fuentes ni normalizar nombres sin comprobar su efecto.
-2. **Resolver discrepancias matemáticas:** contrastar el Word, las fuentes primarias y Modelo/alcons2.py, especialmente 3,5 × Dc frente a 3,16 × Dc y la fórmula de distancia crítica activa. Registrar una decisión académica antes de modificar código.
+2. **Cerrar trazabilidad bibliográfica de Peutz:** el equipo ya confirmó 3,16 × Dc como umbral de transición (D-020); el código ya lo implementa. Actualizar el Word para que describa 3,16 × Dc y consultar las fuentes primarias para verificar las expresiones de Dc y R. La Dc activa es 0,21 · sqrt(V / TR_2000Hz); 0,14 · sqrt(Q · R) permanece como alternativa definida pero no utilizada. No cambiar el código sin evidencia y decisión nuevas.
 3. **Construir pruebas automatizadas:** caracterizar geometría, absorción, Sabine, Eyring, Peutz y D-019 con casos de referencia independientes. Mantener TESTING.md como protocolo manual hasta automatizarlo.
 4. **Ejecutar la matriz de integración:** M1, M2, M3, carga de Excel, reportes PDF y errores. Registrar commit, entorno, resultados y evidencias en SOFTWARE_VALIDATION.md.
-5. **Validación experimental:** realizar mediciones independientes en las aulas requeridas y calcular errores/incertidumbre. No declarar cumplidos los umbrales del Word sin registros.
+5. **Validación experimental:** realizar mediciones independientes en las aulas requeridas y calcular errores/incertidumbre. No declarar cumplidos los umbrales académicos sin registros.
 6. **Reconciliación documental restante:** revisar CODEBASE_AUDIT.md y documentos de requisitos para separar hallazgos vigentes, resueltos e históricos. Mantener CHANGELOG cronológico.
 
 ### Límites de intervención
