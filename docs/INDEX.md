@@ -46,7 +46,7 @@ Cuando una afirmación no esté demostrada, usar **POR VALIDAR**, **PENDIENTE DE
 |---|---|
 | [ACOUSTIC_MODEL.md](ACOUSTIC_MODEL.md) | Formulación y parámetros acústicos implementados |
 | [ALCONS_CLASSIFICATION_REVIEW.md](ALCONS_CLASSIFICATION_REVIEW.md) | Análisis de fuentes y criterio operativo D-019 |
-| [REQUIREMENTS.md](REQUIREMENTS.md) | Requisitos funcionales, no funcionales y criterios |
+| [REQUIREMENTS.md](REQUIREMENTS.md) | Requisitos funcionales, no funcionales y criterios |\n| [MODULES_SPECIFICATION.md](MODULES_SPECIFICATION.md) | Especificación funcional y técnica de M1, M2 y M3: entradas, procesamiento, salidas, archivos y validaciones |
 | [REPORTS.md](REPORTS.md) | Diseño y comportamiento de reportes PDF |
 
 ### D. Interfaz y experiencia de usuario
