@@ -1,5 +1,37 @@
 # Handoff
 
+## Continuidad vigente — 2026-11-27
+
+Esta sección reemplaza el orden de prioridades de las notas históricas que siguen. Antes de implementar, verificar el estado local, la rama y el commit; la documentación de esta rama no significa que el entorno local del desarrollador esté sincronizado.
+
+### Lectura mínima antes de intervenir
+
+1. README.md, CLAUDE.md y AI_RULES.md.
+2. docs/INDEX.md y docs/CURRENT_STATE.md.
+3. docs/ARCHITECTURE.md y docs/MODULES_SPECIFICATION.md.
+4. docs/ACOUSTIC_MODEL.md y docs/ACADEMIC_ALIGNMENT.md.
+5. docs/ACOUSTIC_DATA_CATALOG.md y docs/SOFTWARE_VALIDATION.md.
+6. docs/DECISIONS.md, docs/TESTING.md y el historial pertinente de docs/CHANGELOG.md.
+
+### Siguiente secuencia de trabajo recomendada
+
+1. **Cerrar la procedencia de datos:** recuperar planos/fichas de levantamiento y fuentes de coeficientes; completar trazabilidad en ACOUSTIC_DATA_CATALOG.md. No inventar fuentes ni normalizar nombres sin comprobar su efecto.
+2. **Resolver discrepancias matemáticas:** contrastar el Word, las fuentes primarias y Modelo/alcons2.py, especialmente 3,5 × Dc frente a 3,16 × Dc y la fórmula de distancia crítica activa. Registrar una decisión académica antes de modificar código.
+3. **Construir pruebas automatizadas:** caracterizar geometría, absorción, Sabine, Eyring, Peutz y D-019 con casos de referencia independientes. Mantener TESTING.md como protocolo manual hasta automatizarlo.
+4. **Ejecutar la matriz de integración:** M1, M2, M3, carga de Excel, reportes PDF y errores. Registrar commit, entorno, resultados y evidencias en SOFTWARE_VALIDATION.md.
+5. **Validación experimental:** realizar mediciones independientes en las aulas requeridas y calcular errores/incertidumbre. No declarar cumplidos los umbrales del Word sin registros.
+6. **Reconciliación documental restante:** revisar CODEBASE_AUDIT.md y documentos de requisitos para separar hallazgos vigentes, resueltos e históricos. Mantener CHANGELOG cronológico.
+
+### Límites de intervención
+
+- No alterar fórmulas, coeficientes, perfiles de aulas ni umbrales sin decisión explícita y comparación de impacto.
+- No presentar inspección estática, regresión o pruebas de UI como validación experimental.
+- No modificar datos del tipo 18 ni los libros Excel hasta revisar consumidores y fuentes.
+- No hacer refactorizaciones amplias antes de contar con pruebas de caracterización.
+- Todo cambio debe quedar asociado a commit, evidencia y documentación actualizada.
+
+---
+
 ## Estado actual
 
 El proyecto está funcionalmente avanzado pero todavía en evolución.
