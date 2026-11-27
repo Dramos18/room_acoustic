@@ -25,7 +25,7 @@ Cuando una afirmación no esté demostrada, usar **POR VALIDAR**, **PENDIENTE DE
 | Documento | Propósito |
 |---|---|
 | [PROJECT_CONTEXT.md](PROJECT_CONTEXT.md) | Identidad, propósito, alcance y contexto general |
-| [CURRENT_STATE.md](CURRENT_STATE.md) | Fotografía del estado actual del repositorio; requiere reconciliación con los hitos posteriores |
+| [CURRENT_STATE.md](CURRENT_STATE.md) | Estado vigente y registro cronológico de evolución; leer primero la actualización superior |
 | [HANDOFF.md](HANDOFF.md) | Instrucciones para retomar trabajo en una nueva sesión |
 | [INDEX.md](INDEX.md) | Este mapa de documentación |
 
@@ -36,7 +36,7 @@ Cuando una afirmación no esté demostrada, usar **POR VALIDAR**, **PENDIENTE DE
 | [ARCHITECTURE.md](ARCHITECTURE.md) | Estructura MVC+S y responsabilidades de carpetas |
 | [INTEGRATION.md](INTEGRATION.md) | Impacto entre cambios del software y memoria académica |
 | [NAMING_AND_TRACEABILITY.md](NAMING_AND_TRACEABILITY.md) | Conservación y trazabilidad de identificadores |
-| [DEPENDENCIES.md](DEPENDENCIES.md) | Dependencias y entorno Linux/SteamOS |
+| [DEPENDENCIES.md](DEPENDENCIES.md) | Dependencias y entorno Linux/SteamOS |\n| [ACOUSTIC_DATA_CATALOG.md](ACOUSTIC_DATA_CATALOG.md) | Inventario de los 23 perfiles del Bloque H, esquema, materiales y trazabilidad pendiente |
 | [RESOURCES.md](RESOURCES.md) | Inventario de iconos, GIF y estilos |
 | [ACCOUNTING_MODEL.md](ACCOUNTING_MODEL.md) | Documento existente; alcance y pertinencia por confirmar |
 
@@ -59,7 +59,7 @@ Cuando una afirmación no esté demostrada, usar **POR VALIDAR**, **PENDIENTE DE
 
 | Documento | Propósito |
 |---|---|
-| [TESTING.md](TESTING.md) | Estrategia y procedimientos reproducibles de verificación |
+| [TESTING.md](TESTING.md) | Procedimientos de pruebas manuales y regresión |\n| [SOFTWARE_VALIDATION.md](SOFTWARE_VALIDATION.md) | Separación de verificación, validación matemática, experimental y usabilidad; matriz de evidencia y cierre |
 | [CODEBASE_AUDIT.md](CODEBASE_AUDIT.md) | Hallazgos de auditoría estática; revisar vigencia antes de actuar |
 | [DEVELOPMENT_WORKFLOW.md](DEVELOPMENT_WORKFLOW.md) | Flujo de trabajo desde preparación hasta documentación |
 
@@ -99,4 +99,4 @@ Cuando una afirmación no esté demostrada, usar **POR VALIDAR**, **PENDIENTE DE
 
 Esta primera versión organiza el inventario y añade documentos de trazabilidad. No implica que todos los documentos existentes hayan sido revisados línea por línea ni que su contenido esté completamente actualizado.
 
-La reconciliación de documentos antiguos —especialmente `CURRENT_STATE.md`, `HANDOFF.md`, `CODEBASE_AUDIT.md` y las secciones históricas de `CHANGELOG.md`— queda como tarea explícita del plan documental.
+La reconciliación documental es incremental. `CURRENT_STATE.md` y `HANDOFF.md` tienen una actualización vigente al inicio y conservan debajo el registro histórico. `CODEBASE_AUDIT.md` y las secciones antiguas de `CHANGELOG.md` aún requieren revisión de vigencia; no deben interpretarse automáticamente como estado actual.
