@@ -36,7 +36,8 @@ Cuando una afirmación no esté demostrada, usar **POR VALIDAR**, **PENDIENTE DE
 | [ARCHITECTURE.md](ARCHITECTURE.md) | Estructura MVC+S y responsabilidades de carpetas |
 | [INTEGRATION.md](INTEGRATION.md) | Impacto entre cambios del software y memoria académica |
 | [NAMING_AND_TRACEABILITY.md](NAMING_AND_TRACEABILITY.md) | Conservación y trazabilidad de identificadores |
-| [DEPENDENCIES.md](DEPENDENCIES.md) | Dependencias y entorno Linux/SteamOS |\n| [ACOUSTIC_DATA_CATALOG.md](ACOUSTIC_DATA_CATALOG.md) | Inventario de los 23 perfiles del Bloque H, esquema, materiales y trazabilidad pendiente |
+| [DEPENDENCIES.md](DEPENDENCIES.md) | Dependencias y entorno Linux/SteamOS |
+| [ACOUSTIC_DATA_CATALOG.md](ACOUSTIC_DATA_CATALOG.md) | Inventario de los 23 perfiles del Bloque H, esquema, materiales y trazabilidad pendiente |
 | [RESOURCES.md](RESOURCES.md) | Inventario de iconos, GIF y estilos |
 | [ACCOUNTING_MODEL.md](ACCOUNTING_MODEL.md) | Documento existente; alcance y pertinencia por confirmar |
 
@@ -46,7 +47,8 @@ Cuando una afirmación no esté demostrada, usar **POR VALIDAR**, **PENDIENTE DE
 |---|---|
 | [ACOUSTIC_MODEL.md](ACOUSTIC_MODEL.md) | Formulación y parámetros acústicos implementados |
 | [ALCONS_CLASSIFICATION_REVIEW.md](ALCONS_CLASSIFICATION_REVIEW.md) | Análisis de fuentes y criterio operativo D-019 |
-| [REQUIREMENTS.md](REQUIREMENTS.md) | Requisitos funcionales, no funcionales y criterios |\n| [MODULES_SPECIFICATION.md](MODULES_SPECIFICATION.md) | Especificación funcional y técnica de M1, M2 y M3: entradas, procesamiento, salidas, archivos y validaciones |
+| [REQUIREMENTS.md](REQUIREMENTS.md) | Requisitos funcionales, no funcionales y criterios |
+| [MODULES_SPECIFICATION.md](MODULES_SPECIFICATION.md) | Especificación funcional y técnica de M1, M2 y M3: entradas, procesamiento, salidas, archivos y validaciones |
 | [REPORTS.md](REPORTS.md) | Diseño y comportamiento de reportes PDF |
 
 ### D. Interfaz y experiencia de usuario
@@ -59,7 +61,8 @@ Cuando una afirmación no esté demostrada, usar **POR VALIDAR**, **PENDIENTE DE
 
 | Documento | Propósito |
 |---|---|
-| [TESTING.md](TESTING.md) | Procedimientos de pruebas manuales y regresión |\n| [SOFTWARE_VALIDATION.md](SOFTWARE_VALIDATION.md) | Separación de verificación, validación matemática, experimental y usabilidad; matriz de evidencia y cierre |
+| [TESTING.md](TESTING.md) | Procedimientos de pruebas manuales y regresión |
+| [SOFTWARE_VALIDATION.md](SOFTWARE_VALIDATION.md) | Separación de verificación, validación matemática, experimental y usabilidad; matriz de evidencia y cierre |
 | [CODEBASE_AUDIT.md](CODEBASE_AUDIT.md) | Hallazgos de auditoría estática; revisar vigencia antes de actuar |
 | [DEVELOPMENT_WORKFLOW.md](DEVELOPMENT_WORKFLOW.md) | Flujo de trabajo desde preparación hasta documentación |
 
