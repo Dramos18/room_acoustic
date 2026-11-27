@@ -8,7 +8,7 @@
 
 - M1 (Tiempo de Reverberación), M2 (Inteligibilidad), M3 (Base de Datos) y Ayuda V1 están implementados en el repositorio y cuentan con documentación de sus flujos.
 - M3 reutiliza el motor de cálculo de reverberación de M1; no es un motor acústico independiente.
-- D-016 (mover/redimensionar ventana), D-017 (feedback al guardar PDF) y D-019 (clasificación operativa %ALCons) figuran como implementados en CHANGELOG/DECISIONS.
+- D-016 (mover/redimensionar ventana), D-017 (feedback al guardar PDF), D-019 (clasificación operativa %ALCons) y D-020 (umbral Peutz de 3,16 · Dc) están documentados; D-016, D-017 y D-019 están implementados, y D-020 confirma un criterio que ya estaba implementado.
 - El catálogo de datos contiene 23 perfiles en Datos/salones.py. Su procedencia geométrica, física y bibliográfica aún requiere trazabilidad; ver ACOUSTIC_DATA_CATALOG.md.
 - La especificación de módulos, el catálogo de datos, la matriz de verificación/validación y la alineación académica están documentados en MODULES_SPECIFICATION.md, ACOUSTIC_DATA_CATALOG.md, SOFTWARE_VALIDATION.md y ACADEMIC_ALIGNMENT.md. La auditoría estática fue reconciliada en CODEBASE_AUDIT.md.
 
