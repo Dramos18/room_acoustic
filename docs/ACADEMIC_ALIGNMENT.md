@@ -66,7 +66,7 @@ También menciona el método I.D.E.A.L. como guía conceptual y una arquitectura
 | Interfaz | Pantallas de bienvenida, módulos y formularios | M1/M2/M3 refinados; Ayuda V1 incorporada | Actualizar capturas, nombres de pantallas y navegación |
 | Clasificación %ALCons | El Word presenta la valoración de forma general y una tabla previa | D-019 implementa seis categorías operativas | Explicar diferencia entre fuente bibliográfica y decisión del proyecto |
 | Arquitectura | MVC / MVC+S | Repositorio separado en Modelo, Vista, Controlador, Datos y Recursos | Actualizar diagrama con estructura y dependencias reales |
-| Validación | Propone comparación con mediciones reales | Hay pruebas de software y comparaciones de regresión documentadas | Separar validación matemática, pruebas de software y validación experimental |
+| Validación | Propone comparación con mediciones reales | Hay procedimientos manuales y comparaciones de regresión documentadas; la validación experimental permanece pendiente | Separar validación matemática, pruebas de software y validación experimental |
 | Plataforma | PyCharm, Python, PySide6/Qt Designer | Entorno fijado y probado en Linux/SteamOS | Actualizar versión de Python/dependencias y registrar compatibilidad Windows como pendiente |
 
 ## 4. Discrepancias y asuntos que necesitan resolución
@@ -77,13 +77,24 @@ En las primeras páginas aparece una portada con año 2025 y otra página de pre
 
 ### 4.2 Ecuación/umbral por tramos del modelo de Peutz
 
-El Word, en la explicación de inteligibilidad (páginas 23–24), describe que el régimen cercano se aplica cuando la distancia del oyente es menor a 3,5 veces la distancia crítica. La documentación técnica actual del repositorio registra el umbral implementado como 3,16 × Dc.
+**Criterio confirmado para la versión del software: 3,16 × Dc (D-020, 2026-11-27).**
 
-Este punto requiere revisar la fuente bibliográfica y la ecuación exacta adoptada. No cambiar código ni Word hasta confirmar el criterio matemático aprobado. Registrar el resultado en `ACOUSTIC_MODEL.md` y, si corresponde, en `DECISIONS.md`.
+El Word suministrado describía el régimen cercano con un umbral de 3,5 × Dc (páginas 23–24), mientras que `Modelo/alcons2.py::calcular_alcons` implementa 3,16 × Dc. El equipo confirmó que la documentación del software y la versión académica que describa esta implementación deben adoptar **3,16 × Dc**. No se modificó el código porque ya aplica ese valor.
+
+La revisión de `ALCONS_CLASSIFICATION_REVIEW.md` §3 registra que el artículo de 2025 localizado para el proyecto presenta el mismo umbral por tramos y lo atribuye al modelo de Peutz mediante una referencia secundaria. Esto aporta consistencia documental, pero no equivale a una comprobación directa de la fuente primaria original. La trazabilidad bibliográfica primaria debe completarse antes de afirmar que la formulación ha sido validada exhaustivamente.
+
+**Acción sobre el manuscrito:** sustituir la descripción de 3,5 × Dc por 3,16 × Dc en la explicación, ecuación, pseudocódigo, tablas o figuras donde aparezca, y comprobar que no queden referencias contradictorias. Registrar la edición y mantener el Word como documento académico editable; este cambio documental no se ha realizado en esta actualización.
 
 ### 4.3 Fórmula de distancia crítica
 
-El Word expone la definición de distancia crítica y la constante de sala, pero la extracción disponible no permite verificar de manera inequívoca toda la ecuación impresa. La documentación técnica del repositorio identifica una expresión usada y otra alternativa definida pero no usada. Debe mantenerse explícita la diferencia entre fórmula activa y alternativa, sin presentar ambas como equivalentes.
+La inspección directa de `Modelo/alcons2.py` permite identificar el comportamiento implementado:
+
+- **Expresión activa:** `Dc = 0.21 · sqrt(V / TR_2000Hz)`, llamada desde `generar_reporte()` mediante `calcular_dc()`.
+- **Expresión alternativa no activa:** `Dc' = 0.14 · sqrt(Q · R)`, disponible en `calcular_distancia_critica()`, pero cuya llamada dentro de `generar_reporte()` permanece comentada.
+
+Por tanto, la primera es la distancia crítica que utiliza el flujo actual del software. No se afirma que ambas expresiones sean equivalentes. La revisión bibliográfica secundaria del proyecto indica que las ecuaciones de Dc y R están insertadas como imágenes y no pudieron verificarse carácter por carácter. Se requiere consultar la fuente primaria (y el trabajo académico antecedente cuando esté disponible) antes de decidir si la expresión activa es la adecuada para el marco teórico definitivo.
+
+**Acción sobre el manuscrito:** describir como implementación vigente la fórmula activa y señalar la alternativa solo si se explica como una expresión no utilizada o antecedente. No trasladar la fórmula alternativa al algoritmo ni afirmar que fue evaluada.
 
 ### 4.4 Módulo de Inteligibilidad
 
