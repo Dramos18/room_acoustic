@@ -92,3 +92,16 @@ usan la plataforma `offscreen`, sin abrir ventanas):
 Limitaciones: mover/redimensionar la ventana y el diálogo de guardado real
 solo pueden validarse de forma interactiva en el equipo del usuario.
 
+
+
+## Caso específico de transición del modelo de Peutz (D-020)
+
+La prueba unitaria de `AlconsCalculator.calcular_alcons` debe verificar ambos lados del umbral adoptado:
+
+- `r = 3.16 · Dc`: debe ingresar en la rama `r <= 3.16 · Dc`.
+- `r` inmediatamente mayor que `3.16 · Dc`: debe ingresar en la rama `r > 3.16 · Dc`.
+- Un valor inmediatamente menor que el umbral: debe permanecer en la primera rama.
+
+Registrar los parámetros `Dc`, `r`, `TR_2000Hz`, `V` y `Q`, y comparar el resultado con el cálculo esperado de cada expresión. Usar una tolerancia numérica explícita y comprobar el límite con números representables de forma controlada para evitar que el redondeo binario altere la selección de rama.
+
+Este caso prueba el comportamiento del código en el umbral; no constituye por sí solo una validación experimental ni una comprobación independiente de la validez física del modelo.
