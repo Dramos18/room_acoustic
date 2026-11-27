@@ -1,26 +1,28 @@
-# Acoustic Model
+# Modelo acústico
 
 ## 1. Tiempo de reverberación
 
-El sistema utiliza las ecuaciones de Sabine y Eyring.
+El motor de reverberación implementa los métodos de Sabine y Eyring por bandas de frecuencia.
 
 ### Sabine
 
-``` text
-RT60 = 0.161 * V / A
+```text
+RT60 = 0.161 · V / A
 ```
 
-donde: - V = volumen del recinto; - A = absorción total.
+Donde V es el volumen del recinto (m³) y A es el área de absorción equivalente total (m² sabin), calculada para cada banda.
 
 ### Eyring
 
-La implementación trabaja con el coeficiente medio de absorción por
-frecuencia y la relación de Eyring.
+```text
+RT60 = -0.161 · V / (S · ln(1 - ᾱ))
+```
 
-La ecuación exacta debe mantenerse alineada con el Word vigente y con la
-implementación validada.
+Donde S es el área total de las superficies del recinto (m²) y ᾱ es el coeficiente medio de absorción de la banda. La implementación debe respetar el dominio matemático del logaritmo y los casos límite; no interpretar un resultado no finito como un tiempo numérico válido.
 
-## 2. Bandas
+## 2. Bandas de frecuencia
+
+El procesamiento utiliza seis bandas de octava:
 
 - 125 Hz
 - 250 Hz
@@ -29,58 +31,101 @@ implementación validada.
 - 2000 Hz
 - 4000 Hz
 
-## 3. Absorción
+## 3. Absorción acústica
 
-La absorción se obtiene a partir de: - área; - material; - coeficiente
-de absorción; - objetos adheridos; - objetos adicionales.
+La absorción equivalente se construye a partir de las áreas, los coeficientes de absorción tabulados y los elementos presentes en el recinto:
 
-## 4. Inteligibilidad — %ALCons
+- material base de cada superficie;
+- objetos adheridos, cuya área se descuenta de la superficie base y se contabiliza con su propio material;
+- objetos adicionales, contabilizados según la cantidad y el coeficiente asociado.
 
-El proyecto utiliza el modelo de Peutz.
+Los perfiles y sus limitaciones de trazabilidad se documentan en `ACOUSTIC_DATA_CATALOG.md`. El flujo de procesamiento y los archivos responsables se describen en `MODULES_SPECIFICATION.md`.
 
-La implementación observada en `Modelo/alcons2.py` incluye:
+## 4. Inteligibilidad del habla — %ALCons (Peutz)
 
-``` text
-R = (STOT * alpha_promedio) / (1 - alpha_promedio)
-Dc = 0.14 * sqrt(Q * R)
+La implementación activa se encuentra en `Modelo/alcons2.py`, clase `AlconsCalculator`.
 
-Dc_alternativa = 0.21 * sqrt(V / TR_2000Hz)
+### 4.1 Constante del recinto
 
-si r <= 3.16 * Dc:
-    %ALCons = (200 * r² * TR²) / (V * Q)
-si r > 3.16 * Dc:
-    %ALCons = 9 * TR
+```text
+R = (S_TOT · ᾱ) / (1 - ᾱ)
 ```
 
-La fórmula anterior representa la implementación observada en el
-snapshot y debe seguir contrastándose contra la formulación exacta del
-Word vigente antes de cualquier refactor matemático.
+Donde S_TOT es la superficie total del recinto y ᾱ el coeficiente medio de absorción. La implementación rechaza ᾱ = 1.
 
-## 5. Evaluación cualitativa
+### 4.2 Distancia crítica activa
 
-`Modelo/alcons2.py` clasifica actualmente (criterio operativo vigente,
-D-019, 2026-10-11): - 0–1.4: Excelente; - hasta 4.8: Buena; - hasta 11.4:
-Regular; - hasta 24.2: Pobre; - hasta 46.5: Mala; - superior a 46.5: Crítico.
+```text
+Dc = 0.21 · √(V / TR_2000Hz)
+```
 
-Es una decisión metodológica/operativa del proyecto, no una transcripción
-literal de la fuente bibliográfica consultada (que publica 5 categorías con
-intervalos no contiguos y sin categoría por encima de 46.5 %); la
-justificación completa, la distinción entre lo que viene de la fuente y lo
-que es decisión propia, y las pruebas de los límites están en
-`docs/ALCONS_CLASSIFICATION_REVIEW.md` y `docs/DECISIONS.md` (D-019). Esto no
-implica que la redacción académica definitiva de la tesis esté cerrada.
+Esta es la expresión que utiliza actualmente `generar_reporte()` al llamar a `calcular_dc()`. V es el volumen del recinto y TR_2000Hz el tiempo de reverberación a 2000 Hz.
 
-La clasificación debe tratarse como parte del contrato funcional hasta
-que el equipo académico apruebe un cambio.
+El código también contiene `calcular_distancia_critica(Q, R)`, que calcula:
 
-## 6. Parámetros de referencia
+```text
+Dc' = 0.14 · √(Q · R)
+```
 
-El proyecto establece: - Q = 2 para voz humana frontal; - distancia de
-referencia de 1.5 m; - TR de 2000 Hz para el modelo de inteligibilidad.
+Esta segunda expresión **no está activa en el flujo de generación del reporte**: la llamada correspondiente permanece comentada. No se deben presentar ambas expresiones como equivalentes ni intercambiarlas sin una decisión metodológica y pruebas de impacto.
 
-## Regla crítica
+### 4.3 Cálculo por tramos
 
-No modificar una ecuación porque “parezca más correcta”. Toda
-modificación debe: 1. identificar la fuente; 2. comparar fórmula actual
-vs nueva; 3. comparar resultados; 4. actualizar documentación; 5.
-validar contra casos de referencia.
+El criterio de transición confirmado para la implementación del proyecto es **3.16 · Dc**:
+
+```text
+si r ≤ 3.16 · Dc:
+    %ALCons = (200 · r² · TR²) / (V · Q)
+si r > 3.16 · Dc:
+    %ALCons = 9 · TR
+```
+
+Donde:
+- r: distancia entre emisor y oyente (m);
+- TR: tiempo de reverberación a 2000 Hz (s);
+- V: volumen del recinto (m³);
+- Q: factor de directividad (2 para voz humana frontal, según los parámetros establecidos por el proyecto);
+- Dc: distancia crítica activa definida en §4.2.
+
+El umbral 3.16 es el criterio adoptado para el software y coincide con la implementación existente en `AlconsCalculator.calcular_alcons()`. La decisión se registra en D-020. El documento académico debe utilizar el mismo criterio al describir la versión evaluada.
+
+### 4.4 Clasificación cualitativa
+
+La clasificación operativa de seis niveles se encuentra implementada en el modelo, la interfaz y los reportes:
+
+| Intervalo de %ALCons | Clasificación |
+|---|---|
+| 0 ≤ x ≤ 1.4 | Excelente |
+| 1.4 < x ≤ 4.8 | Buena |
+| 4.8 < x ≤ 11.4 | Regular |
+| 11.4 < x ≤ 24.2 | Pobre |
+| 24.2 < x ≤ 46.5 | Mala |
+| x > 46.5 | Crítico |
+
+Es una decisión operativa del proyecto: toma los límites superiores publicados por la fuente secundaria revisada, cierra los intervalos no definidos y añade la categoría Crítico. No debe atribuirse literalmente a la fuente bibliográfica. El análisis de procedencia y limitaciones está en `ALCONS_CLASSIFICATION_REVIEW.md`; la decisión formal, en D-019.
+
+## 5. Parámetros de referencia
+
+El flujo documentado del proyecto establece:
+- Q = 2 para voz humana frontal;
+- distancia de referencia = 1.5 m en los perfiles que la especifican;
+- TR de referencia = 2000 Hz para el cálculo de inteligibilidad.
+
+Los valores particulares de cada perfil se encuentran en `Datos/salones.py` y se inventarían en `ACOUSTIC_DATA_CATALOG.md`.
+
+## 6. Trazabilidad y limitaciones metodológicas
+
+- El umbral 3.16 · Dc se adopta como criterio de implementación y se registra en D-020. La fuente académica secundaria identificada en `ALCONS_CLASSIFICATION_REVIEW.md` describe el mismo criterio por tramos y lo atribuye a Peutz a través de una referencia intermedia.
+- La ecuación de Dc activa (0.21 · √(V/TR_2000Hz)) está identificada por inspección directa del código. La ecuación alternativa (0.14 · √(Q·R)) está definida pero no se utiliza en el flujo activo.
+- La revisión bibliográfica disponible no permitió verificar carácter por carácter las ecuaciones de Dc y R en la fuente primaria original; las fórmulas aparecen como imágenes en el documento secundario. La procedencia primaria debe completarse antes de afirmar una validación bibliográfica exhaustiva.
+- La validez experimental de los resultados requiere mediciones independientes; no se deduce de que la aplicación ejecute las ecuaciones.
+
+## 7. Regla de control de cambios
+
+No modificar una ecuación, constante, banda o parámetro por intuición. Todo cambio debe:
+1. identificar y conservar la fuente bibliográfica;
+2. comparar explícitamente la formulación actual y la propuesta;
+3. analizar el dominio de aplicación y las unidades;
+4. calcular el impacto sobre casos de referencia y los 23 perfiles;
+5. actualizar código, pruebas, decisiones y documentación académica de forma coordinada;
+6. registrar las limitaciones y la evidencia de validación.
