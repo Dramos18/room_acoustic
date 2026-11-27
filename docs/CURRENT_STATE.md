@@ -10,7 +10,7 @@
 - M3 reutiliza el motor de cálculo de reverberación de M1; no es un motor acústico independiente.
 - D-016 (mover/redimensionar ventana), D-017 (feedback al guardar PDF) y D-019 (clasificación operativa %ALCons) figuran como implementados en CHANGELOG/DECISIONS.
 - El catálogo de datos contiene 23 perfiles en Datos/salones.py. Su procedencia geométrica, física y bibliográfica aún requiere trazabilidad; ver ACOUSTIC_DATA_CATALOG.md.
-- La especificación de módulos y la alineación académica están documentadas en MODULES_SPECIFICATION.md y ACADEMIC_ALIGNMENT.md.
+- La especificación de módulos, el catálogo de datos, la matriz de verificación/validación y la alineación académica están documentados en MODULES_SPECIFICATION.md, ACOUSTIC_DATA_CATALOG.md, SOFTWARE_VALIDATION.md y ACADEMIC_ALIGNMENT.md. La auditoría estática fue reconciliada en CODEBASE_AUDIT.md.
 
 ### Calidad y validación
 
@@ -18,7 +18,7 @@
 - No se ha establecido en esta revisión una ejecución reciente de toda la matriz de pruebas. SOFTWARE_VALIDATION.md separa evidencia histórica, pruebas pendientes, validación matemática y validación experimental.
 - Linux/SteamOS tiene un entorno de instalación documentado en DEPENDENCIES.md. Compatibilidad Windows continúa POR VALIDAR.
 - La validación experimental contra mediciones independientes no está demostrada por los registros inspeccionados.
-- La equivalencia académica completa del modelo de Peutz no debe darse por cerrada: ACADEMIC_ALIGNMENT.md registra la discrepancia entre el umbral 3,5 × Dc del Word y 3,16 × Dc en el código documentado, además de la selección de fórmula de distancia crítica.
+- El equipo confirmó 3,16 × Dc como umbral de transición del modelo de Peutz para la versión del software (D-020). El Word debe actualizarse para no describir 3,5 × Dc. La Dc activa es 0,21 · sqrt(V / TR_2000Hz); la expresión 0,14 · sqrt(Q · R) está definida, pero no se utiliza en el flujo activo. La verificación bibliográfica primaria de Dc/R y la validación experimental siguen pendientes.
 
 ### Hallazgos de datos pendientes
 
