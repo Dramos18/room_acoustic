@@ -1,5 +1,45 @@
 # Current State
 
+## Actualización vigente — 2026-11-27
+
+**Base de revisión:** rama `docs/knowledge-base-2026-11`. Esta sección prevalece sobre las descripciones antiguas que aparecen más abajo; esas secciones se conservan como historial y no deben leerse como fotografía actual.
+
+### Estado funcional documentado
+
+- M1 (Tiempo de Reverberación), M2 (Inteligibilidad), M3 (Base de Datos) y Ayuda V1 están implementados en el repositorio y cuentan con documentación de sus flujos.
+- M3 reutiliza el motor de cálculo de reverberación de M1; no es un motor acústico independiente.
+- D-016 (mover/redimensionar ventana), D-017 (feedback al guardar PDF) y D-019 (clasificación operativa %ALCons) figuran como implementados en CHANGELOG/DECISIONS.
+- El catálogo de datos contiene 23 perfiles en Datos/salones.py. Su procedencia geométrica, física y bibliográfica aún requiere trazabilidad; ver ACOUSTIC_DATA_CATALOG.md.
+- La especificación de módulos y la alineación académica están documentadas en MODULES_SPECIFICATION.md y ACADEMIC_ALIGNMENT.md.
+
+### Calidad y validación
+
+- TESTING.md describe procedimientos manuales y de regresión; no equivale a una suite automatizada.
+- No se ha establecido en esta revisión una ejecución reciente de toda la matriz de pruebas. SOFTWARE_VALIDATION.md separa evidencia histórica, pruebas pendientes, validación matemática y validación experimental.
+- Linux/SteamOS tiene un entorno de instalación documentado en DEPENDENCIES.md. Compatibilidad Windows continúa POR VALIDAR.
+- La validación experimental contra mediciones independientes no está demostrada por los registros inspeccionados.
+- La equivalencia académica completa del modelo de Peutz no debe darse por cerrada: ACADEMIC_ALIGNMENT.md registra la discrepancia entre el umbral 3,5 × Dc del Word y 3,16 × Dc en el código documentado, además de la selección de fórmula de distancia crítica.
+
+### Hallazgos de datos pendientes
+
+- salonTipo18 usa la clave aula en singular, mientras los demás perfiles utilizan aulas. Revisar consumidores antes de corregir.
+- Existen tres libros Excel relacionados con coeficientes; el flujo principal inspeccionado carga coefs_absorcion.xlsx. La procedencia bibliográfica de los coeficientes y la función de los otros libros deben documentarse.
+- No se ejecutó la aplicación ni se corrieron pruebas durante la actualización documental del 2026-11-27.
+
+### Prioridades técnicas y académicas
+
+1. Fijar un commit de evaluación y una línea base reproducible.
+2. Resolver con respaldo bibliográfico y académico las discrepancias de Peutz.
+3. Recuperar fuentes primarias de geometría, materiales, mobiliario y coeficientes.
+4. Convertir los casos centrales del motor acústico en pruebas automatizadas.
+5. Ejecutar pruebas de integración M1/M2/M3 y reportes, conservando evidencias.
+6. Realizar validación experimental con mediciones independientes según el protocolo aprobado.
+7. Actualizar el manuscrito de grado solo después de resolver las discrepancias y consolidar evidencias.
+
+---
+
+> El contenido histórico que sigue documenta auditorías y decisiones de fechas anteriores. No eliminarlo sin migrar primero la información que siga siendo pertinente y fechar explícitamente cualquier cambio de estado.
+
 ## Confirmado por el equipo
 
 - Repositorio actual: `Room Acoustic`.
