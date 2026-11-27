@@ -204,7 +204,7 @@ Si r > 3.16 × Dc:
     %ALCons = 9 × TR
 ```
 
-La función `calcular_alcons` devuelve el valor redondeado a dos decimales y valida que distancia, TR, volumen y factor de directividad sean positivos.
+La función `calcular_alcons` devuelve el valor redondeado a dos decimales y valida que distancia, TR, volumen y factor de directividad sean positivos. El umbral de transición de 3.16 × Dc fue confirmado como criterio de implementación en D-020 (2026-11-27); el código ya aplicaba ese valor.
 
 ### 4.4 Clasificación cualitativa D-019
 
